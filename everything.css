@@ -63,7 +63,14 @@ align-items: stretch;
     align-items: center;
 
     max-width: 723px;
-    width: auto;
+}
+
+@media screen and (max-width : 945px)
+{
+    .headerNav{
+        max-width: 241px;
+    }
+
 }
 
 .headerNav ul{
@@ -114,6 +121,14 @@ align-items: stretch;
 }
 
 /*HOME CONTENT STUFF*/
+.homeContent{
+    
+}
+
+.homeContentContainer{
+    
+}
+
 
 .homeContentText {
     max-width: 1200px;
