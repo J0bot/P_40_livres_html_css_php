@@ -1,6 +1,12 @@
 <?php 
 // Auteur : José Carlos Gasser
-// Date : 04.10.2021
-// Descritption : Page index du site
+// Date : 05.10.2021
+// Descritption : page index du site
 
+include("head.php");
+
+include("header.php")
 ?>
+
+</body>
+</html>

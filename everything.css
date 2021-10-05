@@ -1,0 +1,30 @@
+.headerNav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: aquamarine;
+    
+}
+
+.headerNav li{
+    display: inline;
+    float:left;
+}
+
+.headerNav li a{
+    display: block;
+    margin-left:0.5px;
+    margin-right:0.5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: darkblue;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.headerNav li a:hover {
+    background-color: blue;
+}
