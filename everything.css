@@ -23,6 +23,7 @@ align-items: stretch;
 .headerLogin{
     flex-grow: none;
     margin-left: 20px;
+    margin-right: 40px;
 }
 
 .headerLogin ul{
