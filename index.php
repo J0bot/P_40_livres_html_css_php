@@ -8,6 +8,8 @@ include("head.php");
 include("header.php");
 
 include("homeContent.php");
+
+include("footer.php");
 ?>
 
 </body>
