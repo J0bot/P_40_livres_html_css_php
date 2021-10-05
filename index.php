@@ -5,7 +5,9 @@
 
 include("head.php");
 
-include("header.php")
+include("header.php");
+
+include("homeContent.php");
 ?>
 
 </body>
