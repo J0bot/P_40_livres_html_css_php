@@ -13,21 +13,36 @@ p{
 /*HEADER STUFF*/
 
 
+
 .headerLoginAndNav{
 display: flex;
 flex-direction: row;
 align-items: stretch;
-
 }
 
 .headerLogin{
     flex-grow: none;
+    margin-left: 20px;
 }
 
 .headerLogin ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
+}
+
+.headerLogo {
+    flex-grow: none;
+    width: 40px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-right: 20px;
+    margin-left: 40px;
+}
+
+.headerLogo img{
+    height: 41px;
+    width: auto;
 }
 
 .headerLogin img{
@@ -38,11 +53,16 @@ align-items: stretch;
 .headerNav{
     padding-top: 20px;
     padding-bottom: 20px;
-
     font-family: Arial, Helvetica, sans-serif;
     font-size: large;
     font-weight: bold;
     flex-grow: 1;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+
+    max-width: 723px;
+    width: auto;
 }
 
 .headerNav ul{
@@ -50,7 +70,6 @@ align-items: stretch;
     margin: 0;
     padding: 0;
     background-color: aquamarine;
-    
 }
 
 .headerNav li{
@@ -62,6 +81,8 @@ align-items: stretch;
     display: block;
     margin-left:0.5px;
     margin-right:0.5px;
+    margin-bottom: 2px;
+    margin-top: 2px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
@@ -70,10 +91,13 @@ align-items: stretch;
     text-align: center;
     color: white;
     text-decoration: none;
+    width: 200px;
+    height: 21px;
 }
 
 .headerNav li a:hover {
     background-color: blue;
+    height: 25px;
 }
 
 .headerNav img{

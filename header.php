@@ -1,9 +1,11 @@
 <header>    
     <div class="headerLoginAndNav">
         
+        <div class="headerLogo">
+            <img src="img/book.png" alt="Livre que elisa a fait">
+        </div>
         <nav class = "headerNav">
             <ul>
-                <li><img src="img/book.png" alt="Livre que elisa a fait"></li>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Liste des ouvrages</a></li>
                 <li><a href="#">Ajouter un livre</a></li>
