@@ -6,9 +6,9 @@
         </div>
         <nav class = "headerNav">
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="index.php?page=home">Home</a></li>
                 <li><a href="#">Liste des ouvrages</a></li>
-                <li><a href="ouvrageAdd.php">Ajouter un livre</a></li>
+                <li><a href="index.php?page=add">Ajouter un livre</a></li>
                 
             </ul>
         </nav>
