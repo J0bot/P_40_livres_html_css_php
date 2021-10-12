@@ -8,13 +8,14 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Liste des ouvrages</a></li>
-                <li><a href="#">Ajouter un livre</a></li>
+                <li><a href="ouvrageAdd.php">Ajouter un livre</a></li>
+                
             </ul>
         </nav>
         <div class = "headerLogin">
             <ul>
                 <li><img src="img/bee.png" alt="icone de profil"></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="loginContent.php">Login</a></li>
             </ul>
         </div>
 
