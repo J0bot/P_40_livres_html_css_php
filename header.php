@@ -21,8 +21,5 @@
 
     </div>
 
-    <div class ="headerTitle">
-        <h1>Projet Ouvrages</h1>
-    </div>
 </header>
 
