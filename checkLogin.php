@@ -1,4 +1,7 @@
 <?php
+session_start();
+include("head.php");
+include("header.php");
 /**
  * auteur : Elisa Kuoch
  * date : 12.10.2021
@@ -10,13 +13,14 @@
             echo "connexion réussie";
         }
         else{
-            echo "L'identifiant ou le mot de passe est incorrect. <br>";
-            echo "<a href=loginContent.php>revenir à la page de login</a>";
+            $_SESSION["errorMessage"] = "Veuillez remplir tous les champs. <br><a href=loginContent.php>revenir à la page de login</a>";
+            header("location:loginContent.php");
         }
     }
     else{
-        echo "Veuillez remplir tous les champs. <br>";
-        echo "<a href=loginContent.php>revenir à la page de login</a>";
+        $_SESSION["errorMessage"] = "Veuillez remplir tous les champs. <br><a href=loginContent.php>revenir à la page de login</a>";
+        header("location:loginContent.php");
     }
 
+    include("footer.php");
 ?>
