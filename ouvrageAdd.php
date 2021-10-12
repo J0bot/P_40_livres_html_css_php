@@ -3,7 +3,7 @@
 // Date : 04.10.2021
 // Descritption : Page de sommaire final
 
-include ("data.php");
+include ("model.php");
 ?>
 
 

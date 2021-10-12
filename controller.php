@@ -15,6 +15,10 @@ if(isset($_GET["page"]))
     {
         include("loginContent.php");
     }
+    elseif ($_GET["page"] == "list")
+    {
+        include("bookList.php");
+    }
 }
 else
 {

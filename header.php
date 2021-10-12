@@ -2,12 +2,12 @@
     <div class="headerLoginAndNav">
         
         <div class="headerLogo">
-            <img src="img/book.png" alt="Livre que elisa a fait">
+            <a href="index.php?page=home"><img src="img/book.png" alt="Livre que elisa a fait"></a>
         </div>
         <nav class = "headerNav">
             <ul>
                 <li><a href="index.php?page=home">Home</a></li>
-                <li><a href="#">Liste des ouvrages</a></li>
+                <li><a href="index.php?page=list">Liste des ouvrages</a></li>
                 <li><a href="index.php?page=add">Ajouter un livre</a></li>
                 
             </ul>
