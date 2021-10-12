@@ -5,7 +5,6 @@ if(isset($_GET["page"]))
     if($_GET["page"] == "home" )
     {
         include("homeContent.php");
-
     }
     elseif ($_GET["page"] == "add")
     {
@@ -14,6 +13,10 @@ if(isset($_GET["page"]))
     elseif ($_GET["page"] == "login")
     {
         include("loginContent.php");
+    }
+    elseif ($_GET["page"] == "loginCheck")
+    {
+        include("loginContentCheck.php");
     }
     elseif ($_GET["page"] == "list")
     {

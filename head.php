@@ -8,5 +8,4 @@
     <title>Ouvrage</title>
 </head>
 <body>
-<?php session_start();?>
     
