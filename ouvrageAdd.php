@@ -65,7 +65,13 @@ include ("data.php");
         <label for="pdfLink">Lien vers extrait pdf</label>
         <input type="url" name="pdfLink" />
     </p>
-
+        
+    <label for="description">Descritption:</label>
+    <br>
+    <textarea id="description" name="description" rows="4" cols="50">
+    </textarea>
+    <br>
+    <input type="submit" value="Submit">
 
 
 </form>
