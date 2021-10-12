@@ -56,8 +56,6 @@
                     </div>
                     <p>Cactus</p>
                 </div>
-                
-            
             </div>
         </div>
     </div>
