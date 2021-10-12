@@ -3,6 +3,11 @@
 // Date : 04.10.2021
 // Descritption : Page de sommaire final
 ?>
+
+ <div class ="headerTitle">
+        <h1>Projet Ouvrages</h1>
+</div>
+
 <div class ="homeContent">
     <div class="homeContentContainer">
         <div class="homeContentText">
