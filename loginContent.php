@@ -7,7 +7,7 @@
 <!--Page de Login, titre, labels et input-->
 
 <h1>Login</h1>
-<form method="post" action="checkLogin.php">
+<form method="post" action="loginContentCheck.php">
     <p>
         <label for="username">Username</label><br>
         <input type="text" name="username" id="pseudo"/>
