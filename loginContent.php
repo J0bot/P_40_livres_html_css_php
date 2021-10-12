@@ -1,9 +1,3 @@
-
-<?php
-session_start();
-include("head.php");
-include("header.php");
-?>
     <!--
         auteur : elisa kuoch
         date : 12.10.2021
@@ -37,8 +31,6 @@ include("header.php");
         </div>
         
     </div>
-<?php
-include("footer.php");
-?>
+
 
 

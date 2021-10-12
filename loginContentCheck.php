@@ -13,13 +13,13 @@ include("header.php");
             echo "connexion réussie";
         }
         else{
-            $_SESSION["errorMessage"] = "Veuillez remplir tous les champs. <br><a href=loginContent.php>revenir à la page de login</a>";
-            header("location:loginContent.php");
+            $_SESSION["errorMessage"] = "Veuillez remplir tous les champs. <br><a href=index.php?page=login>revenir à la page de login</a>";
+            header("location:index.php?page=login");
         }
     }
     else{
-        $_SESSION["errorMessage"] = "Veuillez remplir tous les champs. <br><a href=loginContent.php>revenir à la page de login</a>";
-        header("location:loginContent.php");
+        $_SESSION["errorMessage"] = "Veuillez remplir tous les champs. <br><a href=index.php?page=login>revenir à la page de login</a>";
+        header("location:index.php?page=login");
     }
 
     include("footer.php");

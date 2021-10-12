@@ -11,6 +11,10 @@ if(isset($_GET["page"]))
     {
         include("ouvrageAdd.php");
     }
+    elseif ($_GET["page"] == "login")
+    {
+        include("loginContent.php");
+    }
 }
 else
 {

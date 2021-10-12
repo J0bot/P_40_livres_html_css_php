@@ -15,7 +15,7 @@
         <div class = "headerLogin">
             <ul>
                 <li><img src="img/bee.png" alt="icone de profil"></li>
-                <li><a href="loginContent.php">Login</a></li>
+                <li><a href="index.php?page=login">Login</a></li>
             </ul>
         </div>
 
