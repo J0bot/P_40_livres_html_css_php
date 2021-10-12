@@ -29,6 +29,23 @@ if ($result->num_rows > 0) {
 } else {
   echo "0 results";
 }
+
+$sql = "SELECT catName FROM t_category";
+$result = $conn->query($sql);
+
+$t_category =array();
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+
+    $strToEnter =  $row["catName"] ;
+    array_push($t_category, $strToEnter);
+  }
+} else {
+  echo "0 results";
+}
+
 $conn->close();
 ?> 
 

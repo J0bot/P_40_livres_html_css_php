@@ -34,8 +34,8 @@ include ("model.php");
     <label for="categorie">Categorie</label>
     <select name="categorie" id="categorie">
         <?php 
-        for ($i=0; $i < count($categorie); $i++) { 
-            echo "<option value=".$categorie[$i].">".$categorie[$i]."</option>";
+        for ($i=0; $i < count($t_category); $i++) { 
+            echo "<option value=".$t_category[$i].">".$t_category[$i]."</option>";
         }
         ?>
     </select>
