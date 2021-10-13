@@ -22,6 +22,10 @@ if(isset($_GET["page"]))
     {
         include("bookList.php");
     }
+    elseif ($_GET["page"] == "detail")
+    {
+        include("bookDetails.php");
+    }
 }
 else
 {

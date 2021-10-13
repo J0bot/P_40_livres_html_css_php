@@ -12,12 +12,12 @@
     </tr>
 
     <?php 
-        for ($i=0; $i < count($t_book_author); $i++) { 
+        for ($i=0; $i < count($t_book_author_img); $i++) { 
             echo "<tr>";
-            echo "<th>" . "jobot". "</th>"; //'<th><img src="img/'.$books[$i]["image"].'" alt="ouais"></th>';
-            echo "<th>" . $t_book_author[$i]["0"]. "</th>";
-            echo "<th>" . $t_book_author[$i]["1"]." ".$t_book_author[$i]["2"]. "</th>";
-            echo "<th>" . "jobot". "</th>";
+            echo '<th><img src="img/'.$t_book_author_img[$i]["3"].'" alt="ouais"></th>';
+            echo "<th>" . $t_book_author_img[$i]["0"]. "</th>";
+            echo "<th>" . $t_book_author_img[$i]["1"]." ".$t_book_author_img[$i]["2"]. "</th>";
+            echo "<th>" . $t_book_author_img[$i]["4"]. "</th>";
             echo "</tr>";
         }
     ?>

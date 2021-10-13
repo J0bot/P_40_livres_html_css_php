@@ -150,6 +150,11 @@ align-items: stretch;
     
 }
 
+.linkBookHome
+{
+    text-decoration: none;
+    color: black;
+}
 
 .homeContentText {
     max-width: 1200px;

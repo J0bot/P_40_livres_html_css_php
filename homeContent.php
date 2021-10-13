@@ -2,6 +2,8 @@
 // Auteur : José Carlos Gasser
 // Date : 04.10.2021
 // Descritption : Page de sommaire final
+
+include("model.php");
 ?>
 
  <div class ="headerTitle">
@@ -27,40 +29,21 @@
                 <h2>Derniers ouvrages ajoutés</h2>
             </div>
             <div class="homeContentLastOuvragesContainer">
-                <div class="lastOuvrageBox">
-                    <div class="lastOuvrageBoxImg">
-                        <img src="img/bee.png" alt="bee">
-                    </div>
-                    <p>Cactus</p>
-                </div>
 
-                <div class="lastOuvrageBox">
-                    <div class="lastOuvrageBoxImg">
-                        <img src="img/cactus.png" alt="cactus">
-                    </div>
-                    <p>Cactus</p>
-                </div>
+                <?php 
+                    for ($i=0; $i < 5; $i++) { 
+                
+                        echo '<a class="linkBookHome" href="index.php?page=detail&bookId='.$t_book_cover_name[$i][2].'"><div class="lastOuvrageBox">';
+                            echo '<div class="lastOuvrageBoxImg">';
+                                echo '<img src="img/' .$t_book_cover_name[$i][1].'" alt="'.$t_book_cover_name[$i][0].'"> ';
+                            echo '</div>';
+                            echo '<p>'. $t_book_cover_name[$i][0].'</p>';
+                        echo '</div></a>';
+                    }
+                ?>
 
-                <div class="lastOuvrageBox">
-                    <div class="lastOuvrageBoxImg">
-                        <img src="img/nuage.png" alt="nuage">
-                    </div>
-                    <p>Cactus</p>
-                </div>
                 
-                <div class="lastOuvrageBox">
-                    <div class="lastOuvrageBoxImg">
-                    <img src="img/pietro.png" alt="pietro">
-                    </div>
-                    <p>Cactus</p>
-                </div>
-                
-                <div class="lastOuvrageBox">
-                    <div class="lastOuvrageBoxImg">
-                    <img src="img/pietro_grand.png" alt="pietro_grand">
-                    </div>
-                    <p>Cactus</p>
-                </div>
+
             </div>
         </div>
     </div>
