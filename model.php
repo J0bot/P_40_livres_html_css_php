@@ -21,6 +21,45 @@ if ($conn->connect_error)
 }
 //echo "Connected successfully<br>";
 
+//EXEMPLE : var_dump( getMysqlData("SELECT autLastName as '0', autFirstName as '1' FROM t_author", 2));
+
+/**
+ * Il ne faut pas oublier de mettre automatiquement les nom des colones demandées avec un chiffre qui part de 0
+ * 
+ */
+function getMysqlData($sqlCode, $rowNumber)
+{
+  global $conn;
+  $result = $conn->query($sqlCode);
+  $arrayToPush  = array();
+  if ($result->num_rows > 0) 
+    {
+      // output data of each row
+      while($row = $result->fetch_assoc()) 
+      {
+        $arrayIntermediate = array();
+
+        for ($i=0; $i < count($row); $i++) 
+        { 
+          array_push($arrayIntermediate, $row["".$i.""]);
+        }
+        array_push($arrayToPush, $arrayIntermediate);   
+      }
+    } 
+    else 
+    {
+      echo "0 results";
+    }
+    return $arrayToPush;
+}
+
+//var_dump( getMysqlData("SELECT autLastName as '0', autFirstName as '1' FROM t_author", 2));
+
+$t_book_author = getMysqlData("SELECT booTitle as '0',autFirstName as '1', autLastName as '2' FROM t_book
+INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor",3);
+
+var_dump ($t_book_author);
+
 $t_author =array();
 
 if (isset($_GET["getAut"]))
@@ -64,47 +103,24 @@ if (isset($_GET["getCat"])) {
     $sql = "SELECT catName FROM t_category";
     $result = $conn->query($sql);
     
-    
-    if ($result->num_rows > 0) {
+    if ($result->num_rows > 0) 
+    {
       // output data of each row
-      while($row = $result->fetch_assoc()) {
-    
+      while($row = $result->fetch_assoc()) 
+      {
         $strToEnter =  $row["catName"] ;
         array_push($t_category, $strToEnter);
       }
-    } else {
+    } 
+    else 
+    {
       echo "0 results";
     }
 
   }
 }
 
-$t_book =array();
 
-if (isset($_GET["getBoo"])) {
-  if ($_GET["getBoo"]=="all") {
-    //Et là on recommence ce qu'on avait avant
-    $sql = "SELECT booTitle ,autFirstName, autLastName FROM t_book
-            INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor";
-    $result = $conn->query($sql);
-    
-    
-    if ($result->num_rows > 0) {
-      // output data of each row
-      while($row = $result->fetch_assoc()) {
-    
-        $strName = $row["autFirstName"] ." ". $row["autLastName"];
-        $arrayToPush = array(
-          "booTitle" => $row["booTitle"],
-          "name" => $strName
-        );
-        array_push($t_book, $arrayToPush);
-      }
-    } else {
-      echo "0 results";
-    }
-  }
-}
 
 //Ici on ferme la connection, c'est très important
 $conn->close();
