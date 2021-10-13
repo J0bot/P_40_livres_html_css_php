@@ -60,35 +60,13 @@ INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor",3);
 
 var_dump ($t_book_author);
 
-$t_author =array();
+$t_author_names = array();
 
 if (isset($_GET["getAut"]))
 {
   if ($_GET["getAut"]=="allName")
   {
-    
-    //Ici on va mettre notre query sql dans un string
-    $sql = "SELECT autLastName, autFirstName FROM t_author";
-    
-    //Ici on récup les données obtenues par notre requete
-    $result = $conn->query($sql);
-    
-    //ici je vais randomly create un array pour recup les infos que je veux
-    
-    //Donc ici on va recup les data et les mettre dans un tableau voulu, ez et efficace
-    if ($result->num_rows > 0) 
-    {
-      // output data of each row
-      while($row = $result->fetch_assoc()) 
-      {
-        $strToEnter =  $row["autFirstName"] ." ". $row["autLastName"];
-        array_push($t_author, $strToEnter);
-      }
-    } 
-    else 
-    {
-      echo "0 results";
-    }
+    $t_author_names = getMysqlData("SELECT autLastName as '0', autFirstName as '1' FROM t_author", 2);
 
   }
 }
