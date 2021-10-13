@@ -13,6 +13,8 @@ for ($i=0; $i < count($t_book_all); $i++) {
 
 //var_dump($currentBookData);
 ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
      <!--afficher les informations générales de l'oubrage-->
      <div>
          <!--Titre-->
@@ -35,11 +37,17 @@ for ($i=0; $i < count($t_book_all); $i++) {
          <!--Utiliser le logo et le lien pour l'icône de rating en étoile
         exemple trouvé sur: https://www.w3schools.com/howto/howto_css_star_rating.asp-->
         <h2>Note moyenne des utilisateurs</h2>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star checked"></span>
-        <span class="fa fa-star"></span>
-        <span class="fa fa-star"></span>
+        <?php 
+            for ($i=0; $i < 5; $i++) { 
+                if ($i < $currentBookData[10]) {
+                    echo '<span class="fa fa-star checked"></span>';
+                }
+                else
+                {
+                    echo '<span class="fa fa-star"></span>';
+                }
+            }
+        ?>
 
         <br><br>
 

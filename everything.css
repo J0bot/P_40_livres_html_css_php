@@ -30,6 +30,15 @@ table, th{
     justify-content: center;
 }
 
+.checked{
+    color : orange
+}
+
+.fa:hover
+{
+    color: orangered;
+}
+
 /*HEADER STUFF*/
 
 
