@@ -21,36 +21,39 @@ include ("model.php");
     </p>
 
     <label for="auteur">Auteur</label>
-    <select required name="auteur" id="auteur">
+    <input list="auteur" name="auteur">
+    <datalist required name="auteur" id="auteur">
         <?php 
         for ($i=0; $i < count($t_author_names); $i++) { 
             $fullName = $t_author_names[$i][1]." ".$t_author_names[$i][0];
             echo "<option value=".$fullName.">".$fullName."</option>";
         }
         ?>
-    </select>
+    </datalist>
 
     <br><br>
 
     <label for="categorie">Categorie</label>
-    <select required name="categorie" id="categorie">
+    <input list="categorie" name="categorie">
+    <datalist required name="categorie" id="categorie">
         <?php 
         for ($i=0; $i < count($t_category_name); $i++) { 
             echo "<option value=".$t_category_name[$i].">".$t_category_name[$i]."</option>";
         }
         ?>
-    </select>
+    </datalist>
 
     <br><br>
 
     <label for="editeur">Editeur</label>
-    <select required name="editeur" id="editeur">
+    <input list="editeur" name="editeur">
+    <datalist required name="editeur" id="editeur">
         <?php 
         for ($i=0; $i < count($t_publisher_names); $i++) { 
             echo "<option value=".$t_publisher_names[$i].">".$t_publisher_names[$i]."</option>";
         }
         ?>
-    </select>
+    </datalist>
   
     <p>
         <label for="yearEdition">Année d'édition</label>
