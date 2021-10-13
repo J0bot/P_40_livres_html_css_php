@@ -65,6 +65,8 @@ function getMysqlData($sqlCode, $rowNumber)
     
 }
 
+
+
 //var_dump( getMysqlData("SELECT autLastName as '0', autFirstName as '1' FROM t_author", 2));
 
 $t_book_author_img = getMysqlData("SELECT booTitle as '0',autFirstName as '1', autLastName as '2', booCover as '3', useName as '4' FROM t_book
@@ -101,6 +103,15 @@ $t_book_cover_name = array();
 
 $t_book_cover_name = getMysqlData("SELECT booTitle as '0', booCover as '1', idBook as '2' FROM t_book", 3);
 
+$t_book_all = getMysqlData("SELECT idBook as '0', booTitle as '1', booCover as '2', 
+                            autLastName as '3', autFirstName as '4',
+                            catName as '5', booNumberOfPages as '6', 
+                            pubName as '7', booPublishingYear as '8',
+                            booSummary as '9', booReviewAverage as '10'
+                            FROM t_book
+                            NATURAL JOIN t_author
+                            NATURAL JOIN t_category
+                            NATURAL JOIN t_publisher",2);
 
 //Ici on ferme la connection, c'est très important
 

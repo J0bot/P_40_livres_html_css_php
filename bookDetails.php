@@ -2,25 +2,31 @@
 // Auteur : Larissa De Barros
 // Date : 04.10.2021
 // Descritption : Page de details d'un ouvrage
+include("model.php");
 
-include("head.php");
+$currentBookData = array();
+for ($i=0; $i < count($t_book_all); $i++) { 
+    if ($t_book_all[$i][0] == $_GET["bookId"]) {
+        $currentBookData = $t_book_all[$i];
+    }
+}
 
-include("header.php");
+//var_dump($currentBookData);
 ?>
      <!--afficher les informations générales de l'oubrage-->
      <div>
          <!--Titre-->
-         <h1>Titre du livre</h1>
+         <h1><?php echo "$currentBookData[1]"; ?></h1>
          <!--insérer l'image du livre actuel -->
-        <img src="img/cactus.png" alt="cactus">
+        <img src="img/<?php echo "$currentBookData[2]";?>" alt="<?php echo "$currentBookData[1]"; ?>">
 
         <!--Informations livre-->
         <ul>
-            <li>Auteur:</li>
-            <li>Categorie:</li>
-            <li>Nb pages:</li>
-            <li>Editeur:</li>
-            <li>Année d'édition:</li>
+            <li>Auteur: <?php echo "$currentBookData[3]"; ?> <?php echo "$currentBookData[4]"; ?></li>
+            <li>Categorie: <?php echo "$currentBookData[5]"; ?></li>
+            <li>Nb pages: <?php echo "$currentBookData[6]"; ?></li>
+            <li>Editeur: <?php echo "$currentBookData[7]"; ?></li>
+            <li>Année d'édition: <?php echo "$currentBookData[8]"; ?></li>
             <li><a>insérer logo ici, Télécharger un extrait pdf</a></li>
         </ul>
 
@@ -52,7 +58,6 @@ include("header.php");
         <!--Insérer la description de l'ouvrage ici-->
     </article>
 <?php 
-include("footer.php");
 
 ?>
 
