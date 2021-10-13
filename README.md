@@ -9,7 +9,10 @@ Bon au moment ou j'écris c'est un peu le bordel mais chill, dans 2 ou 3 semaine
 
 
 ## Team : 
-José : PHP, CSS, HTML, MYSQL, design
-Elisa : PHP, CSS, HTML, design
+José : PHP, CSS, HTML, MYSQL, design 
+
+Elisa : PHP, CSS, HTML, design 
+
 Mathieu : PHP, MYSQL, conception base de données
-Larrisa : HTML, PHP, et plein de trucs
+
+Larrisa : HTML, PHP, et plein de trucs 
