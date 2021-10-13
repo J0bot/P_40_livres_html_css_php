@@ -9,7 +9,9 @@ include("head.php");
 
 include("header.php");
 
+
 ?>
+
 <div class="content">
     <div>
 

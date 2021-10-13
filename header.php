@@ -7,7 +7,7 @@
         <nav class = "headerNav">
             <ul>
                 <li><a href="index.php?page=home">Home</a></li>
-                <li><a href="index.php?page=list">Liste des ouvrages</a></li>
+                <li><a href="index.php?page=list&getBoo=all">Liste des ouvrages</a></li>
                 <li><a href="index.php?page=add">Ajouter un livre</a></li>
                 
             </ul>
