@@ -9,10 +9,21 @@ include ("model.php");
 
 <h1>Ajout d'un ouvrage</h1>
 
-<form action="ouvrageAddCheck.php" method="post">
+<?php 
+    if(isset($_GET["error"]))
+    {
+        if ($_GET["error"]=="yes") {
+            echo "<p class='redText'>Vous devez corréctement remplir tous les champs</p>";
+        }
+    }
+?>
 
+
+<form action="index.php?page=addCheck" method="post" enctype="multipart/form-data">
+
+    <label for="bookImage">Importer le cover</label>
     <input type="file" id="bookImage" name="bookImage"
-          accept=".jpg, .jpeg, .png" required>
+        accept=".jpg, .jpeg, .png" required>
 
     <p>
         <label for="title">Titre</label>
@@ -74,7 +85,5 @@ include ("model.php");
     <textarea id="description" name="description" rows="4" cols="50" required></textarea>
     <br>
     <input type="submit" value="Submit">
-
-
 </form>
 
