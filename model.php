@@ -39,11 +39,18 @@ function getMysqlData($sqlCode, $rowNumber)
       {
         $arrayIntermediate = array();
 
-        for ($i=0; $i < count($row); $i++) 
-        { 
-          array_push($arrayIntermediate, $row["".$i.""]);
+        if ($rowNumber >1) {
+          # code...
+          for ($i=0; $i < count($row); $i++) 
+          { 
+            array_push($arrayIntermediate, $row["".$i.""]);
+          }
+          array_push($arrayToPush, $arrayIntermediate);   
         }
-        array_push($arrayToPush, $arrayIntermediate);   
+        else
+        {
+          array_push($arrayToPush, $row[0]);   
+        }
       }
     } 
     else 
@@ -71,29 +78,12 @@ if (isset($_GET["getAut"]))
   }
 }
 
-
-$t_category =array();
+$t_category_name =array();
 
 if (isset($_GET["getCat"])) {
   if ($_GET["getCat"]=="allName") {
     
-    //Et là on recommence ce qu'on avait avant
-    $sql = "SELECT catName FROM t_category";
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows > 0) 
-    {
-      // output data of each row
-      while($row = $result->fetch_assoc()) 
-      {
-        $strToEnter =  $row["catName"] ;
-        array_push($t_category, $strToEnter);
-      }
-    } 
-    else 
-    {
-      echo "0 results";
-    }
+    $t_category_name = getMysqlData("SELECT catName as '0' FROM t_category", 1);
 
   }
 }

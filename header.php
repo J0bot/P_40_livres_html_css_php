@@ -8,7 +8,7 @@
             <ul>
                 <li><a href="index.php?page=home">Home</a></li>
                 <li><a href="index.php?page=list&getBoo=all">Liste des ouvrages</a></li>
-                <li><a href="index.php?page=add&getAuth=allName&getCat=allName">Ajouter un livre</a></li>
+                <li><a href="index.php?page=add&getAut=allName&getCat=allName">Ajouter un livre</a></li>
                 
             </ul>
         </nav>

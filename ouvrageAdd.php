@@ -23,8 +23,9 @@ include ("model.php");
     <label for="auteur">Auteur</label>
     <select name="auteur" id="auteur">
         <?php 
-        for ($i=0; $i < count($t_author); $i++) { 
-            echo "<option value=".$t_author[$i].">".$t_author[$i]."</option>";
+        for ($i=0; $i < count($t_author_names); $i++) { 
+            $fullName = $t_author_names[$i][0]." ".$t_author_names[$i][1];
+            echo "<option value=".$fullName.">".$fullName."</option>";
         }
         ?>
     </select>
@@ -34,8 +35,8 @@ include ("model.php");
     <label for="categorie">Categorie</label>
     <select name="categorie" id="categorie">
         <?php 
-        for ($i=0; $i < count($t_category); $i++) { 
-            echo "<option value=".$t_category[$i].">".$t_category[$i]."</option>";
+        for ($i=0; $i < count($t_category_name); $i++) { 
+            echo "<option value=".$t_category_name[$i].">".$t_category_name[$i]."</option>";
         }
         ?>
     </select>
