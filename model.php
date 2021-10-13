@@ -69,7 +69,10 @@ function getMysqlData($sqlCode, $rowNumber)
 
 //var_dump( getMysqlData("SELECT autLastName as '0', autFirstName as '1' FROM t_author", 2));
 
-$t_book_author_img = getMysqlData("SELECT booTitle as '0',autFirstName as '1', autLastName as '2', booCover as '3', useName as '4' FROM t_book
+$t_book_author_img = getMysqlData("SELECT booTitle as '0',autFirstName as '1',
+autLastName as '2', booCover as '3',
+useName as '4', idBook as '5'
+FROM t_book
 INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
 NATURAL JOIN t_user",5);
 
