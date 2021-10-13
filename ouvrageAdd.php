@@ -13,7 +13,7 @@ include ("model.php");
 <form action="ouvrageAddCheck.php" method="post">
 
     <input type="file" id="bookImage" name="bookImage"
-          accept=".jpg, .jpeg, .png">
+          accept=".jpg, .jpeg, .png" required>
 
     <p>
         <label for="title">Titre</label>
@@ -21,7 +21,7 @@ include ("model.php");
     </p>
 
     <label for="auteur">Auteur</label>
-    <select name="auteur" id="auteur">
+    <select required name="auteur" id="auteur">
         <?php 
         for ($i=0; $i < count($t_author_names); $i++) { 
             $fullName = $t_author_names[$i][1]." ".$t_author_names[$i][0];
@@ -33,7 +33,7 @@ include ("model.php");
     <br><br>
 
     <label for="categorie">Categorie</label>
-    <select name="categorie" id="categorie">
+    <select required name="categorie" id="categorie">
         <?php 
         for ($i=0; $i < count($t_category_name); $i++) { 
             echo "<option value=".$t_category_name[$i].">".$t_category_name[$i]."</option>";
@@ -44,7 +44,7 @@ include ("model.php");
     <br><br>
 
     <label for="editeur">Editeur</label>
-    <select name="editeur" id="editeur">
+    <select required name="editeur" id="editeur">
         <?php 
         for ($i=0; $i < count($t_publisher_names); $i++) { 
             echo "<option value=".$t_publisher_names[$i].">".$t_publisher_names[$i]."</option>";
@@ -54,17 +54,17 @@ include ("model.php");
   
     <p>
         <label for="yearEdition">Année d'édition</label>
-        <input type="number" min="1900" max="2099" step="1" value="2016" name="yearEdition" />
+        <input required type="number" min="1900" max="2099" step="1" value="2016" name="yearEdition" />
     </p>
 
     <p>
         <label for="pageNumber">Nombre de pages</label>
-        <input type="number" name="pageNumber" />
+        <input required type="number" name="pageNumber" />
     </p>
 
     <p>
         <label for="pdfLink">Lien vers extrait pdf</label>
-        <input type="url" name="pdfLink" />
+        <input required type="url" name="pdfLink" />
     </p>
         
     <label for="description">Descritption:</label>
