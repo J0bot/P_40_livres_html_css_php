@@ -17,6 +17,28 @@ for ($i=0; $i < count($t_book_all); $i++) {
 
      <!--afficher les informations générales de l'oubrage-->
      <div>
+         <?php 
+            $previousBook = 1;
+            if ($_GET["bookId"]>1) {
+                $previousBook = $_GET["bookId"] -1;
+                echo '<a href="index.php?page=detail&bookId='.$previousBook.'>Livre avant</a>';
+            }
+            else
+            {
+                echo "Livre Avant";
+            }
+            
+            $nextBook = count($t_book_all);
+            if ($_GET["bookId"]<(count($t_book_all)-1)) {
+                $nextBook = $_GET["bookId"] +1;
+                echo '<a href="index.php?page=detail&bookId='.$nextBook.'>Livre après</a>';
+            }
+            else
+            {
+                echo "Livre après";
+            }
+            
+         ?>
          <!--Titre-->
          <h1><?php echo "$currentBookData[1]"; ?></h1>
          <!--insérer l'image du livre actuel -->
