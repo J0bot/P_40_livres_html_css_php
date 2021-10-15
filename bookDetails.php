@@ -21,7 +21,7 @@ for ($i=0; $i < count($t_book_all); $i++) {
             $previousBook = 1;
             if ($_GET["bookId"]>1) {
                 $previousBook = $_GET["bookId"] -1;
-                echo '<a href="index.php?page=detail&bookId='.$previousBook.'>Livre avant</a>';
+                echo '<a href="index.php?page=detail&bookId='.$previousBook.'">Livre avant</a>';
             }
             else
             {
@@ -29,9 +29,9 @@ for ($i=0; $i < count($t_book_all); $i++) {
             }
             
             $nextBook = count($t_book_all);
-            if ($_GET["bookId"]<(count($t_book_all)-1)) {
+            if ($_GET["bookId"]<(count($t_book_all))) {
                 $nextBook = $_GET["bookId"] +1;
-                echo '<a href="index.php?page=detail&bookId='.$nextBook.'>Livre après</a>';
+                echo '<a href="index.php?page=detail&bookId='.$nextBook.'">Livre après</a>';
             }
             else
             {
