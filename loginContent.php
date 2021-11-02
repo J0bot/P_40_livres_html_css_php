@@ -26,6 +26,15 @@
         $message = $_SESSION['errorMessage'];
         echo "<br><p>$message</p>";
     }
+
+    if(isset($_SESSION["connected"]))
+    {
+       if( $_SESSION["connected"] == "true")
+       {
+           echo "you're already connected";
+       }
+    }
+
 ?>
 
 
