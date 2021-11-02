@@ -31,7 +31,8 @@
     {
        if( $_SESSION["connected"] == "true")
        {
-           echo "you're already connected";
+           $_SESSION["connected"] = "false";
+           $_SESSION['errorMessage'] = "";
        }
     }
 
