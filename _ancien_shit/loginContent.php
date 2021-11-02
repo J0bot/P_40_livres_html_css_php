@@ -26,6 +26,16 @@
         $message = $_SESSION['errorMessage'];
         echo "<br><p>$message</p>";
     }
+
+    if(isset($_SESSION["connected"]))
+    {
+       if( $_SESSION["connected"] == "true")
+       {
+           $_SESSION["connected"] = "false";
+           $_SESSION['errorMessage'] = "";
+       }
+    }
+
 ?>
 
 

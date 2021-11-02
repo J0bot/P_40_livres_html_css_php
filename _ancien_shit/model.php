@@ -4,8 +4,6 @@
 //celle que Mathieu a confectionnée en l'occurence
 
 
-
-
 //echo "Connected successfully<br>";
 
 //EXEMPLE : var_dump( getMysqlData("SELECT autLastName as '0', autFirstName as '1' FROM t_author", 2));
