@@ -27,7 +27,7 @@ for ($i=0; $i < count($t_book_all); $i++) {
             {
                 echo "Livre Avant";
             }
-            
+    
             $nextBook = count($t_book_all);
             if ($_GET["bookId"]<(count($t_book_all))) {
                 $nextBook = $_GET["bookId"] +1;
@@ -39,8 +39,10 @@ for ($i=0; $i < count($t_book_all); $i++) {
             }
             
          ?>
+
          <!--Titre-->
          <h1><?php echo "$currentBookData[1]"; ?></h1>
+
          <!--insérer l'image du livre actuel -->
         <img src="img/<?php echo "$currentBookData[2]";?>" alt="<?php echo "$currentBookData[1]"; ?>">
 
