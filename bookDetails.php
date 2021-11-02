@@ -44,7 +44,7 @@ for ($i=0; $i < count($t_book_all); $i++) {
          <h1><?php echo "$currentBookData[1]"; ?></h1>
 
          <!--insérer l'image du livre actuel -->
-        <img src="img/<?php echo "$currentBookData[2]";?>" alt="<?php echo "$currentBookData[1]"; ?>">
+        <img src="resources/img/<?php echo "$currentBookData[2]";?>" alt="<?php echo "$currentBookData[1]"; ?>">
 
         <!--Informations livre-->
         <ul>

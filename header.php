@@ -2,7 +2,7 @@
     <div class="headerLoginAndNav">
         
         <div class="headerLogo">
-            <a href="index.php?page=home"><img src="img/book.png" alt="Livre que elisa a fait"></a>
+            <a href="index.php?page=home"><img src="resources/img/book.png" alt="Livre que elisa a fait"></a>
         </div>
         <nav class = "headerNav">
             <ul>
@@ -14,7 +14,7 @@
         </nav>
         <div class = "headerLogin">
             <ul>
-                <li><img src="img/bee.png" alt="icone de profil"></li>
+                <li><img src="resources/img/bee.png" alt="icone de profil"></li>
                 <li><a href="index.php?page=login"><?php
                 if (isset($_SESSION["connected"])) 
                  {

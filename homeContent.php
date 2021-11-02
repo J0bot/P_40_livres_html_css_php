@@ -35,7 +35,7 @@ include("model.php");
                 
                         echo '<a class="linkBookHome" href="index.php?page=detail&bookId='.$t_book_cover_name[$i][2].'"><div class="lastOuvrageBox">';
                             echo '<div class="lastOuvrageBoxImg">';
-                                echo '<img src="img/' .$t_book_cover_name[$i][1].'" alt="'.$t_book_cover_name[$i][0].'"> ';
+                                echo '<img src="resources/img/' .$t_book_cover_name[$i][1].'" alt="'.$t_book_cover_name[$i][0].'"> ';
                             echo '</div>';
                             echo '<p>'. $t_book_cover_name[$i][0].'</p>';
                         echo '</div></a>';
