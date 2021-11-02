@@ -37,21 +37,29 @@ class Database {
     //Cette fonction va nous donner toutes les informations sur un livre et nous retourner un tableau
     function getBook($id)
     {
+        $stmt = $this->pdo->prepare("SELECT * FROM t_book 
+        INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
+        WHERE idBook=$id");
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+
+        /*
         $stmt = $this->pdo->query("SELECT * FROM t_book WHERE idBook=$id");
         $data_array = array();
 
-        while ($row = $stmt->fetch()) {
-            $thisArray = array();
+        while ($row = $stmt->fetch()) {  
         
             foreach ($row as $val) {
-                array_push($thisArray,$val);
-            }
-            
-            array_push($data_array, $thisArray);                
+                array_push($data_array,$val);
+            } 
         }
 
         //var_dump($data_array);
         return $data_array;
+        */
     }
 }
 ?>
