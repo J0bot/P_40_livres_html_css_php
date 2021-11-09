@@ -10,6 +10,10 @@ Consider this: You made all the required mock ups for commissioned layout, got a
 But. A big but: Lorem Ipsum is not t the root of the problem, it just shows what's going wrong. Chances are there wasn't collaboration, communication, and checkpoints, there wasn't a process agreed upon or specified with the granularity required. It's content strategy gone awry right from the start. Forswearing the use of Lorem Ipsum wouldn't have helped, won't help now. It's like saying you're a bad designer, use less bold text, don't use italics in every other paragraph. True enough, but that's not all that it takes to get things back on track.</p>
 <h2>Derniers livres ajoiutlsé</h2>
 <div class="container mt-3 d-flex">
+<?php 
+for ($i=0; $i < 5; $i++) { 
+  ?>
+
   <div class="card" style="width:300px">
     <img class="card-img-top rounded" src="resources/img/Dune.jpg" alt="Card image" >
     <div class="card-body" style="height:200px">
@@ -18,24 +22,8 @@ But. A big but: Lorem Ipsum is not t the root of the problem, it just shows what
       <a href="#" class="btn btn-primary">Voir</a>
     </div>
   </div>
-  
-  <div class="card" style="width:300px">
-    <img class="card-img-top rounded" src="resources/img/HaveMercyOnUsAll.jpg" alt="Card image" >
-    <div class="card-body" style="height:200px">
-      <h4 class="card-title">Bee</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-      <a href="#" class="btn btn-primary">Voir</a>
-    </div>  
-  </div>
-
-  <div class="card" style="width:300px">
-    <img class="card-img-top rounded" src="resources/img/JustKids.jpg" alt="Card image" >
-    <div class="card-body" style="height:200px">
-      <h4 class="card-title">Bee</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-      <a href="#" class="btn btn-primary">Voir</a>
-    </div>  
-  </div>
-
-  <br>
+  <?php
+}
+?>
 </div>
+
