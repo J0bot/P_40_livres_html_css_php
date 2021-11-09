@@ -4,5 +4,12 @@
 // Date : 02.11.2021
 // Descritption : page index du site
 
+
+
+include("view/head.php");
+
+
 include('controller/Controller.php');
+
+include("view/footer.php")
 ?>

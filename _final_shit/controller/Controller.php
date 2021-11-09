@@ -4,6 +4,7 @@
  //Description : Controller de l'application
 
 include("model/model.php");
+include("view/view.php");
 
 $conn = new Database;
 $list_shit = $conn->getBook(2);
