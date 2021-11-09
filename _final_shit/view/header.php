@@ -9,7 +9,7 @@
           <li><a href="#" class="nav-link px-2 text-secondary">
               
           </a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Accueil</a></li>
+          <li><a href="?page=home" class="nav-link px-2 text-white">Accueil</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Liste des ouvrages</a></li>
           <li><a href="#" class="nav-link px-2 text-white">Ajouter un livre</a></li>
         </ul>

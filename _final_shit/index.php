@@ -6,8 +6,6 @@
 
 
 
-
-
 include('controller/Controller.php');
 
 include("view/footer.php")
