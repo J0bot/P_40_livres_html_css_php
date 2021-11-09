@@ -6,7 +6,6 @@
 
 
 
-include("view/head.php");
 
 
 include('controller/Controller.php');
