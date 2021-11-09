@@ -14,10 +14,14 @@
           <li><a href="#" class="nav-link px-2 text-white">Ajouter un livre</a></li>
         </ul>
 
+        <?php 
+        //Tout ce code permet de faire une bar de search, mais du coup mes camarades n'en veulent psa et c'est très dommage pck ça pourrait faire des truc mega classes et tout du coup ouais minecrafz c'est un jeu mega cool, et ouais. 
+        /*
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
         </form>
-
+        */
+        ?>
         <div class="text-end">
           <button type="button" class="btn btn-outline-light me-2">Login</button>
         </div>
