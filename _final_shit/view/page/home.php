@@ -8,3 +8,34 @@ You begin with a text, you sculpt information, you chisel away what's not needed
 Consider this: You made all the required mock ups for commissioned layout, got all the approvals, built a tested code base or had them built, you decided on a content management system, got a license for it or adapted open source software for your client's needs. Then the question arises: where's the content? Not there yet? That's not so bad, there's dummy copy to the rescue. But worse, what if the fish doesn't fit in the can, the foot's to big for the boot? Or to small? To short sentences, to many headings, images too large for the proposed design, or too small, or they fit in but it looks iffy for reasons the folks in the meeting can't quite tell right now, but they're unhappy, somehow. A client that's unhappy for a reason is a problem, a client that's unhappy though he or her can't quite put a finger on it is worse.
 
 But. A big but: Lorem Ipsum is not t the root of the problem, it just shows what's going wrong. Chances are there wasn't collaboration, communication, and checkpoints, there wasn't a process agreed upon or specified with the granularity required. It's content strategy gone awry right from the start. Forswearing the use of Lorem Ipsum wouldn't have helped, won't help now. It's like saying you're a bad designer, use less bold text, don't use italics in every other paragraph. True enough, but that's not all that it takes to get things back on track.</p>
+<h2>Derniers livres ajoiutlsé</h2>
+<div class="container mt-3 d-flex">
+  <div class="card" style="width:300px">
+    <img class="card-img-top rounded" src="resources/img/Dune.jpg" alt="Card image" >
+    <div class="card-body" style="height:200px">
+      <h4 class="card-title">Bee</h4>
+      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+      <a href="#" class="btn btn-primary">Voir</a>
+    </div>
+  </div>
+  
+  <div class="card" style="width:300px">
+    <img class="card-img-top rounded" src="resources/img/HaveMercyOnUsAll.jpg" alt="Card image" >
+    <div class="card-body" style="height:200px">
+      <h4 class="card-title">Bee</h4>
+      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+      <a href="#" class="btn btn-primary">Voir</a>
+    </div>  
+  </div>
+
+  <div class="card" style="width:300px">
+    <img class="card-img-top rounded" src="resources/img/JustKids.jpg" alt="Card image" >
+    <div class="card-body" style="height:200px">
+      <h4 class="card-title">Bee</h4>
+      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+      <a href="#" class="btn btn-primary">Voir</a>
+    </div>  
+  </div>
+
+  <br>
+</div>
