@@ -9,13 +9,16 @@ include("view/view.php");
 if (isset($_GET["page"])) {
     switch ($_GET["page"]) {
         case 'home':
+            $conn = new Database();
+            $list_books = $conn->getFiveLastBooks();
             include("view/page/home.php");
             break;
     }
 }
 else
 {
-    include("view/page/home.php");
+    $url = "?page=home";
+    header( "Location: $url" );
 }
 
 $conn = new Database;

@@ -50,6 +50,21 @@ class Database {
         return $result;
     }
 
+    //Cette fonction retourne les 5 derniers livres ajoutés
+    public function getFiveLastBooks()
+    {
+        //A FAIRE : faut que la query grab les 5 derniers livres ajoutés, du coup faut ajouter la date
+        $query = "SELECT idBook, booTitle, booCover FROM t_book LIMIT 5";
+
+        $stmt = $this->pdo->query($query);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        $stmt->closeCursor();
+
+        return $result;
+    }
+
     public function getUser($id)
     {
         

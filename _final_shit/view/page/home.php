@@ -11,14 +11,15 @@ But. A big but: Lorem Ipsum is not t the root of the problem, it just shows what
 <h2>Derniers livres ajoiutlsé</h2>
 <div class="container mt-3 d-flex">
 <?php 
-for ($i=0; $i < 5; $i++) { 
+
+foreach($list_books as $book) { 
   ?>
 
   <div class="card" style="width:300px">
-    <img class="card-img-top rounded" src="resources/img/Dune.jpg" alt="Card image" >
+    <img class="card-img-top rounded" src="resources/img/<?=$book["booCover"]?>" alt="Card image" >
     <div class="card-body" style="height:200px">
-      <h4 class="card-title">Bee</h4>
-      <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+      <h4 class="card-title"><?=$book["booTitle"] ?></h4>
+      <p class="card-text"></p>
       <a href="#" class="btn btn-primary">Voir</a>
     </div>
   </div>
