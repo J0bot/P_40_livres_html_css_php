@@ -20,5 +20,5 @@ else
 
 $conn = new Database;
 $list_shit = $conn->getBook(2);
-var_dump($list_shit);
+//var_dump($list_shit);
 ?>
