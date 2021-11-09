@@ -7,6 +7,8 @@ Tout ce beau code tourne sur UWAMP avec PHP8
 
 Bon au moment ou j'écris c'est un peu le bordel mais chill, dans 2 ou 3 semaines le code sera CLEAN af.
 
+Waaaa jsp ce qui s'est passé mais alright
+
 
 ## Team : 
 José : PHP, CSS, HTML, MYSQL, design 
