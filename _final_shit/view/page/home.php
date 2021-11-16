@@ -10,14 +10,22 @@
 
       foreach($list_books as $book) { 
         ?>
-      
-        <div class="card" style="width:300px">
-          <img class="card-img-top rounded" src="resources/img/<?=$book["booCover"]?>" alt="Card image" >
-          <div class="card-body " style="height:200px">
-            <h4 class="card-title"><?=$book["booTitle"] ?></h4>
-            <p class="card-text"></p>
-            <a  href="#" class="btn btn-primary d-flex  justify-content-center ">Voir</a>
+        
+        <div class="card" style="width:500px; max-height:500px">
+          <div style="max-height: 65%; ">
+            <img class="card-img-top rounded " src="resources/img/<?=$book["booCover"]?>" alt="Card image" style="max-height:100%; width: auto; display: block; margin-left: auto; margin-right: auto; margin-top:6px">
           </div>
+          
+          <div class="card-body " style="height:25%">
+            <div class="align-self-end">
+              <h4 class="card-title"><?=$book["booTitle"] ?></h4>
+              <p class="card-text"></p>
+            </div>
+          </div>
+          <div class="card-footer; ">
+            <a href="#" class="btn btn-primary d-flex  justify-content-center">Voir</a>
+          </div>
+
         </div>
       <?php
     }
