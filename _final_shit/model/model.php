@@ -77,8 +77,6 @@ class Database {
          $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
  
          $stmt->closeCursor();
-
-         var_dump($result);
  
          return $result;
     }
