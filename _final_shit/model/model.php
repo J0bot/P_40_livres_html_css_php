@@ -65,8 +65,27 @@ class Database {
         return $result;
     }
 
+    public function getAllBooksList()
+    {
+         //A FAIRE : faut que la query grab les 5 derniers livres ajoutés, du coup faut ajouter la date
+         $query = "SELECT idBook, booTitle, booCover, useName, autLastName, autFirstName  FROM t_book
+         INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
+         INNER JOIN t_user on t_book.idUser = t_user.idUser";
+
+         $stmt = $this->pdo->query($query);
+ 
+         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+ 
+         $stmt->closeCursor();
+
+         var_dump($result);
+ 
+         return $result;
+    }
+
     public function getUser($id)
     {
+        
         
     }
 }

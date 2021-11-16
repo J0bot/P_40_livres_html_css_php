@@ -13,6 +13,11 @@ if (isset($_GET["page"])) {
             $list_books = $conn->getFiveLastBooks();
             include("view/page/home.php");
             break;
+        case 'list':
+            $conn = new Database();
+            $list_books = $conn->getAllBooksList();
+            include("view/page/book/list.php");
+            break;
     }
 }
 else
