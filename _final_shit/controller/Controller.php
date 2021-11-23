@@ -25,6 +25,9 @@ if (isset($_GET["page"])) {
             $publishers = $conn->getAllPublishers();
             include("view/page/book/add.php");
             break;
+        case 'addUser':
+            include("view/page/user/add.php");
+            break;
         case 'detail':
             if (isset($_GET["bookId"])) {
                 $id = $_GET["bookId"];
@@ -61,8 +64,15 @@ if (isset($_GET["page"])) {
             break;
     }
 }
-else
-{
+elseif (isset($_GET["action"])) {
+    if ($_GET["action"]=="addUser") {
+        $useName = htmlspecialchars($_POST["uname"]);
+        $usePassword = htmlspecialchars($_POST["psw"]);
+        $useRights = ($_POST["admin"]=="on") ? 0 : 1;
+        var_dump($useRights);
+    }
+}
+else {
     include("view/page/404.php");
 }
 ?>
