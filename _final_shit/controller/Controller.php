@@ -68,8 +68,7 @@ elseif (isset($_GET["action"])) {
     if ($_GET["action"]=="addUser") {
         $useName = htmlspecialchars($_POST["uname"]);
         $usePassword = htmlspecialchars($_POST["psw"]);
-        $useRights = ($_POST["admin"]=="on") ? 0 : 1;
-        var_dump($useRights);
+        $useRights = ($_POST["admin"]=="on") ? 1 : 0;
     }
 }
 else {
