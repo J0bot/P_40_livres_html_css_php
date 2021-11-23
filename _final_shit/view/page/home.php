@@ -12,7 +12,9 @@
         <div class="card" style="width:250px; height:500px;">
 
           <div style="max-height: 65%; ">
-            <img class="card-img-top rounded " src="resources/img/<?=$book["booCover"]?>" alt="Card image" style="max-height:100%; width: auto; display: block; margin-left: auto; margin-right: auto; margin-top:6px">
+            <a href="?page=detail&bookId=<?=$book["idBook"] ?>">
+              <img class="card-img-top rounded " src="resources/img/<?=$book["booCover"]?>" alt="Card image" style="max-height:100%; width: auto; display: block; margin-left: auto; margin-right: auto; margin-top:6px">
+            </a>
           </div>
 
           <div class="card-body " style="height:25%">
@@ -23,7 +25,7 @@
           </div>
 
           <div class="card-footer;">
-            <a href="#" class="btn btn-primary d-flex  justify-content-center">Voir</a>
+            <a href="?page=detail&bookId=<?=$book["idBook"] ?>" class="btn btn-primary d-flex  justify-content-center">Voir</a>
           </div>
 
         </div>
