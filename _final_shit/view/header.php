@@ -23,7 +23,7 @@
         */
         ?>
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
+          <?php include("view/login_button.php");?>
         </div>
       </div>
     </div>
