@@ -22,7 +22,7 @@
             </div>
           </div>
 
-          <div class="card-footer; ">
+          <div class="card-footer;">
             <a href="#" class="btn btn-primary d-flex  justify-content-center">Voir</a>
           </div>
 
