@@ -9,9 +9,11 @@ Bon au moment ou j'écris c'est un peu le bordel mais chill, dans 2 ou 3 semaine
 
 Waaaa jsp ce qui s'est passé mais alright
 
+Bon au final c'est plus le repo ou je bosse en solo, c'est le repo officiel du projet, c'est nice
+
 
 ## Team : 
-José : PHP, CSS, HTML, MYSQL, design 
+José : PHP, CSS, HTML, MYSQL, Javascript, design 
 
 Elisa : PHP, CSS, HTML, design 
 
