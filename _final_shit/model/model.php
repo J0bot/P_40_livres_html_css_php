@@ -28,8 +28,8 @@ class Database {
         //Si on arrive pas à se connecter ça va nous trow un message d'erreur
         catch(PDOException $e)
         {
-        echo "Impossible de se connecter à la base de données, avec le code d'erreur : \n";
-        echo $e->getMessage(); 
+            echo "Impossible de se connecter à la base de données, avec le code d'erreur : \n";
+            echo $e->getMessage(); 
         }
     }   
 
@@ -112,7 +112,6 @@ class Database {
 
         $result = $this->querySimpleExecute($query);
 
-
         return $result;
     }
 
@@ -140,7 +139,6 @@ class Database {
         
         $result = $this->querySimpleExecute($query);
 
-
         return $result;
     }
 
@@ -151,6 +149,12 @@ class Database {
         $result = $this->querySimpleExecute($query);
 
         return $result;
+    }
+
+    public function addUser($useName,$usePassword,$useRights)
+    {
+        $query = "INSERT INTO t_user (useName,usePassword,useRights) VALUES ('$useName','$usePassword','$useRights')";
+        $this->pdo->query($query);
     }
 
 
@@ -181,18 +185,16 @@ class Database {
     }
 
 
-    //Cette fonction n'existe pas encore pck on a pas mis les droits pour un user
-    /*
+
     public function GetUserRights($useName){
-        $query = "SELECT useAdministrator FROM t_user WHERE useName='"."$useName"."'"; 
+        $query = "SELECT useRights FROM t_user WHERE useName='"."$useName"."'"; 
         $rights = $this->querySimpleExecute($query);
-        if (isset($rights[0]["useAdministrator"])) {
-            if ($rights[0]["useAdministrator"]== 1) {
+        if (isset($rights[0]["useRights"])) {
+            if ($rights[0]["useRights"]== 1) {
                 return 1;
             }
         }
         return 0;
     }
-    */
 }
 ?>

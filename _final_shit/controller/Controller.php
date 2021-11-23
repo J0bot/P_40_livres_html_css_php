@@ -66,9 +66,51 @@ if (isset($_GET["page"])) {
 }
 elseif (isset($_GET["action"])) {
     if ($_GET["action"]=="addUser") {
-        $useName = htmlspecialchars($_POST["uname"]);
-        $usePassword = htmlspecialchars($_POST["psw"]);
-        $useRights = ($_POST["admin"]=="on") ? 1 : 0;
+        if (isset($_POST["uname"]) && isset($_POST["psw"]) && isset($_POST["admin"])) {
+            $useName = htmlspecialchars($_POST["uname"]);
+            $usePassword = htmlspecialchars($_POST["psw"]);
+            $usePassword = password_hash($usePassword,PASSWORD_BCRYPT);
+            $useRights = ($_POST["admin"]=="on") ? 1 : 0;
+            $conn = new Database();
+            if ($conn->CheckIfUserExists($useName)==0) {
+                $conn->addUser($useName,$usePassword,$useRights);
+            }
+        }
+    }
+    if ($_GET["action"]=="login") {
+        if (isset($_POST["uname"]) and isset($_POST["psw"])) {
+            $useLogin = htmlspecialchars($_POST["uname"]);
+            $userPassword = htmlspecialchars($_POST["psw"]);
+            $_POST["psw"]= "";
+            $conn = new Database;
+            if($conn->CheckIfUserExists($useLogin)==1)
+            {
+               if($conn->CheckPassword($useLogin, $userPassword))
+               {
+                    $_SESSION["logged"] = 1;
+                    $adminRights = $conn->GetUserRights($useLogin);
+
+                    if ($adminRights == 1) {
+                        $_SESSION["adminRights"] = 1;
+                    }
+                    else
+                    {
+                        $_SESSION["adminRights"] = 0;
+                    }
+                    //Ouais jsp ça marche avec du javascript faut pas chercher
+                    echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
+               }
+               else { echo "password or user wrong";}
+   
+            }
+            else { echo "password or user wrong";}
+   
+        }
+        else { echo "password or user wrong";}
+    }
+    if ($_GET["action"]=="disconnect") {
+        $_SESSION["logged"] = 0;
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
 else {

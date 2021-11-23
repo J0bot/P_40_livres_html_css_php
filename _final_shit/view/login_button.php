@@ -110,12 +110,18 @@ span.psw {
 }
 </style>
 
-
+<?php
+if (!isset($_SESSION["logged"])) {
+  $_SESSION["logged"]= 0;
+}
+if ($_SESSION["logged"] ==0) {
+  ?>
+  
 <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-outline-light me-2" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="#" method="post" style="min-width: 300px;">
+  <form class="modal-content animate" action="?action=login" method="post" style="min-width: 300px;">
 
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" >&times;</span>
@@ -131,7 +137,6 @@ span.psw {
 
         <button  type="submit" class="btn btn-primary d-flex  justify-content-center">Login</button>
         <span class="psw" style="color: black;">Forgot <a href="?page=mdr">password?</a></span>
-        
 
       </div>
     </div>
@@ -146,7 +151,18 @@ var modal = document.getElementById('id01');
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
-        modal.style.display = "none";
+      modal.style.display = "none";
     }
 }
 </script>
+
+<?php
+}
+elseif($_SESSION["logged"] ==1)
+{
+  ?>
+  <button onclick="location.replace('?action=disconnect')" class="btn btn-outline-light me-2" style="width:auto;">Disconnect</button>
+
+  <?php
+}
+?>
