@@ -22,7 +22,7 @@
                 </th>
                 <th><a href="index.php?page=detail&bookId=<?=$book["idBook"]?>"><?=$book["booTitle"]?></a></th>
                 <th><?=$book["autFirstName"]?> <?=$book["autLastName"]?></th>
-                <th><?=$book["useName"]?></th>
+                <th><a href="?page=detail&userId=<?=$book["useName"]?>"><?=$book["useName"]?></a></th>
             </tr><?php
         }?>
 </table>
