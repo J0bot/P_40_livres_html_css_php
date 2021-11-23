@@ -129,22 +129,24 @@ class Database {
     }
 
     //LOGIN STUFF
+    //ça va checker si un user existe
     public function CheckIfUserExists($useName)
     {
-        $query = "SELECT useLogin FROM t_user WHERE useLogin='"."$useName"."'";
+        $query = "SELECT useName FROM t_user WHERE useName='"."$useName"."'";
         $data_array = $this->querySimpleExecute($query);
         foreach($data_array as $user)
         {
-            if ($user["useLogin"] == $useName) {
+            if ($user["useName"] == $useName) {
                 return 1;
             }   
         }
         return 0;
     }
 
-    public function CheckPassword($useLogin, $usePassword)
+    //pour que ça marche, il nous faut des mdp hashés dans la db
+    public function CheckPassword($useName, $usePassword)
     {
-        $query = "SELECT usePassword FROM t_user WHERE useLogin='"."$useLogin"."'";
+        $query = "SELECT usePassword FROM t_user WHERE useName='"."$useName"."'";
         $hashed_psw = $this->querySimpleExecute($query);
         if (password_verify($usePassword,$hashed_psw[0]["usePassword"])) {
             return 1;
@@ -152,8 +154,11 @@ class Database {
         return 0;
     }
 
-    public function GetUserRights($useLogin){
-        $query = "SELECT useAdministrator FROM t_user WHERE useLogin='"."$useLogin"."'"; //haha regardez pas cette synstaxe
+
+    //Cette fonction n'existe pas encore pck on a pas mis les droits pour un user
+    /*
+    public function GetUserRights($useName){
+        $query = "SELECT useAdministrator FROM t_user WHERE useName='"."$useName"."'"; 
         $rights = $this->querySimpleExecute($query);
         if (isset($rights[0]["useAdministrator"])) {
             if ($rights[0]["useAdministrator"]== 1) {
@@ -162,5 +167,6 @@ class Database {
         }
         return 0;
     }
+    */
 }
 ?>
