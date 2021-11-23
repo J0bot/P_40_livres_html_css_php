@@ -46,8 +46,7 @@ if (isset($_GET["page"])) {
 }
 else
 {
-    $url = "?page=home";
-    header( "Location: $url" );
+    include("view/page/404.php");
 }
 
 $conn = new Database;
