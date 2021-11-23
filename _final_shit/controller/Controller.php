@@ -18,15 +18,19 @@ if (isset($_GET["page"])) {
             $list_books = $conn->getAllBooksList();
             include("view/page/book/list.php");
             break;
-        case 'add':
-            $conn = new Database();
-            $authors = $conn->getAllAuthors();
-            $categories = $conn->getAllCategories();
-            $publishers = $conn->getAllPublishers();
-            include("view/page/book/add.php");
+        case 'add':  
+            if (checkAdmin()) {
+                $conn = new Database();
+                $authors = $conn->getAllAuthors();
+                $categories = $conn->getAllCategories();
+                $publishers = $conn->getAllPublishers();
+                include("view/page/book/add.php");
+            }
             break;
         case 'addUser':
-            include("view/page/user/add.php");
+            if (checkAdmin()) {
+                include("view/page/user/add.php");
+            }
             break;
         case 'detail':
             if (isset($_GET["bookId"])) {
@@ -119,4 +123,22 @@ elseif (isset($_GET["action"])) {
 else {
     include("view/page/404.php");
 }
+
+function checkAdmin()
+{
+    if (!isset($_SESSION["logged"])) {$_SESSION["logged"]=0;}
+
+    if ($_SESSION["logged"]==0) {
+        include("view/page/not_allowed.php");
+        return 0;
+    }
+    if ($_SESSION["logged"]==1) {
+        if ($_SESSION["adminRights"]==1) {
+            return 1;
+        }
+    }
+    return 0;
+
+}
+
 ?>
