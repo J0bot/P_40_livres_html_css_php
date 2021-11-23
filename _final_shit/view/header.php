@@ -11,7 +11,15 @@
           </a></li>
           <li><a href="?page=home" class="nav-link px-2 text-white">Accueil</a></li>
           <li><a href="?page=list" class="nav-link px-2 text-white">Liste des ouvrages</a></li>
-          <li><a href="?page=add" class="nav-link px-2 text-white">Ajouter un livre</a></li>
+          <?php if (!isset($_SESSION["logged"])) {$_SESSION["logged"]= 0;}
+          if ($_SESSION["logged"]==1) {if ($_SESSION["adminRights"]==1) {
+            ?>
+            <li><a href="?page=add" class="nav-link px-2 text-white">Ajouter un livre</a></li>
+            <li><a href="?page=addUser" class="nav-link px-2 text-white">Ajouter un user</a></li>
+            
+            <?php
+          } }
+          ?>
         </ul>
 
         <?php 

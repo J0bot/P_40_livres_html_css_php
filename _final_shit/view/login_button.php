@@ -111,9 +111,7 @@ span.psw {
 </style>
 
 <?php
-if (!isset($_SESSION["logged"])) {
-  $_SESSION["logged"]= 0;
-}
+if (!isset($_SESSION["logged"])) {$_SESSION["logged"]= 0;}
 if ($_SESSION["logged"] ==0) {
   ?>
   
@@ -136,8 +134,7 @@ if ($_SESSION["logged"] ==0) {
         <input class="input_conn" type="password" placeholder="Enter Password" name="psw" required>
 
         <button  type="submit" class="btn btn-primary d-flex  justify-content-center">Login</button>
-        <span class="psw" style="color: black;">Forgot <a href="?page=mdr">password?</a></span>
-
+        <span class="psw" style="color: black;">Forgot <a href="?page=addUser">password?</a></span>
       </div>
     </div>
 

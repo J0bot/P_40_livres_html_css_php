@@ -74,6 +74,11 @@ elseif (isset($_GET["action"])) {
             $conn = new Database();
             if ($conn->CheckIfUserExists($useName)==0) {
                 $conn->addUser($useName,$usePassword,$useRights);
+                echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
+            }
+            else
+            {
+                echo "cet utilisateur existe déjà";
             }
         }
     }
@@ -86,7 +91,7 @@ elseif (isset($_GET["action"])) {
             if($conn->CheckIfUserExists($useLogin)==1)
             {
                if($conn->CheckPassword($useLogin, $userPassword))
-               {
+                {
                     $_SESSION["logged"] = 1;
                     $adminRights = $conn->GetUserRights($useLogin);
 
@@ -101,10 +106,8 @@ elseif (isset($_GET["action"])) {
                     echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
                }
                else { echo "password or user wrong";}
-   
             }
             else { echo "password or user wrong";}
-   
         }
         else { echo "password or user wrong";}
     }
