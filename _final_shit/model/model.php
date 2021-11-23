@@ -60,11 +60,26 @@ class Database {
         $req->closeCursor();
     }
 
+    public function checkIfBookExists($id)
+    {
+        $stmt = $this->pdo->prepare("SELECT idBook FROM t_book WHERE idBook='$id'");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        
+        if ($result!=null) {
+            return 1;
+        }
+        return 0;
+    }
+
     //Cette fonction va nous donner toutes les informations sur un livre et nous retourner un tableau
     public function getBook($id)
     {
         $stmt = $this->pdo->prepare("SELECT * FROM t_book 
         INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
+        INNER JOIN t_category on t_book.idCategory = t_category.idCategory
+        INNER JOIN t_publisher on t_book.idPublisher = t_publisher.idPublisher
         WHERE idBook=$id");
         $stmt->execute();
 
