@@ -18,6 +18,14 @@ if (isset($_GET["page"])) {
             $list_books = $conn->getAllBooksList();
             include("view/page/book/list.php");
             break;
+        case 'detail':
+            if (isset($_GET["bookId"])) {
+                $conn = new Database();
+                $book = $conn->getBook($_GET["bookId"]);
+                if ($book != null) {
+                    include("view/page/book/detail.php");
+                }
+            }
     }
 }
 else
