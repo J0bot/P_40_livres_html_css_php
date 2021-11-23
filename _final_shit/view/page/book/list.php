@@ -1,4 +1,8 @@
-
+<?php 
+// Auteur : José Carlos Gasser
+// Date : 16.11.2021
+// Descritption : page de liste des livres
+?>
 <h1>Liste des ouvrages</h1>
 
 <table class="table table-hover" style="width: 80%; margin:auto;">

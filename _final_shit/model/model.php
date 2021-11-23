@@ -1,7 +1,7 @@
 <?php 
- //Auteur : José Carlos Gasser
- //Date : 02.11.2021
- //Description : ce fichier va concerner tout ce qui est de la connection à la db
+//Auteur : José Carlos Gasser
+//Date : 02.11.2021
+//Description : ce fichier va concerner tout ce qui est de la connection à la db
 
 
 //Cette classe va permettre la connection avec la db
