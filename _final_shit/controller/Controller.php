@@ -18,16 +18,6 @@ if (isset($_GET["page"])) {
             $list_books = $conn->getAllBooksList();
             include("view/page/book/list.php");
             break;
-<<<<<<< HEAD
-        case 'detail':
-            if (isset($_GET["bookId"])) {
-                $conn = new Database();
-                $book = $conn->getBook($_GET["bookId"]);
-                if ($book != null) {
-                    include("view/page/book/detail.php");
-                }
-            }
-=======
         case 'add':
             $conn = new Database();
             $authors = $conn->getAllAuthors();
@@ -56,7 +46,6 @@ if (isset($_GET["page"])) {
         default :
             include("view/page/404.php");
             break;
->>>>>>> 7852962cfbe0db0ff6c35a4b7e65ec006f966842
     }
 }
 else
