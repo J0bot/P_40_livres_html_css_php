@@ -115,22 +115,25 @@ span.psw {
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="#" method="post">
+  <form class="modal-content animate" action="#" method="post" style="min-width: 300px;">
 
     <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal" >&times;</span>
     </div>
 
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input class="input_conn" type="text" placeholder="Enter Username" name="uname" required>
+    <div class="container" >
+      <div style="text-align: start;">
+        <label for="uname" style="color: black;"><b>Username</b></label>
+        <input class="input_conn" type="text" placeholder="Enter Username" name="uname" required>
 
-      <label for="psw"><b>Password</b></label>
-      <input class="input_conn" type="password" placeholder="Enter Password" name="psw" required>
+        <label for="psw" style="color: black;"><b>Password</b></label>
+        <input class="input_conn" type="password" placeholder="Enter Password" name="psw" required>
 
-      <button  type="submit">Login</button>
-      <span class="psw">Forgot <a href="?page=mdr">password?</a></span>
+        <button  type="submit" class="btn btn-primary d-flex  justify-content-center">Login</button>
+        <span class="psw" style="color: black;">Forgot <a href="?page=mdr">password?</a></span>
+        
 
+      </div>
     </div>
 
   </form>
