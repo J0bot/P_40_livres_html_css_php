@@ -14,11 +14,11 @@
         accept=".jpg, .jpeg, .png" required>
 
     <p>
-        <label for="title">Titre</label>
+        <label for="title">Titre</label><br>
         <input type="text" name="title" required/>
     </p>
 
-    <label for="auteur">Auteur</label>
+    <label for="auteur">Auteur</label> <br>
     <input list="auteur" name="auteur" required>
     <datalist name="auteur" id="auteur">
         <?php 
@@ -31,7 +31,7 @@
 
     <br><br>
 
-    <label for="categorie">Categorie</label>
+    <label for="categorie">Categorie</label><br>
     <input list="categorie" name="categorie" required>
     <datalist  name="categorie" id="categorie">
         <?php 
@@ -43,7 +43,7 @@
 
     <br><br>
 
-    <label for="editeur">Editeur</label>
+    <label for="editeur">Editeur</label><br>
     <input list="editeur" name="editeur" required>
     <datalist  name="editeur" id="editeur" >
         <?php    
@@ -54,7 +54,7 @@
     </datalist>
         <br><br>
     <p>
-        <label for="yearEdition">Année d'édition</label>
+        <label for="yearEdition">Année d'édition</label><br>
         <input required type="number" min="1900" max="2099" step="1" value="2016" name="yearEdition" />
     </p>
 
