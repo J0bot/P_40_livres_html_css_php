@@ -164,18 +164,19 @@ CREATE TABLE `t_review` (
 CREATE TABLE `t_user` (
   `idUser` tinyint(1) UNSIGNED NOT NULL,
   `useName` varchar(50) NOT NULL,
-  `usePassword` varchar(50) NOT NULL
+  `usePassword` varchar(50) NOT NULL,
+  `useRights` int(5) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `t_user`
 --
 
-INSERT INTO `t_user` (`idUser`, `useName`, `usePassword`) VALUES
-(1, 'alazax', '12345'),
-(2, 'jobot', '12345'),
-(3, 'stary', '12345'),
-(4, 'risa', '12345');
+INSERT INTO `t_user` (`idUser`, `useName`, `usePassword`, `useRights`) VALUES
+(1, 'alazax', '12345', 0),
+(2, 'jobot', '12345', 1),
+(3, 'stary', '12345', 0),
+(4, 'risa', '12345', 0);
 
 --
 -- Index pour les tables déchargées
