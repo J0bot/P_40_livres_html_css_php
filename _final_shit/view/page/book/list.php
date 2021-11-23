@@ -7,7 +7,7 @@
 
 <table class="table table-hover" style="width: 80%; margin:auto;">
     <tr>
-        <th>Image</th>
+        <th></th>
         <th>Titre</th>
         <th>Auteur</th>
         <th>Pseudo</th>
@@ -15,12 +15,12 @@
 
     <?php 
         foreach ($list_books as $book) { ?>
-            <tr class="listTextStyle">
+            <tr class="listTextStyle ">
                 <th>
                     <a href="index.php?page=detail&bookId=<?=$book["idBook"]?>">
                     <img style="max-width:100px" src="resources/img/<?=$book["booCover"]?>" alt="<?=$book["booTitle"]?>"></a>
                 </th>
-                <th><?=$book["booTitle"]?></th>
+                <th><a href="index.php?page=detail&bookId=<?=$book["idBook"]?>"><?=$book["booTitle"]?></a></th>
                 <th><?=$book["autFirstName"]?> <?=$book["autLastName"]?></th>
                 <th><?=$book["useName"]?></th>
             </tr><?php
