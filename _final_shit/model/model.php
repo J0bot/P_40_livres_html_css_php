@@ -33,6 +33,33 @@ class Database {
         }
     }   
 
+    /**
+    * permet de préparer et d’exécuter une requête de type simple (sans where)
+    */
+    private function querySimpleExecute($query)
+    {
+        $req = $this->pdo->query($query);
+        $data_array = $this->formatData($req);
+        $this->unsetData($req);
+        return $data_array;
+    }
+
+    /**
+    *  traiter les données pour les retourner par exemple en tableau associatif (avec PDO::FETCH_ASSOC)
+    */
+    private function formatData($req)
+    {
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+    * vide le jeu d’enregistrement
+    */
+    private function unsetData($req)
+    {
+        $req->closeCursor();
+    }
+
     //Cette fonction va nous donner toutes les informations sur un livre et nous retourner un tableau
     public function getBook($id)
     {
@@ -56,35 +83,84 @@ class Database {
         //A FAIRE : faut que la query grab les 5 derniers livres ajoutés, du coup faut ajouter la date
         $query = "SELECT idBook, booTitle, booCover FROM t_book LIMIT 5";
 
-        $stmt = $this->pdo->query($query);
-
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        $stmt->closeCursor();
+        $result = $this->querySimpleExecute($query);
 
         return $result;
     }
 
     public function getAllBooksList()
     {
-         //A FAIRE : faut que la query grab les 5 derniers livres ajoutés, du coup faut ajouter la date
-         $query = "SELECT idBook, booTitle, booCover, useName, autLastName, autFirstName  FROM t_book
-         INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
-         INNER JOIN t_user on t_book.idUser = t_user.idUser";
+        $query = "SELECT idBook, booTitle, booCover, useName, autLastName, autFirstName  FROM t_book
+        INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
+        INNER JOIN t_user on t_book.idUser = t_user.idUser";
 
-         $stmt = $this->pdo->query($query);
- 
-         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
- 
-         $stmt->closeCursor();
- 
-         return $result;
+        $result = $this->querySimpleExecute($query);
+
+
+        return $result;
     }
 
-    public function getUser($id)
+    public function getAllAuthors()
     {
+        $query = "SELECT idAuthor, autLastName, autFirstName FROM t_author";
         
+        $result = $this->querySimpleExecute($query);
+
+        return $result;
+    }
+
+    public function getAllCategories()
+    {
+        $query = "SELECT idCategory, catName FROM t_category";
         
+        $result = $this->querySimpleExecute($query);
+
+        return $result;
+    }
+
+    public function getAllPublishers()
+    {
+        $query = "SELECT idPublisher, pubName FROM t_publisher";
+        
+        $result = $this->querySimpleExecute($query);
+
+
+        return $result;
+    }
+
+    //LOGIN STUFF
+    public function CheckIfUserExists($useName)
+    {
+        $query = "SELECT useLogin FROM t_user WHERE useLogin='"."$useName"."'";
+        $data_array = $this->querySimpleExecute($query);
+        foreach($data_array as $user)
+        {
+            if ($user["useLogin"] == $useName) {
+                return 1;
+            }   
+        }
+        return 0;
+    }
+
+    public function CheckPassword($useLogin, $usePassword)
+    {
+        $query = "SELECT usePassword FROM t_user WHERE useLogin='"."$useLogin"."'";
+        $hashed_psw = $this->querySimpleExecute($query);
+        if (password_verify($usePassword,$hashed_psw[0]["usePassword"])) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public function GetUserRights($useLogin){
+        $query = "SELECT useAdministrator FROM t_user WHERE useLogin='"."$useLogin"."'"; //haha regardez pas cette synstaxe
+        $rights = $this->querySimpleExecute($query);
+        if (isset($rights[0]["useAdministrator"])) {
+            if ($rights[0]["useAdministrator"]== 1) {
+                return 1;
+            }
+        }
+        return 0;
     }
 }
 ?>

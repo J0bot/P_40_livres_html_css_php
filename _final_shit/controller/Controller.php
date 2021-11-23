@@ -18,6 +18,13 @@ if (isset($_GET["page"])) {
             $list_books = $conn->getAllBooksList();
             include("view/page/book/list.php");
             break;
+        case 'add':
+            $conn = new Database();
+            $authors = $conn->getAllAuthors();
+            $categories = $conn->getAllCategories();
+            $publishers = $conn->getAllPublishers();
+            include("view/page/book/add.php");
+            break;
     }
 }
 else
