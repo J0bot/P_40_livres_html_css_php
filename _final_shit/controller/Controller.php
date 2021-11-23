@@ -41,6 +41,19 @@ if (isset($_GET["page"])) {
                     echo "this book is not in our databases (attentions on en a plusieurs)";
                 }
             }
+            elseif(isset($_GET["userId"]))
+            {
+                $id = $_GET["userId"];
+                $conn = new Database();
+                $userData = $conn->getUserData($id);
+                if ($userData!=null) {
+                    include("view/page/user/detail.php");
+                }
+                else
+                {
+                    echo "lmao no";
+                }
+            }
             break;
 
         default :

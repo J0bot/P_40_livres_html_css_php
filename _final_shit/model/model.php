@@ -144,6 +144,16 @@ class Database {
         return $result;
     }
 
+    public function getUserData($useName)
+    {
+        $query = "SELECT useName FROM t_user WHERE useName='$useName'";
+        
+        $result = $this->querySimpleExecute($query);
+
+        return $result;
+    }
+
+
     //LOGIN STUFF
     //ça va checker si un user existe
     public function CheckIfUserExists($useName)
