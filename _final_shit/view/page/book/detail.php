@@ -36,7 +36,7 @@
         <h2>Note moyenne des utilisateurs</h2>
         <?php 
             for ($i=0; $i < 5; $i++) { 
-                if ($i < $currentBookData[10]) {
+                if ($i < $book[0]["booReviewAverage"]) {
                     echo '<span class="fa fa-star checked"></span>';
                 }
                 else
