@@ -42,14 +42,14 @@ if (isset($_GET["page"])) {
                 }
             }
             break;
+
+        default :
+            include("view/page/404.php");
+            break;
     }
 }
 else
 {
     include("view/page/404.php");
 }
-
-$conn = new Database;
-$list_shit = $conn->getBook(2);
-//var_dump($list_shit);
 ?>
