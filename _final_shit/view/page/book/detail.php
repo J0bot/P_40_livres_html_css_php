@@ -17,15 +17,15 @@
          <h1><?=$book[0]["booTitle"]?></h1>
 
          <!--insérer l'image du livre actuel -->
-        <img src="resources/img/<?php echo "$currentBookData[2]";?>" alt="<?php echo "$currentBookData[1]"; ?>">
+        <img src="resources/img/<?=$book[0]["booCover"]?>" alt="<?=$book[0]["booTitle"]?>">
 
         <!--Informations livre-->
         <ul>
             <li>Auteur: <?=$book[0]["autLastName"] . " " . $book[0]["autFirstName"]?></li>
-            <li>Categorie:<?=$book[0]["booTitle"]?></li>
-            <li>Nb pages:<?=$book[0]["booTitle"]?></li>
-            <li>Editeur: <?=$book[0]["booTitle"]?></li>
-            <li>Année d'édition: <?=$book[0]["booTitle"]?></li>
+            <li>Categorie:<?=$book[0]["catName"]?></li>
+            <li>Nb pages:<?=$book[0]["booNumberOfPages"]?></li>
+            <li>Editeur: <?=$book[0]["pubName"]?></li>
+            <li>Année d'édition: <?=$book[0]["booPublishingYear"]?></li>
             <li><a>insérer logo ici, Télécharger un extrait pdf</a></li>
         </ul>
 

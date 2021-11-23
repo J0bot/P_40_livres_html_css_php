@@ -76,7 +76,7 @@ class Database {
     //Cette fonction va nous donner toutes les informations sur un livre et nous retourner un tableau
     public function getBook($id)
     {
-        $stmt = $this->pdo->prepare("SELECT idBook, booTitle, booPublishingYear, booSummary, booNumberOfPages, booCover, booReviewAverage, autLastName, autFirstName, pubName, useName  FROM t_book 
+        $stmt = $this->pdo->prepare("SELECT idBook, booTitle, booPublishingYear, booSummary, booNumberOfPages, booCover, booReviewAverage, autLastName, autFirstName, pubName, useName, catName  FROM t_book 
         INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
         INNER JOIN t_category on t_book.idCategory = t_category.idCategory
         INNER JOIN t_publisher on t_book.idPublisher = t_publisher.idPublisher
