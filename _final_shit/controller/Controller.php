@@ -34,18 +34,20 @@ if (isset($_GET["page"])) {
             break;
         case 'detail':
             if (isset($_GET["bookId"])) {
-                $id = $_GET["bookId"];
-                $conn = new Database();
-                
-                if ($conn->checkIfBookExists($id)==1) {
-                    $book = $conn->getBook($id);
-                    $previousBook = ($conn->checkIfBookExists($id-1)==1) ? $id-1 : $id ;
-                    $nextBook = ($conn->checkIfBookExists($id+1)==1) ? $id+1 : $id ;
-                    include("view/page/book/detail.php");
-                }
-                else
-                {
-                    echo "this book is not in our databases (attentions on en a plusieurs)";
+                if (checkAdmin()!=0) {
+                    $id = $_GET["bookId"];
+                    $conn = new Database();
+                    
+                    if ($conn->checkIfBookExists($id)==1) {
+                        $book = $conn->getBook($id);
+                        $previousBook = ($conn->checkIfBookExists($id-1)==1) ? $id-1 : $id ;
+                        $nextBook = ($conn->checkIfBookExists($id+1)==1) ? $id+1 : $id ;
+                        include("view/page/book/detail.php");
+                    }
+                    else
+                    {
+                        echo "this book is not in our databases (attentions on en a plusieurs)";
+                    }
                 }
             }
             elseif(isset($_GET["userId"]))
@@ -136,6 +138,11 @@ function checkAdmin()
         if ($_SESSION["adminRights"]==1) {
             return 1;
         }
+        else
+        {
+            return 2;
+        }
+        
     }
     return 0;
 
