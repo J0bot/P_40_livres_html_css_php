@@ -1,13 +1,10 @@
-<style>
-
-</style>
 
 <?php
 if (!isset($_SESSION["logged"])) {$_SESSION["logged"]= 0;}
 if ($_SESSION["logged"] ==0) {
   ?>
   
-<button onclick="document.getElementById('id01').style.display='block'" class="btn btn-outline-light me-2" style="width:auto;">Login</button>
+<button onclick="document.getElementById('id01').style.display='block'" class="btn btn-outline-light me-2 buttonStyle" style="width:auto;">Login</button>
 
 <div id="id01" class="modal">
   
@@ -50,7 +47,7 @@ window.onclick = function(event) {
 elseif($_SESSION["logged"] ==1)
 {
   ?>
-  <button onclick="location.replace('?action=disconnect')" class="btn btn-outline-light me-2" style="width:auto;">Disconnect</button>
+  <button onclick="location.replace('?action=disconnect')" class="btn btn-outline-light me-2 buttonStyle" style="width:auto;">Disconnect</button>
 
   <?php
 }

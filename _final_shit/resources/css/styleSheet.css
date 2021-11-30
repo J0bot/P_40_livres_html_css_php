@@ -1,15 +1,40 @@
 /*main colors*/
 :root{
     --main-color: #C82B08;
+    --main-color-hover: #ff5732;
+    --main-color-transparent: #c82b0828;
     --second-color: #F8F9FA;
     --second-color-hover: #edeff1;
+
 }
 
+/*general*/
+a{
+    color: var(--main-color);
+}
+a:hover{
+    color: var(--main-color-hover);
+}
 /*home page*/
 .card{
-    margin: 0.5em ;
+    margin: 0.7em ;
 }
-
+.cardImage{
+    max-height:100%; 
+    width: auto; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+    margin-top:6px
+}
+.btn-primary {
+    background: var(--main-color);
+    border-color: var(--main-color);
+}
+.btn-primary:hover{
+    background-color: var(--main-color-hover);
+    border-color: var(--main-color-hover);
+}
 /*page liste des ouvrages*/
 .listTextStyle a{
     font-size:  1.2em;
@@ -26,11 +51,10 @@
     align-items: center;
     padding: 12px 16px;
     position: static;
-    width: 300px;
-    top: 0%;
-    bottom: 0%;
-    margin: 0 0.25em;
+    width: 15em;
+    margin: 0.25em;
 }
+
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link{
     background: var(--second-color);
     color: var(--main-color);
@@ -43,8 +67,20 @@
     color:var(--main-color);
     background: var(--second-color-hover);
 }
-
+.navContainer{
+  width: 80%;
+  justify-content: left;
+}
 /*login button*/
+.buttonStyle{
+    color: black;
+    border-color:var(--main-color);
+    border-width:thin;
+    padding: 12px 20px;
+}
+.buttonStyle:hover{
+    background: var(--main-color-transparent);
+}
 
 /* Full-width input fields */
 .input_conn {
@@ -55,7 +91,6 @@
     border: 1px solid #ccc;
     box-sizing: border-box;
   }
-  
   
   button:hover {
     opacity: 0.8;
