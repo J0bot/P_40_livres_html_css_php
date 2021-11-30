@@ -117,7 +117,6 @@ elseif (isset($_GET["action"])) {
                 include("controller/resize-image.php");
                 
                 $resizeImg = new Resize($booCoverFolder.$booCover);
-
                 //hauteur accueil : 320
                 //hauteur detial : 350
                 //largeur liste : 100
@@ -128,7 +127,6 @@ elseif (isset($_GET["action"])) {
                 //echo '<img src="resources/img/'.$booCover.'"/>';
                 
                 /// END OF BOOK COVER STUFF
-
 
                 $booTitleErr = ($_POST["title"] != "" && strlen($_POST["title"])<50) ? 1 : 0;
                 $booTitle = $_POST["title"];
@@ -142,7 +140,7 @@ elseif (isset($_GET["action"])) {
                 $pubNameErr =  ($_POST["editeur"] != "" && strlen($_POST["editeur"])<50) ? 1 : 0;
                 $pubName = $_POST["editeur"];
                 
-                $booCoverErr = $_POST["yearEdition"] != null ? 1 : 0;
+                $booCoverErr = ($_POST["yearEdition"] > -5000 and $_POST["yearEdition"] <= date("Y") ) ? 1 : 0;
                 $booCover =$_POST["yearEdition"];
                 
                 $booCoverErr = $_POST["pageNumber"] != null ? 1 : 0;
