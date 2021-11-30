@@ -5,7 +5,7 @@
 
   <div >
     <h2 class="text-center">Derniers livres ajoutés</h2>
-    <div class="container mt-3 d-flex" style="display: flex; flex-wrap: wrap; justify-content:center; ">
+    <div class="container " style="display: flex; flex-wrap: wrap; justify-content:center; ">
       <?php 
         foreach($list_books as $book) { 
       ?>
@@ -13,7 +13,7 @@
 
           <div style="max-height: 65%; ">
             <a href="?page=detail&bookId=<?=$book["idBook"] ?>">
-              <img class="card-img-top rounded " src="resources/img/<?=$book["booCover"]?>" alt="Card image" style="max-height:100%; width: auto; display: block; margin-left: auto; margin-right: auto; margin-top:6px">
+              <img class="card-img-top rounded cardImage" src="resources/img/<?=$book["booCover"]?>" alt="Card image">
             </a>
           </div>
 
@@ -24,10 +24,11 @@
             </div>
           </div>
 
+          <!--
           <div class="card-footer;">
             <a href="?page=detail&bookId=<?=$book["idBook"] ?>" class="btn btn-primary d-flex  justify-content-center">Voir</a>
           </div>
-
+        -->
         </div>
         
       <?php
