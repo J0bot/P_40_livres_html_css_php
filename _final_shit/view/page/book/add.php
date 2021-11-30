@@ -7,7 +7,7 @@
 
 <h1>Ajout d'un ouvrage</h1>
 
-<form action="#" method="post" enctype="multipart/form-data">
+<form action="?action=addBook" method="post" enctype="multipart/form-data">
 
     <label for="bookImage">Importer le cover</label>
     <input type="file" id="bookImage" name="bookImage"
@@ -18,15 +18,26 @@
         <input type="text" name="title" required/>
     </p>
 
-    <label for="auteur">Auteur</label> <br>
-    <input list="auteur" name="auteur" required>
-    <datalist name="auteur" id="auteur">
+    <label for="auteurNom">Nom Auteur</label> <br>
+    <input list="auteurNom" name="auteurNom" required>
+    <datalist name="auteurNom" id="auteurNom">
         <?php 
         foreach($authors as $author)
         {?>
-            <option value=<?=$author["idAuthor"];?>><?=$author["autLastName"]." ".$author["autFirstName"]?></option> <?php   
+            <option value=<?=$author["autLastName"];?>><?=$author["autLastName"]?></option> <?php   
         }?>
-        
+    </datalist>
+
+    <br><br>
+
+    <label for="auteurPrenom">Prénom Auteur</label> <br>
+    <input list="auteurPrenom" name="auteurPrenom" required>
+    <datalist name="auteurPrenom" id="auteurPrenom">
+        <?php 
+        foreach($authors as $author)
+        {?>
+            <option value=<?=$author["autFirstName"];?>><?=$author["autFirstName"]?></option> <?php   
+        }?>
     </datalist>
 
     <br><br>
@@ -37,7 +48,7 @@
         <?php 
         foreach($categories as $categorie)
         {?>
-            <option value=<?=$categorie["idCategory"];?>><?=$categorie["catName"]?></option><?php   
+            <option value=<?=$categorie["catName"];?>><?=$categorie["catName"]?></option><?php   
         }?>
     </datalist>
 
@@ -49,7 +60,7 @@
         <?php    
         foreach($publishers as $publisher)
         {?>
-            <option value=<?=$publisher["idPublisher"];?>><?=$publisher["pubName"]?></option><?php   
+            <option value=<?=$publisher["pubName"];?>><?=$publisher["pubName"]?></option><?php   
         }?>
     </datalist>
         <br><br>
