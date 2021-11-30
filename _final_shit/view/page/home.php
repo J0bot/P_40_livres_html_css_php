@@ -5,7 +5,7 @@
 
   <div >
     <h2 class="text-center">Derniers livres ajoutés</h2>
-    <div class="container mt-3 d-flex" style="display: flex; flex-wrap: wrap; justify-content:center; ">
+    <div class="container " style="display: flex; flex-wrap: wrap; justify-content:center; ">
       <?php 
         foreach($list_books as $book) { 
       ?>
