@@ -34,9 +34,9 @@ CREATE TABLE `t_author` (
   `idAuthor` tinyint(1) UNSIGNED NOT NULL,
   `autLastName` varchar(50) NOT NULL,
   `autFirstName` varchar(50) NOT NULL,
-  `autBirthDate` date NOT NULL,
+  `autBirthDate` date DEFAULT NULL,
   `autDeathDate` date DEFAULT NULL,
-  `autNationality` varchar(50) NOT NULL
+  `autNationality` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
