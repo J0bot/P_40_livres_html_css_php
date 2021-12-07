@@ -175,6 +175,13 @@ class Database {
         return $result;
     }
 
+    public function getUserId($useName)
+    {
+        $query = "SELECT idUser FROM t_user WHERE useName='$useName'";
+
+        return $this->querySimpleExecute($query);
+    }
+
     public function addUser($useName,$usePassword,$useRights)
     {
         $query = "INSERT INTO t_user (useName,usePassword,useRights) VALUES ('$useName','$usePassword','$useRights')";
@@ -246,10 +253,8 @@ class Database {
                 'type'  => PDO::PARAM_STR
             ),
         );
-
-        $returnValue = $this->queryPrepareExecute($query,$binds);
         
-        return $returnValue;
+        return $this->queryPrepareExecute($query,$binds);
     }
 
     /**
@@ -260,11 +265,11 @@ class Database {
      * @param string $autBirthDate
      * @param string $autDeathDate
      * @param string $autNationality
-     * @return void
+     * @return int retourne l'id du livre qui vient d'être créé
      */
     public function insertAuthor($autFirstName, $autLastName, $autBirthDate=null, $autDeathDate=null, $autNationality=null)
     {
-        $query = "INSERT INTO t_author SET autFirstName=:autFirstName, autLastName=:autLastName, autBirthDate=:autBirthDate, autDeathDate=:autDeathDate, autNationality=:autNationality";
+        $query = "INSERT INTO t_author SET autFirstName=:autFirstName, autLastName=:autLastName, autBirthDate=:autBirthDate, autDeathDate=:autDeathDate, autNationality=:autNationality; SELECT idAuthor FROM t_author WHERE autLastName=:autLastName and autFirstName=:autFirstName";
             
             $binds = array (
                 0 => array (
@@ -293,7 +298,194 @@ class Database {
                     'type'  => PDO::PARAM_STR
                 )
             );
-            $this->queryPrepareExecute($query, $binds);
+            return $this->queryPrepareExecute($query, $binds);
+    }
+
+    /**
+     * On check si la categorie existe
+     *
+     * @param string $catName
+     * @return int retourne l'id de la categorie si elle existe
+     */
+    public function checkCategory($catName)
+    {
+        $query = "SELECT idCategory  FROM t_category WHERE catName=:catName;";
+        $binds = array (
+            0 => array (
+                'var' => $catName,
+                'marker' => ':catName',
+                'type'  => PDO::PARAM_STR
+            ),
+        );
+        
+        return $this->queryPrepareExecute($query,$binds);
+    }
+
+    /**
+     * Va ajouter une categorie dans la db
+     *
+     * @param string $catName
+     * @param string $catDescription
+     * @return int retourne l'id du livre qu'on vient de créer
+     */
+    public function insertCategory($catName, $catDescription=null)
+    {
+        $query = "INSERT INTO t_category SET catName=:catName, catDescription=:catDescription; SELECT idCategory FROM t_category WHERE catName=:catName";
+            
+            $binds = array (
+                0 => array (
+                    'var' => $catName,
+                    'marker' => ':catName',
+                    'type'  => PDO::PARAM_STR
+                ),
+                1 => array (
+                    'var' => $catDescription,
+                    'marker' => ':catDescription',
+                    'type'  => PDO::PARAM_STR
+                )
+            );
+            return $this->queryPrepareExecute($query, $binds);
+    }
+
+    /**
+     * Check si le publisher existe
+     *
+     * @param string $pubName
+     * @return int NULL : exite pas, sinon return son id
+     */
+    public function checkPublisher($pubName)
+    {
+        $query = "SELECT idPublisher FROM t_publisher WHERE pubName=:pubName";
+        $binds = array (
+            0 => array (
+                'var' => $pubName,
+                'marker' => ':pubName',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        return $this->queryPrepareExecute($query,$binds);
+    }
+
+    /**
+     * Insertion d'un publisher
+     *
+     * @param string $pubName
+     * @param string $pubCreationDate
+     * @param string $pubCountry
+     * @return int l'id du publisher créé
+     */
+    public function insertPublisher($pubName, $pubCreationDate=null, $pubCountry=null)
+    {
+        $query = "INSERT INTO t_publisher SET pubName=:pubName, pubCreationDate=:pubCreationDate, pubCountry=:pubCountry; SELECT idPublisher  FROM t_publisher WHERE pubName=:pubName";
+            
+        $binds = array (
+            0 => array (
+                'var' => $pubName,
+                'marker' => ':pubName',
+                'type'  => PDO::PARAM_STR
+            ),
+            1 => array (
+                'var' => $pubCreationDate,
+                'marker' => ':pubCreationDate',
+                'type'  => PDO::PARAM_STR
+            ),
+            2 => array (
+                'var' => $pubCountry,
+                'marker' => ':pubCountry',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+        return $this->queryPrepareExecute($query, $binds);
+    }
+
+  
+    /**
+     * Va ajouter un livre dans la db
+     *
+     * @param string $booTitle
+     * @param string $idCategory
+     * @param string $idAuthor
+     * @param string $idPublisher
+     * @param string $booPublishingYear
+     * @param string $booSummary
+     * @param string $booTeaser
+     * @param string $booNumberOfPages
+     * @param string $booCover
+     * @param string $idUser
+     * @param string $booLanguage
+     * @return void
+     */
+    public function insertBook($booTitle, $idCategory, 
+    $idAuthor, $idPublisher,$booPublishingYear,
+    $booSummary, $booTeaser,$booNumberOfPages,
+    $booCover,$idUser,$booLanguage="english")
+    {
+        $query = "INSERT INTO t_book SET booTitle=:booTitle, 
+        idCategory=:idCategory, idAuthor=:idAuthor,idPublisher=:idPublisher,
+        booPublishingYear=:booPublishingYear,booSummary=:booSummary,booTeaser=:booTeaser,
+        booNumberOfPages=:booNumberOfPages, booCover=:booCover,idUser=:idUser, booLanguage=:booLanguage;
+        SELECT idBook FROM t_book WHERE booTitle=:booTitle";
+        
+        $binds = array (
+            0 => array (
+                'var' => $booTitle,
+                'marker' => ':booTitle',
+                'type'  => PDO::PARAM_STR
+            ),
+            1 => array (
+                'var' => $idCategory,
+                'marker' => ':idCategory',
+                'type'  => PDO::PARAM_STR
+            ),
+            2 => array (
+                'var' => $idAuthor,
+                'marker' => ':idAuthor',
+                'type'  => PDO::PARAM_STR
+            ),
+            3 => array (
+                'var' => $idPublisher,
+                'marker' => ':idPublisher',
+                'type'  => PDO::PARAM_STR
+            ),
+            4 => array (
+                'var' => $booPublishingYear,
+                'marker' => ':booPublishingYear',
+                'type'  => PDO::PARAM_STR
+            ),
+            5 => array (
+                'var' => $booSummary,
+                'marker' => ':booSummary',
+                'type'  => PDO::PARAM_STR
+            ),
+            6 => array (
+                'var' => $booTeaser,
+                'marker' => ':booTeaser',
+                'type'  => PDO::PARAM_STR
+            ),
+            7 => array (
+                'var' => $booNumberOfPages,
+                'marker' => ':booNumberOfPages',
+                'type'  => PDO::PARAM_STR
+            ),
+            8 => array (
+                'var' => $idUser,
+                'marker' => ':idUser',
+                'type'  => PDO::PARAM_STR
+            ),
+            9 => array (
+                'var' => $booCover,
+                'marker' => ':booCover',
+                'type'  => PDO::PARAM_STR
+            ),
+            10 => array (
+                'var' => $booLanguage,
+                'marker' => ':booLanguage',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+        
+        return $this->queryPrepareExecute($query, $binds);
     }
 }
 ?>

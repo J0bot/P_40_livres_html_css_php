@@ -171,14 +171,34 @@ elseif (isset($_GET["action"])) {
                 else 
                 {
                     $conn = new Database();
+
                     //On check si certains champs existent déjà dans la db
 
                     $idAuthor = $conn->checkAuthor($autFirstName, $autLastName);
-
-                    if ($idAuthor!=null) {
-                        # code...
+                    //Si l'auteur n'existe pas, on va en créer un nouveau
+                    if ($idAuthor==null) {
+                       $idAuthor = $conn->insertAuthor($autFirstName, $autLastName);
                     }
 
+                    $idCategory = $conn->checkCategory($catName);
+                    //Si la categorie n'existe pas, on va en créer un nouveau
+
+                    if ($idCategory==null) {
+                        $idCategory = $conn->insertCategory($catName);
+                    }
+
+                    
+                    $idPublisher = $conn->checkPublisher($pubName);
+                    //Si l'editeur n'existe pas on l'ajoute
+                    if ($idPublisher==null) {
+                        $idPublisher = $conn->insertPublisher($pubName);
+                    }
+
+                    $idUser = $conn->getUserId($_SESSION["username"]);
+
+                    $idBook = $conn->insertBook($booTitle, $idCategory, $idAuthor, $idPublisher,$booPublishingYear, $booSummary, $booTeaser,$booNumberOfPages, $booCover,$idUser);
+
+                    echo "<script>setTimeout(function(){window.location.href = '?page=detail&id=$idBook';}, 500);</script>";
                 }                
             }
         }
@@ -209,6 +229,7 @@ elseif (isset($_GET["action"])) {
 
                     $_SESSION["adminRights"] = $adminRights == 1 ? 1 : 0;
 
+                    $_SESSION["username"] = $useLogin;
                     //Ouais jsp ça marche avec du javascript faut pas chercher
                     echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
                }
