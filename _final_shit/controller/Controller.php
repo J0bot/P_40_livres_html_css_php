@@ -52,16 +52,19 @@ if (isset($_GET["page"])) {
             }
             elseif(isset($_GET["userId"]))
             {
-                $id = $_GET["userId"];
-                $conn = new Database();
-                $userData = $conn->getUserData($id);
-                if ($userData!=null) {
-                    include("view/page/user/detail.php");
+                if (checkAdmin()!=0){
+                    $id = $_GET["userId"];
+                    $conn = new Database();
+                    $userData = $conn->getUserData($id);
+                    if ($userData!=null) {
+                        include("view/page/user/detail.php");
+                    }
+                    else
+                    {
+                        echo "lmao no";
+                    }
                 }
-                else
-                {
-                    echo "lmao no";
-                }
+                
             }
             break;
 
@@ -248,6 +251,11 @@ else {
     include("view/page/404.php");
 }
 
+/**
+ * Check si droit d'admin ou pas
+ *
+ * @return int 0: disconnected, 1:admin, 2:user
+ */
 function checkAdmin()
 {
     if (!isset($_SESSION["logged"])) {$_SESSION["logged"]=0;}
