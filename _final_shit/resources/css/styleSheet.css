@@ -192,26 +192,52 @@ span.psw {
 }
 
 /*forms style (add book/user)*/
-.formBoxFlex{
-  
+.formMainContainer{
   display: flex;
-  order: 0;
-  align-self: stretch;
-  
-  margin: 32px 0px; 
-
+  flex-direction: column;
 }
-
-.formLabelBox{
+.formContainer{
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   padding: 0px;
-  flex-grow: 0.3 ;
+}
+.formBoxFlex>label{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  width: 3em;
+  flex-grow: 1;
+}
+.formBoxFlex>input{
+  flex-grow: 3;
+}
+.formImageBox{
+  
+  flex-grow: 1;
+}
+.formBox{
+  flex-grow: 6;
 }
 
-.formInputBox{
-  flex-grow: 7;
+.formBoxFlex{
+  display: flex;
+  order: 0;
+  align-self: stretch;
+  margin: 32px 0px; 
 }
 
+textarea{
+  width: 100%;
+}
+
+.formButtonBox{
+  display: flex;
+  justify-content: flex-end;
+}
+.formButtonSubmit{
+  margin: 15px 0px;
+  width: 15em;
+}
 
