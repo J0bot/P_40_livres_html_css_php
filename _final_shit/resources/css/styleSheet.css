@@ -35,6 +35,7 @@ a:hover{
   background-color: var(--main-color-hover);
   border-color: var(--main-color-hover);
 }
+
 /*page liste des ouvrages*/
 .listTextStyle a{
   font-size:  1.2em;
