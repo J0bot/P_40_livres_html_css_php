@@ -207,11 +207,11 @@ span.psw {
   flex-direction: row;
   align-items: flex-start;
   padding: 0px;
-  /* flex-grow: 1; */
+  flex-grow: 0.3 ;
 }
 
 .formInputBox{
-  /* flex-grow: 6; */
+  flex-grow: 7;
 }
 
 
