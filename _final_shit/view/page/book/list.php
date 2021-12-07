@@ -17,7 +17,7 @@
         <?php 
             foreach ($list_books as $book) { ?>
                 <tr class="listTextStyle ">
-                    <th>
+                    <th class="widthColSimple">
                         <a href="index.php?page=detail&bookId=<?=$book["idBook"]?>">
                         <img style="max-width:150px" src="resources/img/<?=$book["booCover"]?>" alt="<?=$book["booTitle"]?>"></a>
                     </th>
