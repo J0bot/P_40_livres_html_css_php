@@ -45,6 +45,30 @@ class Database {
     }
 
     /**
+     * permet de préparer, de binder et d’exécuter une requête (select avec where ou insert, update et delete)
+     *
+     * @param string $query
+     * @param array $binds
+     * @return array
+     */
+    private function queryPrepareExecute($query, $binds)
+    {
+        $req = $this->connector->prepare($query);
+
+        foreach($binds as $bind)
+        {
+            $req->bindValue($bind['marker'], $bind['var'], $bind['type']);
+        }
+        $req->execute();
+
+        $dataArray = $this->formatData($req);
+
+        $this->unsetData($req);
+
+        return $dataArray;
+    }
+
+    /**
     *  traiter les données pour les retourner par exemple en tableau associatif (avec PDO::FETCH_ASSOC)
     */
     private function formatData($req)
@@ -195,6 +219,81 @@ class Database {
             }
         }
         return 0;
+    }
+
+
+    //TOUT PAR RAPPORT À L'AJOUT D'UN OUVRAGE
+
+    /**
+     * Cette fonction check si un autheur existe
+     *
+     * @param string $autFirstName
+     * @param string $autLastName
+     * @return int retourne son id s'il existe pas et NULL s'il n'existe pas
+     */
+    public function checkAuthor($autFirstName, $autLastName)
+    {
+        $query = "SELECT idAuthor FROM t_author WHERE autFirstName=:autFirstName AND autLastName=:autLastName";
+        $binds = array (
+            0 => array (
+                'var' => $autFirstName,
+                'marker' => ':autFirstName',
+                'type'  => PDO::PARAM_STR
+            ),
+            0 => array (
+                'var' => $autLastName,
+                'marker' => ':autLastName',
+                'type'  => PDO::PARAM_STR
+            ),
+        );
+
+        $returnValue = $this->queryPrepareExecute($query,$binds);
+        
+        return $returnValue;
+    }
+
+    /**
+     * Insertion d'un autheur qui n'existe pas
+     *
+     * @param string $autFirstName
+     * @param string $autLastName
+     * @param string $autBirthDate
+     * @param string $autDeathDate
+     * @param string $autNationality
+     * @return void
+     */
+    public function insertAuthor($autFirstName, $autLastName, $autBirthDate=null, $autDeathDate=null, $autNationality=null)
+    {
+        $query = "INSERT INTO t_author SET autFirstName=:autFirstName, autLastName=:autLastName, autBirthDate=:autBirthDate, autDeathDate=:autDeathDate, autNationality=:autNationality";
+            
+            $binds = array (
+                0 => array (
+                    'var' => $autFirstName,
+                    'marker' => ':autFirstName',
+                    'type'  => PDO::PARAM_STR
+                ),
+                1 => array (
+                    'var' => $autLastName,
+                    'marker' => ':autLastName',
+                    'type'  => PDO::PARAM_STR
+                ),
+                2 => array (
+                    'var' => $autBirthDate,
+                    'marker' => ':autBirthDate',
+                    'type'  => PDO::PARAM_STR
+                ),
+                3 => array (
+                    'var' => $autDeathDate,
+                    'marker' => ':autDeathDate',
+                    'type'  => PDO::PARAM_STR
+                ),
+                4 => array (
+                    'var' => $autNationality,
+                    'marker' => ':autNationality',
+                    'type'  => PDO::PARAM_STR
+                )
+            );
+            $this->queryPrepareExecute($query, $binds);
     }
 }
 ?>

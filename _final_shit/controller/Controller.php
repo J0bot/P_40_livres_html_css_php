@@ -170,8 +170,15 @@ elseif (isset($_GET["action"])) {
                 // Si on a plus d'erreur on peut envoyer les infos à la DB
                 else 
                 {
-                    
-                    
+                    $conn = new Database();
+                    //On check si certains champs existent déjà dans la db
+
+                    $idAuthor = $conn->checkAuthor($autFirstName, $autLastName);
+
+                    if ($idAuthor!=null) {
+                        # code...
+                    }
+
                 }                
             }
         }
