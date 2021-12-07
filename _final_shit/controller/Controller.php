@@ -96,12 +96,11 @@ elseif (isset($_GET["action"])) {
 
     //Si on arrive sur une action de type addBook
     if ($_GET["action"]=="addBook") {
-        var_dump($_POST);
 
         //Si on arrive sur cette page grace à une requete de type POST, on va bien tout vérifier
         if ($_SERVER['REQUEST_METHOD']=='POST') {
             //Si tous les champs demandés sont isset, on peut continuerr
-            if (isset($_FILES['bookImage']) && isset($_POST["title"]) && isset($_POST["auteur"]) 
+            if (isset($_FILES['bookImage']) && isset($_POST["title"]) && isset($_POST["auteurNom"]) && isset($_POST["auteurPrenom"])
             && isset($_POST["categorie"]) && isset($_POST["editeur"]) && isset($_POST["yearEdition"]) 
             && isset($_POST["pageNumber"]) && isset($_POST["pdfLink"]) && isset($_POST["description"])) {
                 
@@ -128,32 +127,52 @@ elseif (isset($_GET["action"])) {
                 
                 /// END OF BOOK COVER STUFF
 
-                $booTitleErr = ($_POST["title"] != "" && strlen($_POST["title"])<50) ? 1 : 0;
-                $booTitle = $_POST["title"];
+                // S'il y a une erreur dans un des champs, on va mettre 0 comme valeur à la variable erreur (exemple : autNameErr)
 
-                $autNameErr = ($_POST["auteur"] != "" && strlen($_POST["auteur"])<50) ? 1 : 0;
-                $autName = $_POST["auteur"] ;
+                $booTitleErr = ($_POST["title"] != "" && strlen($_POST["title"])<50) ? 1 : 0;
+                $booTitle = htmlspecialchars($_POST["title"]);
+
+                $autLastNameErr = ($_POST["auteurNom"] != "" && strlen($_POST["auteurNom"])<50) ? 1 : 0;
+                $autLastName = htmlspecialchars($_POST["auteurNom"]) ;
+                
+                $autFirstNameErr = ($_POST["auteurPrenom"] != "" && strlen($_POST["auteurPrenom"])<50) ? 1 : 0;
+                $autFirstName = htmlspecialchars($_POST["auteurPrenom"]) ;
 
                 $catNameErr = ($_POST["categorie"] != "" && strlen($_POST["categorie"])<50) ? 1 : 0;
-                $catName = $_POST["categorie"];
+                $catName = htmlspecialchars($_POST["categorie"]);
 
                 $pubNameErr =  ($_POST["editeur"] != "" && strlen($_POST["editeur"])<50) ? 1 : 0;
-                $pubName = $_POST["editeur"];
+                $pubName = htmlspecialchars($_POST["editeur"]);
                 
-                $booCoverErr = ($_POST["yearEdition"] > -5000 and $_POST["yearEdition"] <= date("Y") ) ? 1 : 0;
-                $booCover =$_POST["yearEdition"];
+                $booPublishingYearErr = ($_POST["yearEdition"] > -5000 and $_POST["yearEdition"] <= date("Y") ) ? 1 : 0;
+                $booPublishingYear = htmlspecialchars($_POST["yearEdition"]);
                 
-                $booCoverErr = $_POST["pageNumber"] != null ? 1 : 0;
-                $booCover = $_POST["pageNumber"];
+                $booNumberOfPagesErr = $_POST["pageNumber"] > 0 ? 1 : 0;
+                $booNumberOfPages = htmlspecialchars($_POST["pageNumber"]);
                 
-                $booCoverErr = $_POST["pdfLink"] != null ? 1 : 0;
-                $booCover = $_POST["pdfLink"];
+                $booTeaserErr = $_POST["pdfLink"] != "" ? 1 : 0;
+                $booTeaser = htmlspecialchars($_POST["pdfLink"]);
                 
-                $booCoverErr = $_POST["description"] != null ? 1 : 0;
-                $booCover = $_POST["description"];
+                $booSummaryErr = $_POST["description"] != "" ? 1 : 0;
+                $booSummary = htmlspecialchars($_POST["description"]);
 
-                var_dump($_POST);
-                
+                //S'il y a une erreur on va retourner dans la page d'ajout
+                if ($booTitleErr==0 or $autLastNameErr==0 or $autFirstNameErr==0
+                or $catNameErr==0 or $pubNameErr==0 
+                or $booPublishingYearErr==0 or $booNumberOfPagesErr==0 
+                or $booTeaserErr==0 or $booSummaryErr==0) {
+                    $conn = new Database();
+                    $authors = $conn->getAllAuthors();
+                    $categories = $conn->getAllCategories();
+                    $publishers = $conn->getAllPublishers();
+                    include("view/page/book/add.php");
+                }
+                // Si on a plus d'erreur on peut envoyer les infos à la DB
+                else 
+                {
+                    
+
+                }                
             }
         }
 

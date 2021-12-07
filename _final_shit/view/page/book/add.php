@@ -15,11 +15,11 @@
 
     <p>
         <label for="title">Titre</label><br>
-        <input type="text" name="title" required/>
+        <input type="text" name="title" value="<?=isset($booTitle) ? $booTitle : "";?>" required>
     </p>
 
     <label for="auteurNom">Nom Auteur</label> <br>
-    <input list="auteurNom" name="auteurNom" required>
+    <input list="auteurNom" name="auteurNom" value="<?=isset($autLastName) ? $autLastName : ""?>" required>
     <datalist name="auteurNom" id="auteurNom">
         <?php 
         foreach($authors as $author)
@@ -31,7 +31,7 @@
     <br><br>
 
     <label for="auteurPrenom">Prénom Auteur</label> <br>
-    <input list="auteurPrenom" name="auteurPrenom" required>
+    <input list="auteurPrenom" name="auteurPrenom" value="<?=isset($autFirstName) ? $autFirstName : ""?>" required>
     <datalist name="auteurPrenom" id="auteurPrenom">
         <?php 
         foreach($authors as $author)
@@ -43,7 +43,7 @@
     <br><br>
 
     <label for="categorie">Categorie</label><br>
-    <input list="categorie" name="categorie" required>
+    <input list="categorie" name="categorie" value="<?=isset($catName) ? $catName : ""?>" required>
     <datalist  name="categorie" id="categorie">
         <?php 
         foreach($categories as $categorie)
@@ -55,7 +55,7 @@
     <br><br>
 
     <label for="editeur">Editeur</label><br>
-    <input list="editeur" name="editeur" required>
+    <input list="editeur" name="editeur" value="<?=isset($pubName) ? $pubName : ""?>" required>
     <datalist  name="editeur" id="editeur" >
         <?php    
         foreach($publishers as $publisher)
@@ -66,22 +66,22 @@
         <br><br>
     <p>
         <label for="yearEdition">Année d'édition</label><br>
-        <input required type="number" min="1900" max="2099" step="1" value="2016" name="yearEdition" />
+        <input required type="number" min="1900" max="2099" step="1" value="<?=isset($booPublishingYear) ? $booPublishingYear : "2016"?>" name="yearEdition" />
     </p>
 
     <p>
         <label for="pageNumber">Nombre de pages</label>
-        <input required type="number" name="pageNumber" />
+        <input required type="number" name="pageNumber" value="<?=isset($booNumberOfPages) ? $booNumberOfPages : ""?>" />
     </p>
 
     <p>
         <label for="pdfLink">Lien vers extrait pdf</label>
-        <input  type="url" name="pdfLink" required/>
+        <input  type="url" name="pdfLink" value="<?=isset($booTeaser) ? $booTeaser : ""?>" required/>
     </p>
         
     <label for="description">Descritption:</label>
     <br>
-    <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+    <textarea id="description" name="description" rows="4" cols="50" required><?=isset($booSummary) ? $booSummary : ""?></textarea>
     <br>
     <input type="submit" value="Submit">
 </form>
