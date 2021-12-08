@@ -64,11 +64,11 @@ CREATE TABLE `t_book` (
   `idPublisher` tinyint(1) UNSIGNED NOT NULL,
   `booPublishingYear` year(4) NOT NULL,
   `booSummary` text NOT NULL,
-  `booTeaser` text NOT NULL,
+  `booTeaser` text DEFAULT NULL,
   `booNumberOfPages` int(10) UNSIGNED NOT NULL,
   `booCover` varchar(100) DEFAULT NULL,
   `booReviewAverage` tinyint(3) UNSIGNED DEFAULT NULL,
-  `booLanguage` varchar(50) NOT NULL,
+  `booLanguage` varchar(50) DEFAULT NULL,
   `idUser` tinyint(1) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -92,7 +92,7 @@ INSERT INTO `t_book` (`idBook`, `booTitle`, `idCategory`, `idAuthor`, `idPublish
 CREATE TABLE `t_category` (
   `idCategory` tinyint(1) UNSIGNED NOT NULL,
   `catName` varchar(50) NOT NULL,
-  `catDescription` text NOT NULL
+  `catDescription` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -129,8 +129,8 @@ CREATE TABLE `t_commentary` (
 CREATE TABLE `t_publisher` (
   `idPublisher` tinyint(1) UNSIGNED NOT NULL,
   `pubName` varchar(50) NOT NULL,
-  `pubCreationDate` year(4) NOT NULL,
-  `pubCountry` varchar(50) NOT NULL
+  `pubCreationDate` year(4) DEFAULT NULL,
+  `pubCountry` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

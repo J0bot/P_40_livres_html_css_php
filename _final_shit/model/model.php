@@ -53,7 +53,7 @@ class Database {
      */
     private function queryPrepareExecute($query, $binds)
     {
-        $req = $this->connector->prepare($query);
+        $req = $this->pdo->prepare($query);
 
         foreach($binds as $bind)
         {
@@ -177,9 +177,17 @@ class Database {
 
     public function getUserId($useName)
     {
-        $query = "SELECT idUser FROM t_user WHERE useName='$useName'";
+        $query = "SELECT idUser FROM t_user WHERE useName=:useName";
+        $binds = array(
+            0 => array (
+                'var' => $useName,
+                'marker' => ':useName',
+                'type'  => PDO::PARAM_STR
+            )
+        );
 
-        return $this->querySimpleExecute($query);
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["idUser"];
     }
 
     public function addUser($useName,$usePassword,$useRights)
@@ -247,14 +255,14 @@ class Database {
                 'marker' => ':autFirstName',
                 'type'  => PDO::PARAM_STR
             ),
-            0 => array (
+            1 => array (
                 'var' => $autLastName,
                 'marker' => ':autLastName',
                 'type'  => PDO::PARAM_STR
-            ),
+            )
         );
-        
-        return $this->queryPrepareExecute($query,$binds);
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["idAuthor"];
     }
 
     /**
@@ -271,34 +279,35 @@ class Database {
     {
         $query = "INSERT INTO t_author SET autFirstName=:autFirstName, autLastName=:autLastName, autBirthDate=:autBirthDate, autDeathDate=:autDeathDate, autNationality=:autNationality; SELECT idAuthor FROM t_author WHERE autLastName=:autLastName and autFirstName=:autFirstName";
             
-            $binds = array (
-                0 => array (
-                    'var' => $autFirstName,
-                    'marker' => ':autFirstName',
-                    'type'  => PDO::PARAM_STR
-                ),
-                1 => array (
-                    'var' => $autLastName,
-                    'marker' => ':autLastName',
-                    'type'  => PDO::PARAM_STR
-                ),
-                2 => array (
-                    'var' => $autBirthDate,
-                    'marker' => ':autBirthDate',
-                    'type'  => PDO::PARAM_STR
-                ),
-                3 => array (
-                    'var' => $autDeathDate,
-                    'marker' => ':autDeathDate',
-                    'type'  => PDO::PARAM_STR
-                ),
-                4 => array (
-                    'var' => $autNationality,
-                    'marker' => ':autNationality',
-                    'type'  => PDO::PARAM_STR
-                )
-            );
-            return $this->queryPrepareExecute($query, $binds);
+        $binds = array (
+            0 => array (
+                'var' => $autFirstName,
+                'marker' => ':autFirstName',
+                'type'  => PDO::PARAM_STR
+            ),
+            1 => array (
+                'var' => $autLastName,
+                'marker' => ':autLastName',
+                'type'  => PDO::PARAM_STR
+            ),
+            2 => array (
+                'var' => $autBirthDate,
+                'marker' => ':autBirthDate',
+                'type'  => PDO::PARAM_STR
+            ),
+            3 => array (
+                'var' => $autDeathDate,
+                'marker' => ':autDeathDate',
+                'type'  => PDO::PARAM_STR
+            ),
+            4 => array (
+                'var' => $autNationality,
+                'marker' => ':autNationality',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["idAuthor"];
     }
 
     /**
@@ -318,7 +327,8 @@ class Database {
             ),
         );
         
-        return $this->queryPrepareExecute($query,$binds);
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["idCategory"];
     }
 
     /**
@@ -332,19 +342,20 @@ class Database {
     {
         $query = "INSERT INTO t_category SET catName=:catName, catDescription=:catDescription; SELECT idCategory FROM t_category WHERE catName=:catName";
             
-            $binds = array (
-                0 => array (
-                    'var' => $catName,
-                    'marker' => ':catName',
-                    'type'  => PDO::PARAM_STR
-                ),
-                1 => array (
-                    'var' => $catDescription,
-                    'marker' => ':catDescription',
-                    'type'  => PDO::PARAM_STR
-                )
-            );
-            return $this->queryPrepareExecute($query, $binds);
+        $binds = array (
+            0 => array (
+                'var' => $catName,
+                'marker' => ':catName',
+                'type'  => PDO::PARAM_STR
+            ),
+            1 => array (
+                'var' => $catDescription,
+                'marker' => ':catDescription',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["idCategory"];
     }
 
     /**
@@ -364,7 +375,8 @@ class Database {
             )
         );
 
-        return $this->queryPrepareExecute($query,$binds);
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["idPublisher"];
     }
 
     /**
@@ -396,7 +408,8 @@ class Database {
                 'type'  => PDO::PARAM_STR
             )
         );
-        return $this->queryPrepareExecute($query, $binds);
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["idPublisher"];
     }
 
   
@@ -414,7 +427,7 @@ class Database {
      * @param string $booCover
      * @param string $idUser
      * @param string $booLanguage
-     * @return void
+     * @return int on retourne l'id du livre
      */
     public function insertBook($booTitle, $idCategory, 
     $idAuthor, $idPublisher,$booPublishingYear,
@@ -485,7 +498,8 @@ class Database {
             )
         );
         
-        return $this->queryPrepareExecute($query, $binds);
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["idBook"];
     }
 }
 ?>
