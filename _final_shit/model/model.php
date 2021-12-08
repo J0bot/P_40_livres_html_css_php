@@ -318,6 +318,9 @@ class Database {
             )
         );
         $arrayData = $this->queryPrepareExecute($query,$binds);
+        if ($arrayData == null) {
+            return null;
+        }
         return $arrayData[0]["idAuthor"];
     }
 
@@ -384,6 +387,9 @@ class Database {
         );
         
         $arrayData = $this->queryPrepareExecute($query,$binds);
+        if ($arrayData == null) {
+            return null;
+        }
         return $arrayData[0]["idCategory"];
     }
 
@@ -432,6 +438,9 @@ class Database {
         );
 
         $arrayData = $this->queryPrepareExecute($query,$binds);
+        if ($arrayData == null) {
+            return null;
+        }
         return $arrayData[0]["idPublisher"];
     }
 
