@@ -39,9 +39,9 @@ class Database {
     private function querySimpleExecute($query)
     {
         $req = $this->pdo->query($query);
-        $data_array = $this->formatData($req);
+        $arrayData = $this->formatData($req);
         $this->unsetData($req);
-        return $data_array;
+        return $arrayData;
     }
 
     /**
@@ -86,10 +86,15 @@ class Database {
 
     public function checkIfBookExists($id)
     {
-        $stmt = $this->pdo->prepare("SELECT idBook FROM t_book WHERE idBook='$id'");
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        $stmt->closeCursor();
+        $query ="SELECT idBook FROM t_book WHERE idBook=:id";
+        $binds = array(
+            0 => array (
+                'var' => $id,
+                'marker' => ':id',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+        $result= $this->queryPrepareExecute($query,$binds);
         
         if ($result!=null) {
             return 1;
@@ -100,21 +105,22 @@ class Database {
     //Cette fonction va nous donner toutes les informations sur un livre et nous retourner un tableau
     public function getBook($id)
     {
-        $stmt = $this->pdo->prepare("SELECT idBook, booTitle, booPublishingYear, booSummary, booNumberOfPages, booCover, booReviewAverage, autLastName, autFirstName, pubName, useName, catName  FROM t_book 
+        $query ="SELECT idBook, booTitle, booPublishingYear, booSummary, booNumberOfPages, booCover, booReviewAverage, autLastName, autFirstName, pubName, useName, catName  FROM t_book 
         INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
         INNER JOIN t_category on t_book.idCategory = t_category.idCategory
         INNER JOIN t_publisher on t_book.idPublisher = t_publisher.idPublisher
         INNER JOIN t_user on t_book.idUser = t_user.idUser
-        WHERE idBook=$id");
-        $stmt->execute();
+        WHERE idBook=:id";
 
-        //format data
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $binds = array(
+            0 => array (
+                'var' => $id,
+                'marker' => ':id',
+                'type'  => PDO::PARAM_STR
+            )
+        );
 
-        //clear the results
-        $stmt->closeCursor();
-
-        return $result;
+        return $this->queryPrepareExecute($query, $binds);
     }
 
     //Cette fonction retourne les 5 derniers livres ajoutés
@@ -168,9 +174,16 @@ class Database {
 
     public function getUserData($useName)
     {
-        $query = "SELECT useName FROM t_user WHERE useName='$useName'";
+        $query = "SELECT useName FROM t_user WHERE useName=:useName";
         
-        $result = $this->querySimpleExecute($query);
+        $binds = array(
+            0 => array (
+                'var' => $useName,
+                'marker' => ':useName',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+        $result = $this->queryPrepareExecute($query,$binds);
 
         return $result;
     }
@@ -192,8 +205,26 @@ class Database {
 
     public function addUser($useName,$usePassword,$useRights)
     {
-        $query = "INSERT INTO t_user (useName,usePassword,useRights) VALUES ('$useName','$usePassword','$useRights')";
-        $this->pdo->query($query);
+        $query = "INSERT INTO t_user (useName,usePassword,useRights) VALUES (:useName,:usePassword,:useRights)";
+        $binds = array(
+            0 => array (
+                'var' => $useName,
+                'marker' => ':useName',
+                'type'  => PDO::PARAM_STR
+            ),
+            1 => array (
+                'var' => $usePassword,
+                'marker' => ':usePassword',
+                'type'  => PDO::PARAM_STR
+            ),
+            2 => array (
+                'var' => $useRights,
+                'marker' => ':useRights',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        $this->queryPrepareExecute($query,$binds);
     }
 
 
@@ -201,9 +232,19 @@ class Database {
     //ça va checker si un user existe
     public function CheckIfUserExists($useName)
     {
-        $query = "SELECT useName FROM t_user WHERE useName='"."$useName"."'";
-        $data_array = $this->querySimpleExecute($query);
-        foreach($data_array as $user)
+        $query = "SELECT useName FROM t_user WHERE useName=:useName";
+        
+        $binds = array(
+            0 => array (
+                'var' => $useName,
+                'marker' => ':useName',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+
+        foreach($arrayData as $user)
         {
             if ($user["useName"] == $useName) {
                 return 1;
@@ -215,8 +256,16 @@ class Database {
     //pour que ça marche, il nous faut des mdp hashés dans la db
     public function CheckPassword($useName, $usePassword)
     {
-        $query = "SELECT usePassword FROM t_user WHERE useName='"."$useName"."'";
-        $hashed_psw = $this->querySimpleExecute($query);
+        $query = "SELECT usePassword FROM t_user WHERE useName=:useName";
+        $binds = array(
+            0 => array (
+                'var' => $useName,
+                'marker' => ':useName',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        $hashed_psw = $this->queryPrepareExecute($query,$binds);
         if (password_verify($usePassword,$hashed_psw[0]["usePassword"])) {
             return 1;
         }
@@ -226,8 +275,15 @@ class Database {
 
 
     public function GetUserRights($useName){
-        $query = "SELECT useRights FROM t_user WHERE useName='"."$useName"."'"; 
-        $rights = $this->querySimpleExecute($query);
+        $query = "SELECT useRights FROM t_user WHERE useName=:useName"; 
+        $binds = array(
+            0 => array (
+                'var' => $useName,
+                'marker' => ':useName',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+        $rights = $this->queryPrepareExecute($query,$binds);
         if (isset($rights[0]["useRights"])) {
             if ($rights[0]["useRights"]== 1) {
                 return 1;
