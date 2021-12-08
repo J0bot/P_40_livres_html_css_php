@@ -180,28 +180,33 @@ elseif (isset($_GET["action"])) {
                     $idAuthor = $conn->checkAuthor($autFirstName, $autLastName);
                     //Si l'auteur n'existe pas, on va en créer un nouveau
                     if ($idAuthor==null) {
-                       $idAuthor = $conn->insertAuthor($autFirstName, $autLastName);
+                       $conn->insertAuthor($autFirstName, $autLastName);
+                       $idAuthor = $conn->checkAuthor($autFirstName, $autLastName);
+
                     }
 
                     $idCategory = $conn->checkCategory($catName);
                     //Si la categorie n'existe pas, on va en créer un nouveau
 
                     if ($idCategory==null) {
-                        $idCategory = $conn->insertCategory($catName);
+                        $conn->insertCategory($catName);
+                        $idCategory = $conn->checkCategory($catName);
                     }
 
                     
                     $idPublisher = $conn->checkPublisher($pubName);
                     //Si l'editeur n'existe pas on l'ajoute
                     if ($idPublisher==null) {
-                        $idPublisher = $conn->insertPublisher($pubName);
+                        $conn->insertPublisher($pubName);
+                        $idPublisher = $conn->checkPublisher($pubName);
                     }
 
                     $idUser = $conn->getUserId($_SESSION["username"]);
 
-                    $idBook = $conn->insertBook($booTitle, $idCategory, $idAuthor, $idPublisher,$booPublishingYear, $booSummary, $booTeaser,$booNumberOfPages, $booCover,$idUser);
+                    $conn->insertBook($booTitle, $idCategory, $idAuthor, $idPublisher,$booPublishingYear, $booSummary, $booTeaser,$booNumberOfPages, $booCover,$idUser);
 
-                    echo "<script>setTimeout(function(){window.location.href = '?page=detail&id=$idBook';}, 500);</script>";
+                    $idBook = $conn->getBookId($booTitle);
+                    echo "<script>setTimeout(function(){window.location.href = '?page=detail&bookId=$idBook';}, 500);</script>";
                 }                
             }
         }

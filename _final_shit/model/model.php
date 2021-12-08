@@ -127,7 +127,7 @@ class Database {
     public function getFiveLastBooks()
     {
         //A FAIRE : faut que la query grab les 5 derniers livres ajoutés, du coup faut ajouter la date
-        $query = "SELECT idBook, booTitle, booCover FROM t_book LIMIT 5";
+        $query = "SELECT idBook, booTitle, booCover FROM t_book ORDER BY idBook DESC LIMIT 5";
 
         $result = $this->querySimpleExecute($query);
 
@@ -318,10 +318,10 @@ class Database {
             )
         );
         $arrayData = $this->queryPrepareExecute($query,$binds);
-        if ($arrayData == null) {
-            return null;
+        if (isset($arrayData[0]["idAuthor"])) {
+            return $arrayData[0]["idAuthor"];
         }
-        return $arrayData[0]["idAuthor"];
+        return null;
     }
 
     /**
@@ -336,7 +336,7 @@ class Database {
      */
     public function insertAuthor($autFirstName, $autLastName, $autBirthDate=null, $autDeathDate=null, $autNationality=null)
     {
-        $query = "INSERT INTO t_author SET autFirstName=:autFirstName, autLastName=:autLastName, autBirthDate=:autBirthDate, autDeathDate=:autDeathDate, autNationality=:autNationality; SELECT idAuthor FROM t_author WHERE autLastName=:autLastName and autFirstName=:autFirstName";
+        $query = "INSERT INTO t_author SET autFirstName=:autFirstName, autLastName=:autLastName, autBirthDate=:autBirthDate, autDeathDate=:autDeathDate, autNationality=:autNationality;";
             
         $binds = array (
             0 => array (
@@ -365,8 +365,7 @@ class Database {
                 'type'  => PDO::PARAM_STR
             )
         );
-        $arrayData = $this->queryPrepareExecute($query,$binds);
-        return $arrayData[0]["idAuthor"];
+        $this->queryPrepareExecute($query,$binds);
     }
 
     /**
@@ -387,10 +386,10 @@ class Database {
         );
         
         $arrayData = $this->queryPrepareExecute($query,$binds);
-        if ($arrayData == null) {
-            return null;
+        if (isset($arrayData[0]["idCategory"])) {
+            return $arrayData[0]["idCategory"];
         }
-        return $arrayData[0]["idCategory"];
+        return null;
     }
 
     /**
@@ -402,7 +401,7 @@ class Database {
      */
     public function insertCategory($catName, $catDescription=null)
     {
-        $query = "INSERT INTO t_category SET catName=:catName, catDescription=:catDescription; SELECT idCategory FROM t_category WHERE catName=:catName";
+        $query = "INSERT INTO t_category SET catName=:catName, catDescription=:catDescription;";
             
         $binds = array (
             0 => array (
@@ -416,8 +415,7 @@ class Database {
                 'type'  => PDO::PARAM_STR
             )
         );
-        $arrayData = $this->queryPrepareExecute($query,$binds);
-        return $arrayData[0]["idCategory"];
+        $this->queryPrepareExecute($query,$binds);
     }
 
     /**
@@ -438,10 +436,10 @@ class Database {
         );
 
         $arrayData = $this->queryPrepareExecute($query,$binds);
-        if ($arrayData == null) {
-            return null;
+        if (isset($arrayData[0]["idPublisher"])) {
+            return $arrayData[0]["idPublisher"];
         }
-        return $arrayData[0]["idPublisher"];
+        return null;
     }
 
     /**
@@ -454,7 +452,7 @@ class Database {
      */
     public function insertPublisher($pubName, $pubCreationDate=null, $pubCountry=null)
     {
-        $query = "INSERT INTO t_publisher SET pubName=:pubName, pubCreationDate=:pubCreationDate, pubCountry=:pubCountry; SELECT idPublisher  FROM t_publisher WHERE pubName=:pubName";
+        $query = "INSERT INTO t_publisher SET pubName=:pubName, pubCreationDate=:pubCreationDate, pubCountry=:pubCountry;";
             
         $binds = array (
             0 => array (
@@ -473,8 +471,7 @@ class Database {
                 'type'  => PDO::PARAM_STR
             )
         );
-        $arrayData = $this->queryPrepareExecute($query,$binds);
-        return $arrayData[0]["idPublisher"];
+        $this->queryPrepareExecute($query,$binds);
     }
 
   
@@ -502,8 +499,7 @@ class Database {
         $query = "INSERT INTO t_book SET booTitle=:booTitle, 
         idCategory=:idCategory, idAuthor=:idAuthor,idPublisher=:idPublisher,
         booPublishingYear=:booPublishingYear,booSummary=:booSummary,booTeaser=:booTeaser,
-        booNumberOfPages=:booNumberOfPages, booCover=:booCover,idUser=:idUser, booLanguage=:booLanguage;
-        SELECT idBook FROM t_book WHERE booTitle=:booTitle";
+        booNumberOfPages=:booNumberOfPages, booCover=:booCover,idUser=:idUser, booLanguage=:booLanguage";
         
         $binds = array (
             0 => array (
@@ -563,6 +559,19 @@ class Database {
             )
         );
         
+        $this->queryPrepareExecute($query,$binds);
+    }
+
+    public function getBookId($booTitle)
+    {
+        $query = "SELECT idBook FROM t_book WHERE booTitle=:booTitle";
+        $binds = array (
+            0 => array (
+                'var' => $booTitle,
+                'marker' => ':booTitle',
+                'type'  => PDO::PARAM_STR
+            )
+        );
         $arrayData = $this->queryPrepareExecute($query,$binds);
         return $arrayData[0]["idBook"];
     }

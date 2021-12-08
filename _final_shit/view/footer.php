@@ -1,8 +1,8 @@
 <div class="container">
   <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><p class="nav-link px-2 text-muted">Elisa Kuoch</p></li>
-      <li class="nav-item"><p class="nav-link px-2 text-muted">Larissa De Barros</p></li>
+      <li class="nav-item"><p class="nav-link px-2 text-muted"><a target="blank" href="https://thatsthefinger.com/">Elisa Kuoch</a></p></li>
+      <li class="nav-item"><p class="nav-link px-2 text-muted"><a href="https://thatsthefinger.com/">Larissa De Barros</a></p></li>
       <li class="nav-item"><p class="nav-link px-2 text-muted">José Gasser</p></li>
       <li class="nav-item"><p class="nav-link px-2 text-muted">Mathieu Salvatore</p></li>
     </ul>
