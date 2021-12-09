@@ -3,8 +3,8 @@
 
 <center>
   <p>
-    Bienvenue sur notre site web ! Ici vous allez retrouver de nombreux livres, qui ont été soigneusement ajoutés par nos utilisateurs. 
-    
+    Bienvenue sur notre site web ! Ici vous allez retrouver de nombreux livres, qui ont été soigneusement ajoutés par nos chers administrateurs. 
+
   
   </p>
 </center>

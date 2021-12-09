@@ -1,22 +1,22 @@
 <?php 
-// Auteur :José Carlos Gasser
-// Date : 23.11.2021
+// Auteur :José Carlos Gasser, Elisa Kuoch
+// Date : 23.11.2021 - 09.12.2021
 // Descritption : Page de details d'un ouvrage
 
 
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-     <!--afficher les informations générales de l'oubrage-->
-     <div class="container">
-         <div class="row">
+     <!--afficher les informations de l'ouvrage-->
+    <div class="container">
+        <div class="row">
             <div class="col col-1">
                 <a href="index.php?page=detail&bookId=<?=$previousBook?>">Livre avant</a>
             </div>
             <div class="col col-1">
                 <a href="index.php?page=detail&bookId=<?=$nextBook?>">Livre après</a>
             </div>
-         </div>
+        </div>
         <div class="row">
             <div class="col col-3">
                 <!--insérer l'image du livre actuel -->
@@ -41,8 +41,10 @@
                     </li>
                 </ul>
             </div>      
+        </div>
+    </div>
 
-    <div >
+    <div class="container">
         <!--Utiliser le logo et le lien pour l'icône de rating en étoile
         exemple trouvé sur: https://www.w3schools.com/howto/howto_css_star_rating.asp-->
         <div class="row">
@@ -59,6 +61,7 @@
                         }
                     }
                 ?>
+                
             </div>
         </div>
         
@@ -67,18 +70,21 @@
         <br><h2>Ma note</h2>
         <div class="col col-3">
             <div>
-                <!--changer pour que ca soit interactif-->
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-            </div>
-
-
-            <!--Je pense que le rajout du bouton n'est pas nécessaire pour traiter
-            a discuter dans l'implémentation-->
-            <br><button class="btn btn-primary">Noter cet ouvrage</button>
+                <!--changer pour que ca soit interactif (click+ajout db)-->
+                <!--source https://codepen.io/jamesbarnett/pen/vlpkh-->
+                <fieldset class="rating">
+                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" ></label>
+                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half"></label>
+                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" ></label>
+                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" ></label>
+                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" ></label>
+                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" ></label>
+                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" ></label>
+                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" ></label>
+                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" ></label>
+                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" ></label>
+                </fieldset>
+            </div><br>
         </div>
         
         <br>
@@ -87,15 +93,15 @@
 
         </div>
         
-                
-                    
-    </div>
-    <div class="row">
+        <div class="row">
         <h2>Description</h2>
         <article>
             
         </article>
     </div>
+                    
+    </div>
+    
             
 </div>
 
