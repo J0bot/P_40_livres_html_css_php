@@ -9,23 +9,27 @@
 }
 
 /*general*/
+
 a{
   color: var(--main-color);
 }
 a:hover{
   color: var(--main-color-hover);
 }
+
+
 /*home page*/
 .card{
   margin: 0.7em ;
 }
 .cardImage{
   max-height:100%; 
+  max-width: 100%;
   width: auto; 
   display: block; 
   margin-left: auto; 
   margin-right: auto; 
-  margin-top:6px
+  margin-top:6px;
 }
 .btn-primary {
   background: var(--main-color);
@@ -47,6 +51,33 @@ a:hover{
   flex-grow: 1;
   align-items: center;
 }
+
+/*page détails*/
+.resizeImage{
+  max-width: 100% ;
+  padding: 2em 0em;
+}
+.link{
+  text-decoration: underline;
+  color: var(--main-color);
+}
+.link:hover{
+  color: var(--main-color-hover);
+  cursor: pointer;
+}
+
+.checked{
+  color: var(--main-color);
+}
+.fa-star:hover{
+  color: var(--main-color-hover);
+}
+/*sur note moyenne des utilisateurs*/
+.noHover{
+  pointer-events: none;
+}
+
+
 
 /*nav*/
 .nav-pills .nav-link{
@@ -71,7 +102,6 @@ a:hover{
 }
 .nav-link:hover{
   color:var(--main-color);
-  background: var(--second-color-hover);
 }
 .navContainer{
 width: 80%;

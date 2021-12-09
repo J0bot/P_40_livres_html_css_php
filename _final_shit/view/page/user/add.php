@@ -3,13 +3,15 @@
 // Date : 23.11.2021
 // Descritption : Page de ajout d'un user
 ?>    
+<div class="container">
+    <h1>Ajout d'un user</h1>
+    <br>
+    <form action="?action=addUser" method="post" enctype="multipart/form-data">         
+        <p>Username : <input type="text" name="uname" required/></p>
+        <p>Password : <input type="password" name="psw" required/></p>
+        <p>Droits Admin : <input type="checkbox" name="admin" id="admin"></p>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
 
-<h1>Ajout d'un user</h1>
-<br>
-<form action="?action=addUser" method="post" enctype="multipart/form-data">         
-    <p>Username : <input type="text" name="uname" required/></p>
-    <p>Password : <input type="password" name="psw" required/></p>
-    <p>Droits Admin : <input type="checkbox" name="admin" id="admin"></p>
-    <button type="submit">Submit</button>
-</form>
 
