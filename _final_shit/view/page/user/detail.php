@@ -5,12 +5,23 @@
 
 
 ?>
-        
-<h1><?=$userName?></h1>
+<div class="container">
+    <div class=" backgroundCircle rounded-circle mx-auto d-block">
+        <h1 class="centerUserInfo"><?=$userName?></h1>
 
-<p>Date d'entrée dans le site : <?=$userEntryDate?></p>
-<p>Nombre ouvrages proposés : <?=$userBooksNumber?></p>
-<p>Nombre d'appréciations faites : <?=$userReviews?></p>
+        <div class="centerUserInfo">
+            <p>Date d'entrée dans le site : <?=$userEntryDate?></p>
+            <p>Nombre ouvrages proposés : <?=$userBooksNumber?></p>
+            <p>Nombre d'appréciations faites : <?=$userReviews?></p>
+        </div>
+        
+
+    </div>
+    
+
+</div>
+        
+
 
 
 
