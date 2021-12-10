@@ -281,32 +281,10 @@ span.psw {
   align-items: flex-start;
   padding: 0px;
 }
-.formBoxFlex>label{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  width: 3em;
-  flex-grow: 1;
-}
-.formBoxFlex>input{
-  flex-grow: 3;
-}
-.formImageBox{
-  
-  flex-grow: 1;
-}
-.formBox{
-  flex-grow: 6;
-}
 
-.formBoxFlex{
-  display: flex;
-  order: 0;
-  align-self: stretch;
-  margin: 32px 0px; 
+input{
+  margin: 2em 0em;
 }
-
 textarea{
   width: 100%;
 }
