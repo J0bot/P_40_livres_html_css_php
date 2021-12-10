@@ -77,15 +77,16 @@ elseif (isset($_GET["action"])) {
 
     if ($_GET["action"]=="addUser") {
         
-        if (isset($_POST["uname"]) && isset($_POST["psw"]) && isset($_POST["admin"])) {
+        if (isset($_POST["uname"]) && isset($_POST["psw"])) {
             $useName = htmlspecialchars($_POST["uname"]);
             $usePassword = htmlspecialchars($_POST["psw"]);
             $usePassword = password_hash($usePassword,PASSWORD_BCRYPT);
-            $useRights = ($_POST["admin"]=="on") ? 1 : 0;
+            $useRights = isset($_POST["admin"]) ? (($_POST["admin"]=="on") ? 1 : 0) : 0;
             $conn = new Database();
             if ($conn->CheckIfUserExists($useName)==0) {
                 $conn->addUser($useName,$usePassword,$useRights);
-                echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
+                echo "user ".$useName." créé";
+                echo "<script>setTimeout(function(){window.location.href = '?page=addUser';}, 2000);</script>";
             }
             else
             {

@@ -205,7 +205,7 @@ class Database {
 
     public function addUser($useName,$usePassword,$useRights)
     {
-        $query = "INSERT INTO t_user (useName,usePassword,useRights) VALUES (:useName,:usePassword,:useRights)";
+        $query = "INSERT INTO t_user (useName,usePassword,useRights,useEntryDate) VALUES (:useName,:usePassword,:useRights, NOW())";
         $binds = array(
             0 => array (
                 'var' => $useName,
