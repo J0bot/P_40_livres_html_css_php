@@ -96,9 +96,6 @@ elseif (isset($_GET["action"])) {
                 echo "cet utilisateur existe déjà";
             }
         }
-        
-
-        
     }
 
     //Si on arrive sur une action de type addBook
@@ -254,6 +251,12 @@ elseif (isset($_GET["action"])) {
     if ($_GET["action"]=="disconnect") {
         $_SESSION["logged"] = 0;
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+    }
+
+    if ($_GET["action"]=="rate") {
+        if (isset($_POST["rating"])) {
+            /////////JE DOIS FAIRE çAAAAAAAAAAAAAAA
+        }
     }
 }
 else {

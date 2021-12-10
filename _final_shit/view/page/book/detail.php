@@ -37,7 +37,7 @@
                             <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                             <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
                         </svg>
-                        <a class="link">Télécharger un extrait pdf</a>
+                        <a href="<?=$book[0]["booTeaser"]?>" class="link">Télécharger un extrait pdf</a>
                     </li>
                 </ul>
             </div>      
@@ -50,8 +50,9 @@
         <div class="row">
             <h2>Note moyenne des utilisateurs</h2>
             <div class="col col-3">
+
                 <?php 
-                    for ($i=0; $i < 5; $i++) { 
+                    for ($i=0; $i < 50; $i+=5) { 
                         if ($i < $book[0]["booReviewAverage"]) {
                             echo '<span class="fa fa-star checked noHover"></span>' . " ";
                         }
@@ -64,28 +65,36 @@
                 
             </div>
         </div>
-        
+                    
 
-
-        <br><h2>Ma note</h2>
-        <div class="col col-3">
-            <div>
-                <!--changer pour que ca soit interactif (click+ajout db)-->
-                <!--source https://codepen.io/jamesbarnett/pen/vlpkh-->
-                <fieldset class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" ></label>
-                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half"></label>
-                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" ></label>
-                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" ></label>
-                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" ></label>
-                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" ></label>
-                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" ></label>
-                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" ></label>
-                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" ></label>
-                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" ></label>
-                </fieldset>
-            </div><br>
-        </div>
+        <?php if (checkAdmin()!=0) {
+            ?>
+            <br><h2>Ma note</h2>
+            <div class="col col-3">
+                <div>
+                    <?php
+                    //changer pour que ca soit interactif (click+ajout db)
+                    //source https://codepen.io/jamesbarnett/pen/vlpkh
+                    ?>
+                    <form action="?action=rate" method="post">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="50" /><label class = "full" for="star5" ></label>
+                            <input type="radio" id="star4half" name="rating" value="45" /><label class="half" for="star4half"></label>
+                            <input type="radio" id="star4" name="rating" value="40" /><label class = "full" for="star4" ></label>
+                            <input type="radio" id="star3half" name="rating" value="35" /><label class="half" for="star3half" ></label>
+                            <input type="radio" id="star3" name="rating" value="30" /><label class = "full" for="star3" ></label>
+                            <input type="radio" id="star2half" name="rating" value="25" /><label class="half" for="star2half" ></label>
+                            <input type="radio" id="star2" name="rating" value="20" /><label class = "full" for="star2" ></label>
+                            <input type="radio" id="star1half" name="rating" value="15" /><label class="half" for="star1half" ></label>
+                            <input type="radio" id="star1" name="rating" value="10" /><label class = "full" for="star1" ></label>
+                            <input type="radio" id="starhalf" name="rating" value="5" /><label class="half" for="starhalf" ></label>
+                        </fieldset>
+                        <button  type="submit" >Envoyer ma note</button>
+                    </form>
+                </div><br>
+            </div>
+            <?php
+        }?>
         
         <br>
         <div class="col col-">
