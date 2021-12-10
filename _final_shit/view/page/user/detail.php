@@ -6,7 +6,11 @@
 
 ?>
         
-<h1><?=$userData[0]["useName"]?></h1>
+<h1><?=$userName?></h1>
+
+<p>Date d'entrée dans le site : <?=$userEntryDate?></p>
+<p>Nombre ouvrages proposés : <?=$userBooksNumber?></p>
+<p>Nombre d'appréciations faites : <?=$userReviews?></p>
 
 
 
