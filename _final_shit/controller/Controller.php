@@ -53,10 +53,13 @@ if (isset($_GET["page"])) {
             elseif(isset($_GET["userId"]))
             {
                 if (checkAdmin()!=0){
-                    $id = $_GET["userId"];
+                    $userName = $_GET["userId"];
                     $conn = new Database();
-                    $userData = $conn->getUserData($id);
-                    if ($userData!=null) {
+                    $userId = $conn->getUserId($userName);
+                    if ($userId!=null) {
+                        $userBooksNumber = $conn->getUserBooks($userId);
+                        $userEntryDate = $conn->getUserEntryDate($userId);
+                        $userReviews = $conn->getUserReviews($userId);
                         include("view/page/user/detail.php");
                     }
                     else

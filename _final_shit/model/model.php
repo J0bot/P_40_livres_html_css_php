@@ -562,6 +562,12 @@ class Database {
         $this->queryPrepareExecute($query,$binds);
     }
 
+    /**
+     * Donne l'id d'un livre en donnant son titre
+     *
+     * @param string $booTitle
+     * @return int l'id du livre
+     */
     public function getBookId($booTitle)
     {
         $query = "SELECT idBook FROM t_book WHERE booTitle=:booTitle";
@@ -574,6 +580,51 @@ class Database {
         );
         $arrayData = $this->queryPrepareExecute($query,$binds);
         return $arrayData[0]["idBook"];
+    }
+
+    public function getUserBooks($idUser)
+    {
+        $query = "SELECT COUNT(booTitle) as nbBooks FROM t_book WHERE idUser = :idUser ";
+        $binds = array (
+            0 => array (
+                'var' => $idUser,
+                'marker' => ':idUser',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["nbBooks"];
+    }
+
+    public function getUserEntryDate($idUser)
+    {
+        $query = "SELECT useEntryDate FROM t_user WHERE idUser = :idUser ";
+        $binds = array (
+            0 => array (
+                'var' => $idUser,
+                'marker' => ':idUser',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["useEntryDate"];
+    }
+
+    public function getUserReviews($idUser)
+    {
+        $query = "SELECT COUNT(idReview) as nbReviews FROM t_commentary WHERE idUser = :idUser ";
+        $binds = array (
+            0 => array (
+                'var' => $idUser,
+                'marker' => ':idUser',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        $arrayData = $this->queryPrepareExecute($query,$binds);
+        return $arrayData[0]["nbReviews"];
     }
 }
 ?>
