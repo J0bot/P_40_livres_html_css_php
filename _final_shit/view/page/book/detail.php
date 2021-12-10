@@ -96,7 +96,7 @@
         <div class="row">
         <h2>Description</h2>
         <article>
-            
+            <?=$book[0]["booSummary"]?>
         </article>
     </div>
                     
