@@ -200,7 +200,10 @@ class Database {
         );
 
         $arrayData = $this->queryPrepareExecute($query,$binds);
-        return $arrayData[0]["idUser"];
+        if (isset($arrayData[0]["idUser"])) {
+            return $arrayData[0]["idUser"];
+        }
+        return null;
     }
 
     public function addUser($useName,$usePassword,$useRights)
