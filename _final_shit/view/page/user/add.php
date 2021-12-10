@@ -19,14 +19,13 @@
                 <input class="col col-3" type="password" name="psw" required/>
 
             </div>
-            <div class="row">
+            <div class="row alignBaseline">
                     <label class="col col-1" for="checkbox">Admin ?</label>
-                    <input class="col col-1" type="checkbox" name="admin" id="admin">
+                    <input class="col col-2" type="checkbox" name="admin" id="admin">
             </div>
             <div class="row ">
                 <div class=" btnContainer col col-4">
                     <button class="btn btn-primary col col-4" type="submit">Submit</button>
-
                 </div>
                 
             </div>

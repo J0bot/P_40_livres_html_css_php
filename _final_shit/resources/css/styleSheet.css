@@ -134,7 +134,16 @@ h1 { font-size: 1.5em; margin: 10px; } */
   justify-content: flex-end;
   
 }
-
+.alignBaseline{
+  align-items: baseline;
+}
+.alignBaseline>input{
+  margin: 0;
+  padding: 0;
+  width: auto;
+  transform: scale(1.5);
+  
+}
 /*details user*/
 .centerUserInfo{
   display: flex;
