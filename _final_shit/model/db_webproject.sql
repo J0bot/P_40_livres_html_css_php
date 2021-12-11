@@ -175,7 +175,7 @@ CREATE TABLE `t_user` (
 -- Déchargement des données de la table `t_user`
 --
 
-INSERT INTO `t_user` (`idUser`, `useName`, `usePassword`, `useRights`) VALUES
+INSERT INTO `t_user` (`idUser`, `useName`, `usePassword`, `useRights`, `useEntryDate`) VALUES
 (1, 'alazax', '$2y$10$LC8jv.hDfyZ9/9ejJZUVGO./XqHNnUMSIelLrZtmQt6slSmTTztgW', 0,'2021-12-10'),
 (2, 'jobot', '$2y$10$LC8jv.hDfyZ9/9ejJZUVGO./XqHNnUMSIelLrZtmQt6slSmTTztgW', 1, '2021-12-10'),
 (3, 'stary', '$2y$10$LC8jv.hDfyZ9/9ejJZUVGO./XqHNnUMSIelLrZtmQt6slSmTTztgW', 0, '2021-12-10'),
