@@ -296,7 +296,7 @@ function checkAdmin()
 
 }
 
-//TOUT CE QUI CONCERNE LES COOKIES, pris de https://www.youtube.com/watch?v=-HgdzYCi2nI
+//TOUT CE QUI CONCERNE LES COOKIES, pris de https://cookieconsent.popupsmart.com/
 
 ?>
 
