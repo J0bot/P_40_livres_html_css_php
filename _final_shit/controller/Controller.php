@@ -40,6 +40,7 @@ if (isset($_GET["page"])) {
                     
                     if ($conn->checkIfBookExists($id)==1) {
                         $book = $conn->getBook($id);
+                        $bookAverage = $conn->getAverageRating($id);
                         $previousBook = ($conn->checkIfBookExists($id-1)==1) ? $id-1 : $id ;
                         $nextBook = ($conn->checkIfBookExists($id+1)==1) ? $id+1 : $id ;
                         include("view/page/book/detail.php");
@@ -248,14 +249,19 @@ elseif (isset($_GET["action"])) {
         }
         else { echo "password or user wrong";}
     }
+
     if ($_GET["action"]=="disconnect") {
         $_SESSION["logged"] = 0;
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 
     if ($_GET["action"]=="rate") {
-        if (isset($_POST["rating"])) {
-            /////////JE DOIS FAIRE çAAAAAAAAAAAAAAA
+        if (checkAdmin()!=0) {
+            if (isset($_POST["rating"]) and isset($_GET["bookId"])) {
+                $conn = new Database();
+                $conn->addRating($_POST["rating"],$_GET["bookId"]);//, $_SESSION["username"]);
+                echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
+            }
         }
     }
 }

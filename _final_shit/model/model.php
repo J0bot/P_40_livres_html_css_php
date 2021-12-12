@@ -629,5 +629,47 @@ class Database {
         $arrayData = $this->queryPrepareExecute($query,$binds);
         return $arrayData[0]["nbReviews"];
     }
+
+    public function addRating($rating, $idBook)//,$username)
+    {
+        $query = "INSERT INTO t_review SET revScore=:rating, idBook=:idBook";
+        $binds = array (
+            0 => array (
+                'var' => $rating,
+                'marker' => ':rating',
+                'type'  => PDO::PARAM_STR
+            ),
+            1 => array (
+                'var' => $idBook,
+                'marker' => ':idBook',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        $this->queryPrepareExecute($query,$binds);
+    }
+    
+    public function getAverageRating($idBook)
+    {
+        $query = "SELECT ROUND(AVG(revScore)) as average FROM t_review WHERE  idBook=:idBook";
+        $binds = array (
+            0 => array (
+                'var' => $idBook,
+                'marker' => ':idBook',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+    
+        $dataArray = $this->queryPrepareExecute($query,$binds);
+        var_dump($dataArray);
+        if (isset($dataArray[0]["average"])) {
+            return $dataArray[0]["average"];
+        }
+        return null;
+
+        
+    }
+
+    
 }
 ?>

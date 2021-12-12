@@ -52,8 +52,8 @@
             <div class="col col-3">
 
                 <?php 
-                    for ($i=0; $i < 50; $i+=5) { 
-                        if ($i < $book[0]["booReviewAverage"]) {
+                    for ($i=0; $i < 25; $i+=5) { 
+                        if ($i < $bookAverage/2) {
                             echo '<span class="fa fa-star checked noHover"></span>' . " ";
                         }
                         else
@@ -76,7 +76,7 @@
                     //changer pour que ca soit interactif (click+ajout db)
                     //source https://codepen.io/jamesbarnett/pen/vlpkh
                     ?>
-                    <form action="?action=rate" method="post">
+                    <form action="?action=rate&bookId=<?=$_GET["bookId"]?>" method="post">
                         <fieldset class="rating">
                             <input type="radio" id="star5" name="rating" value="50" /><label class = "full" for="star5" ></label>
                             <input type="radio" id="star4half" name="rating" value="45" /><label class="half" for="star4half"></label>
