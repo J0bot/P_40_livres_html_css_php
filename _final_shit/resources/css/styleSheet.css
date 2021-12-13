@@ -10,7 +10,6 @@
 }
 
 /*general*/
-
 a{
   color: var(--main-color);
 }
@@ -23,6 +22,7 @@ p{
 h1{
   margin-bottom: 1em;
 }
+
 /*home page*/
 .card{
   margin: 0.7em ;
@@ -72,12 +72,18 @@ h1{
   cursor: pointer;
 }
 
+
+.fa{
+  font-size: 1.57em;
+  margin: 3.5px;
+}
+.fa-star{
+  color: gainsboro;
+}
 .checked{
   color: var(--main-color);
 }
-.fa-star:hover{
-  color: var(--main-color-hover);
-}
+
 /*sur note moyenne des utilisateurs*/
 .noHover{
   pointer-events: none;
@@ -95,6 +101,8 @@ h1 { font-size: 1.5em; margin: 10px; } */
 .rating { 
   border: none;
   float: left;
+  margin: 5px;
+  font-size: 1.25em;
 }
 
 .rating > input { display: none; } 
@@ -112,7 +120,7 @@ h1 { font-size: 1.5em; margin: 10px; } */
 }
 
 .rating > label { 
-  color: #ddd; 
+  color:gainsboro; 
  float: right; 
 }
 
@@ -120,12 +128,13 @@ h1 { font-size: 1.5em; margin: 10px; } */
 
 .rating > input:checked ~ label, /* show gold star when clicked */
 .rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+.rating:not(:checked) > label:hover ~ label { color: var(--main-color);  } /* hover previous stars in list */
 
 .rating > input:checked + label:hover, /* hover current star when changing rating */
 .rating > input:checked ~ label:hover,
 .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+.rating > input:checked ~ label:hover ~ label { color: var(--main-color-hover);  } 
+
 
 
 /*page ajouter un user*/

@@ -5,9 +5,7 @@
 
 
 ?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-     <!--afficher les informations de l'ouvrage-->
+    <!--afficher les informations de l'ouvrage-->
     <div class="container">
         <div class="row">
             <div class="col col-1">
@@ -49,7 +47,7 @@
         exemple trouvé sur: https://www.w3schools.com/howto/howto_css_star_rating.asp-->
         <div class="row">
             <h2>Note moyenne des utilisateurs</h2>
-            <div class="col col-3">
+            <div class="col col-3 ">
 
                 <?php 
                     for ($i=0; $i < 25; $i+=5) { 
