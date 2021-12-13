@@ -105,16 +105,13 @@
         
         <div class="row">
         <h2>Description</h2>
-        <article>
+        <p>
             <?=$book[0]["booSummary"]?>
-        </article>
+        </p>
     </div>
                     
-    </div>
-    
-            
 </div>
-
+    
     
 <?php 
 
