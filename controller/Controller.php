@@ -257,13 +257,18 @@ elseif (isset($_GET["action"])) {
 
     if ($_GET["action"]=="rate") {
         if (checkAdmin()!=0) {
-            if (isset($_POST["rating"]) and isset($_GET["bookId"])) {
+            if (isset($_GET["bookId"])) {
+                $rating = 0;
+                if (isset($_POST["rating"])) {
+                    $rating = $_POST["rating"];
+                }
                 $conn = new Database;
                 $userId = $conn->getUserId($_SESSION["username"]);
-                $conn->addRating($_POST["rating"],$_GET["bookId"],$userId);
-                echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
+                $conn->addRating($rating,$_GET["bookId"],$userId);
+                echo("<script>location.href = '?page=detail&bookId=".$_GET["bookId"]."';</script>");
             }
         }
+        echo("<script>location.href = '?page=detail&bookId=".$_GET["bookId"]."';</script>");
     }
 }
 else {

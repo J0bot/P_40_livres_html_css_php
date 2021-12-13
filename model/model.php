@@ -701,7 +701,6 @@ class Database {
         );
     
         $dataArray = $this->queryPrepareExecute($query,$binds);
-        var_dump($dataArray);
         if (isset($dataArray[0]["average"])) {
             return $dataArray[0]["average"];
         }
