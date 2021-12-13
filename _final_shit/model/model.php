@@ -635,8 +635,7 @@ class Database {
      */
     public function getUserReviews($idUser)
     {
-        $query = "SELECT COUNT(idReview) as nbReviews FROM t_commentary
-        NATURAL JOIN t_user WHERE useName = :idUser ";
+        $query = "SELECT COUNT(idReview) as nbReviews FROM t_commentary idUser=:idUser ";
         $binds = array (
             0 => array (
                 'var' => $idUser,
@@ -660,9 +659,9 @@ class Database {
      * @param [type] $username
      * @return void
      */
-    public function addRating($rating, $idBook,$username)
+    public function addRating($rating, $idBook,$idUser)
     {
-        $query = "INSERT INTO t_review SET revScore=:rating, idBook=:idBook, idUser=:username";
+        $query = "INSERT INTO t_review SET revScore=:rating, idBook=:idBook, idUser=:idUser";
         $binds = array (
             0 => array (
                 'var' => $rating,
@@ -670,8 +669,8 @@ class Database {
                 'type'  => PDO::PARAM_STR
             ),
             3 => array (
-                'var' => $username,
-                'marker' => ':username',
+                'var' => $idUser,
+                'marker' => ':idUser',
                 'type'  => PDO::PARAM_STR
             ),
             2 => array (
