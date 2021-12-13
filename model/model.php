@@ -9,7 +9,9 @@
 class Database {
     public $pdo;
 
-    //Constructeur de la classe DAtabase
+    /**
+     * Constructeur de la classe Database
+     */
     function __construct()
     {
         //On va inclure le array qui contient les infos de connection
@@ -33,9 +35,13 @@ class Database {
         }
     }   
 
+
     /**
-    * permet de préparer et d’exécuter une requête de type simple (sans where)
-    */
+     * permet de préparer et d’exécuter une requête de type simple (sans where)
+     *
+     * @param string $query
+     * @return array
+     */
     private function querySimpleExecute($query)
     {
         $req = $this->pdo->query($query);
@@ -69,7 +75,10 @@ class Database {
     }
 
     /**
-    *  traiter les données pour les retourner par exemple en tableau associatif (avec PDO::FETCH_ASSOC)
+    * traiter les données pour les retourner par exemple en tableau associatif 
+    * (avec PDO::FETCH_ASSOC)
+    *
+    *@param PDOStatement $req 
     */
     private function formatData($req)
     {
@@ -78,12 +87,21 @@ class Database {
 
     /**
     * vide le jeu d’enregistrement
+    *
+    *@param $req
+    *@return void
     */
     private function unsetData($req)
     {
         $req->closeCursor();
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param int $id
+     * @return bool 
+     */
     public function checkIfBookExists($id)
     {
         $query ="SELECT idBook FROM t_book WHERE idBook=:id";
@@ -102,7 +120,13 @@ class Database {
         return 0;
     }
 
-    //Cette fonction va nous donner toutes les informations sur un livre et nous retourner un tableau
+
+    /**
+     * Cette fonction va nous donner toutes les informations sur un livre et nous retourner un tableau
+     *
+     * @param int $id
+     * @return array
+     */
     public function getBook($id)
     {
         $query ="SELECT idBook,booTeaser, booTitle, booPublishingYear, booSummary, booNumberOfPages, booCover, booReviewAverage, autLastName, autFirstName, pubName, useName, catName  FROM t_book 
@@ -123,7 +147,12 @@ class Database {
         return $this->queryPrepareExecute($query, $binds);
     }
 
-    //Cette fonction retourne les 5 derniers livres ajoutés
+    
+    /**
+     * Cette fonction retourne les 5 derniers livres ajoutés
+     *
+     * @return array
+     */
     public function getFiveLastBooks()
     {
         //A FAIRE : faut que la query grab les 5 derniers livres ajoutés, du coup faut ajouter la date
@@ -134,6 +163,11 @@ class Database {
         return $result;
     }
 
+    /**
+     * Retourne tous les livres de la base de données
+     * 
+     * @return array 
+     */
     public function getAllBooksList()
     {
         $query = "SELECT idBook, booTitle, booCover, useName, autLastName, autFirstName  FROM t_book
@@ -145,6 +179,12 @@ class Database {
         return $result;
     }
 
+
+    /**
+     * Retourne tous les auteurs de la db dans un tableau
+     *
+     * @return array
+     */
     public function getAllAuthors()
     {
         $query = "SELECT idAuthor, autLastName, autFirstName FROM t_author";
@@ -153,7 +193,11 @@ class Database {
 
         return $result;
     }
-
+    /**
+     * retourne toutes les catégories de livres existantes dans un tableau
+     *
+     * @return array
+     */
     public function getAllCategories()
     {
         $query = "SELECT idCategory, catName FROM t_category";
@@ -163,6 +207,11 @@ class Database {
         return $result;
     }
 
+    /**
+     * Retourne tous les éditeurs dans un tableau
+     *
+     * @return array
+     */
     public function getAllPublishers()
     {
         $query = "SELECT idPublisher, pubName FROM t_publisher";
@@ -172,6 +221,12 @@ class Database {
         return $result;
     }
 
+    /**
+     * Retourne toutes les données liées à l'utilisateur
+     *
+     * @param string $useName pseudo de l'utilisateur
+     * @return array
+     */
     public function getUserData($useName)
     {
         $query = "SELECT useName FROM t_user WHERE useName=:useName";
@@ -188,6 +243,12 @@ class Database {
         return $result;
     }
 
+    /**
+     * Retourne l'id de l'utilisateur à partir du pseudo
+     *
+     * @param string $useName pseudo de l'utilisateur
+     * @return int
+     */
     public function getUserId($useName)
     {
         $query = "SELECT idUser FROM t_user WHERE useName=:useName";
@@ -232,7 +293,13 @@ class Database {
 
 
     //LOGIN STUFF
-    //ça va checker si un user existe
+    
+    /**
+     * Vérifie si un utilisateur est existant
+     *
+     * @param string $useName pseudo de l'utilisateur
+     * @return bool
+     */
     public function CheckIfUserExists($useName)
     {
         $query = "SELECT useName FROM t_user WHERE useName=:useName";
@@ -257,6 +324,13 @@ class Database {
     }
 
     //pour que ça marche, il nous faut des mdp hashés dans la db
+    /**
+     * Vérifie si le mot de passe de l'utilisateur est correct
+     *
+     * @param string $useName pseudo de l'utilisateur
+     * @param string $usePassword mot de passe de l'utilisateur hashé
+     * @return bool vérifié si true
+     */
     public function CheckPassword($useName, $usePassword)
     {
         $query = "SELECT usePassword FROM t_user WHERE useName=:useName";
@@ -276,7 +350,12 @@ class Database {
     }
 
 
-
+    /**
+     * Retourne les droits d'accès de l'utilisateur
+     *
+     * @param string $useName pseudo de l'utilisateur
+     * @return bool true = droits d'accès 
+     */
     public function GetUserRights($useName){
         $query = "SELECT useRights FROM t_user WHERE useName=:useName"; 
         $binds = array(
@@ -301,7 +380,7 @@ class Database {
     /**
      * Cette fonction check si un autheur existe
      *
-     * @param string $autFirstName
+     * @param string $autFirstName 
      * @param string $autLastName
      * @return int retourne son id s'il existe pas et NULL s'il n'existe pas
      */
@@ -425,7 +504,7 @@ class Database {
      * Check si le publisher existe
      *
      * @param string $pubName
-     * @return int NULL : exite pas, sinon return son id
+     * @return int NULL : existe pas, sinon return son id
      */
     public function checkPublisher($pubName)
     {
@@ -586,10 +665,10 @@ class Database {
     }
 
     /**
-     * Undocumented function
+     * Retourne le nombre de livres ajoutés par un utilisateur
      *
-     * @param [type] $idUser
-     * @return void
+     * @param int $idUser
+     * @return int nombre de livres de l'utilisateur
      */
     public function getUserBooks($idUser)
     {
@@ -607,10 +686,10 @@ class Database {
     }
     
     /**
-     * Undocumented function
+     * Retourne la date d'inscription de l'utilisateur
      *
-     * @param [type] $idUser
-     * @return void
+     * @param int $idUser
+     * @return string date au format YYYY-MM-dd
      */
     public function getUserEntryDate($idUser)
     {
@@ -628,10 +707,10 @@ class Database {
     }
 
     /**
-     * Undocumented function
+     * Retourne le nombre de notes postées par l'utilisateur
      *
-     * @param [type] $idUser
-     * @return void
+     * @param int $idUser
+     * @return int nombre de reviews, null si inexistant
      */
     public function getUserReviews($idUser)
     {
@@ -652,14 +731,14 @@ class Database {
     }
 
     /**
-     * Undocumented function
+     * Ajoute la note d'un utilisateur
      *
-     * @param [type] $rating
-     * @param [type] $idBook
-     * @param [type] $username
+     * @param int $rating note de l'utilisateur
+     * @param int $idBook
+     * @param int $username pseudo de l'utilisateur
      * @return void
      */
-    public function addRating($rating, $idBook,$idUser)
+    public function addRating($rating, $idBook ,$idUser)
     {
         $query = "INSERT INTO t_review SET revScore=:rating, idBook=:idBook, idUser=:idUser";
         $binds = array (
@@ -684,10 +763,10 @@ class Database {
     }
     
     /**
-     * Undocumented function
+     * Retourne la note moyenne des utilisateurs d'un livre
      *
-     * @param [type] $idBook
-     * @return void
+     * @param int $idBook
+     * @return int retourne null si inexistant
      */
     public function getAverageRating($idBook)
     {
