@@ -17,10 +17,10 @@ if ($_SESSION["logged"] ==0) {
     <div class="container" >
       <div style="text-align: start;">
         <label for="uname" style="color: black;"><b>Username</b></label>
-        <input class="input_conn" type="text" placeholder="Enter Username" name="uname" required>
+        <input id="uname" class="input_conn" type="text" placeholder="Enter Username" name="uname" required>
 
         <label for="psw" style="color: black;"><b>Password</b></label>
-        <input class="input_conn" type="password" placeholder="Enter Password" name="psw" required>
+        <input id="psw" class="input_conn" type="password" placeholder="Enter Password" name="psw" required>
 
         <button  type="submit" class="btn btn-primary d-flex  justify-content-center">Login</button>
         <span class="psw" style="color: black;">Forgot <a href="?page=addUser">password?</a></span>

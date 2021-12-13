@@ -310,7 +310,7 @@ function checkAdmin()
 //TOUT CE QUI CONCERNE LES COOKIES, pris de https://cookieconsent.popupsmart.com/
 ?>
 
-<script type="text/javascript" src="resources/js/popper.js"></script>
+<script src="resources/js/popper.js"></script>
 <script> 
 window.start.init({
     Palette:"palette5",

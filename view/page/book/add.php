@@ -23,11 +23,11 @@
                         <!--labels-->
                         <div class="row">
                             <label class="col col-2" for="title">Titre</label>
-                            <input class="col col-10" type="text" name="title" value="<?=isset($booTitle) ? $booTitle : ""?>" required/><br>
+                            <input id="title" class="col col-10" type="text" name="title" value="<?=isset($booTitle) ? $booTitle : ""?>" required/><br>
                         </div>
                         <div class="row">
                             <label class="col col-2" for="auteurNom">Nom Auteur</label>
-                            <input class="col col-10" list="auteurNom" name="auteurNom" value="<?=isset($autLastName) ? $autLastName : ""?>" required> <br>
+                            <input class="col col-10" list="auteurNom" value="<?=isset($autLastName) ? $autLastName : ""?>" required> <br>
                             <datalist name="auteurNom" id="auteurNom">
                                 <?php 
                                 foreach($authors as $author)
@@ -39,8 +39,8 @@
                         </div>
                         <div class="row">
                             <label class="col col-2" for="auteurPrenom">Prénom Auteur</label>
-                            <input class="col col-10" list="auteurPrenom" name="auteurPrenom" value="<?=isset($autFirstName) ? $autFirstName : ""?>" required><br>
-                            <datalist name="auteurPrenom" id="auteurPrenom">
+                            <input class="col col-10" list="auteurPrenom" value="<?=isset($autFirstName) ? $autFirstName : ""?>" required><br>
+                            <datalist  id="auteurPrenom" name="auteurPrenom">
                                 <?php 
                                 foreach($authors as $author)
                                 {?>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="row">
                             <label class="col col-2" for="categorie">Categorie</label>
-                            <input class="col col-10" list="categorie" name="categorie" required value="<?=isset($catName) ? $catName : ""?>"><br>
+                            <input  class="col col-10" list="categorie" required value="<?=isset($catName) ? $catName : ""?>"><br>
                             <datalist  name="categorie" id="categorie">
                                 <?php 
                                 foreach($categories as $categorie)
@@ -63,8 +63,8 @@
                         </div>
                         <div class="row">
                             <label class="col col-2" for="editeur">Editeur</label>
-                            <input class="col col-10" list="editeur" name="editeur" value="<?=isset($pubName) ? $pubName : ""?>" required><br>
-                            <datalist  name="editeur" id="editeur" >
+                            <input class="col col-10" list="editeur" value="<?=isset($pubName) ? $pubName : ""?>" required><br>
+                            <datalist name="editeur" id="editeur" >
                                 <?php    
                                 foreach($publishers as $publisher)
                                 {?>
@@ -75,17 +75,17 @@
                         </div>
                         <div class="row">
                             <label class="col col-2" for="yearEdition">Année d'édition</label>
-                            <input class="col col-10" required type="number" min="1900" max="2099" step="1" value="<?=isset($booPublishingYear) ? $booPublishingYear : "2016"?>"name="yearEdition"  /><br>
+                            <input id="yearEdition" class="col col-10" required type="number" min="1900" max="2099" step="1" value="<?=isset($booPublishingYear) ? $booPublishingYear : "2016"?>" name="yearEdition"  /><br>
                             
                         </div>
                         <div class="row">
                             <label class="col col-2" for="pageNumber">Nombre de pages</label>
-                            <input class="col col-10" required type="number" name="pageNumber" value="<?=isset($booNumberOfPages) ? $booNumberOfPages : ""?>" /> <br>
+                            <input id="pageNumber" class="col col-10" required type="number" name="pageNumber" value="<?=isset($booNumberOfPages) ? $booNumberOfPages : ""?>" /> <br>
                             
                         </div>
                         <div class="row">
                             <label class="col col-2" for="pdfLink">Lien vers extrait pdf</label>
-                            <input class="col col-10" type="url" name="pdfLink" value="<?=isset($booTeaser) ? $booTeaser : ""?>" required/>
+                            <input id="pdfLink" class="col col-10" type="url" name="pdfLink" value="<?=isset($booTeaser) ? $booTeaser : ""?>" required/>
                             
                         </div>
                         

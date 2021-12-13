@@ -9,11 +9,7 @@
     <link rel="stylesheet" href="resources/css/styleSheet.css"/>
     <title>Document</title>
 </head>
-<body>
     <?php 
     include("header.php");
     
     ?>
-    
-</body>
-</html>
