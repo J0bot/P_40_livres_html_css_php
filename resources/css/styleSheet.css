@@ -6,9 +6,7 @@
   --main-color-transparent: #c82b0828;
   --second-color: #F8F9FA;
   --second-color-hover: #edeff1;
-
 }
-
 /*general*/
 a{
   color: var(--main-color);
@@ -22,19 +20,8 @@ p{
 h1{
   margin-bottom: 1em;
 }
-
-/*home page*/
-.card{
-  margin: 0.7em ;
-}
-.cardImage{
-  max-height:100%; 
-  max-width: 100%;
-  width: auto; 
-  display: block; 
-  margin-left: auto; 
-  margin-right: auto; 
-  margin-top:6px;
+.centerText{
+  text-align: center;
 }
 .btn-primary {
   background: var(--main-color);
@@ -44,7 +31,39 @@ h1{
   background-color: var(--main-color-hover);
   border-color: var(--main-color-hover);
 }
+.alignBaseline{
+  display: flex;
+  
+}
+.alignItems{
+  align-items:center;
+}
 
+/*home page*/
+.card{
+  margin: 0.7em ;
+  width:250px; height:500px;
+}
+.cardImageContainer{
+  height: 65%;
+  padding: 2px;
+  padding-top: 6px;
+}
+.cardContainer{
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content:center; 
+}
+.cardImage{
+  max-height:100%; 
+  max-width: 100%;
+  width: auto; 
+  display: block; 
+  margin: auto;
+}
+.cardBody{
+  height:25%
+}
 
 /*page liste des ouvrages*/
 .listTextStyle a{
@@ -71,7 +90,6 @@ h1{
   color: var(--main-color-hover);
   cursor: pointer;
 }
-
 
 .fa{
   font-size: 1.57em;
@@ -103,6 +121,7 @@ h1 { font-size: 1.5em; margin: 10px; } */
   float: left;
   margin: 5px;
   font-size: 1.25em;
+  height: 100%;
 }
 
 .rating > input { display: none; } 

@@ -75,19 +75,22 @@
                     //source https://codepen.io/jamesbarnett/pen/vlpkh
                     ?>
                     <form action="?action=rate&bookId=<?=$_GET["bookId"]?>" method="post">
-                        <fieldset class="rating">
-                            <input type="radio" id="star5" name="rating" value="50" /><label class = "full" for="star5" ></label>
-                            <input type="radio" id="star4half" name="rating" value="45" /><label class="half" for="star4half"></label>
-                            <input type="radio" id="star4" name="rating" value="40" /><label class = "full" for="star4" ></label>
-                            <input type="radio" id="star3half" name="rating" value="35" /><label class="half" for="star3half" ></label>
-                            <input type="radio" id="star3" name="rating" value="30" /><label class = "full" for="star3" ></label>
-                            <input type="radio" id="star2half" name="rating" value="25" /><label class="half" for="star2half" ></label>
-                            <input type="radio" id="star2" name="rating" value="20" /><label class = "full" for="star2" ></label>
-                            <input type="radio" id="star1half" name="rating" value="15" /><label class="half" for="star1half" ></label>
-                            <input type="radio" id="star1" name="rating" value="10" /><label class = "full" for="star1" ></label>
-                            <input type="radio" id="starhalf" name="rating" value="5" /><label class="half" for="starhalf" ></label>
-                        </fieldset>
-                        <button  type="submit" >Envoyer ma note</button>
+                        <div class="alignBaseline alignItems">
+                            <fieldset class="rating">
+                                <input type="radio" id="star5" name="rating" value="50" /><label class = "full" for="star5" ></label>
+                                <input type="radio" id="star4half" name="rating" value="45" /><label class="half" for="star4half"></label>
+                                <input type="radio" id="star4" name="rating" value="40" /><label class = "full" for="star4" ></label>
+                                <input type="radio" id="star3half" name="rating" value="35" /><label class="half" for="star3half" ></label>
+                                <input type="radio" id="star3" name="rating" value="30" /><label class = "full" for="star3" ></label>
+                                <input type="radio" id="star2half" name="rating" value="25" /><label class="half" for="star2half" ></label>
+                                <input type="radio" id="star2" name="rating" value="20" /><label class = "full" for="star2" ></label>
+                                <input type="radio" id="star1half" name="rating" value="15" /><label class="half" for="star1half" ></label>
+                                <input type="radio" id="star1" name="rating" value="10" /><label class = "full" for="star1" ></label>
+                                <input type="radio" id="starhalf" name="rating" value="5" /><label class="half" for="starhalf" ></label>
+                            </fieldset> 
+                            <button class="btn btn-primary"  type="submit" >Envoyer ma note</button>
+                        </div>
+                    
                     </form>
                 </div><br>
             </div>

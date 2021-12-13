@@ -1,2 +1,2 @@
 
-<center><p>Accès refusé.</p></center>
+<p class="centerText">Accès refusé.</p>
