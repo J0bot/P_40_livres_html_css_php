@@ -11,17 +11,17 @@
             <form action="?action=addUser" method="post" enctype="multipart/form-data">
             <div class="row">
                 <label class="col col-1" for="uname">Username </label>
-                <input class="col col-3" type="text" name="uname" required/>
+                <input id="uname" class="col col-3" type="text" name="uname" required/>
 
             </div>
             <div class="row">
                 <label class="col col-1" for="psw">Password </label>
-                <input class="col col-3" type="password" name="psw" required/>
+                <input id="psw" class="col col-3" type="password" name="psw" required/>
 
             </div>
             <div class="row alignBaseline">
                     <label class="col col-1" for="checkbox">Admin ?</label>
-                    <input class="col col-2" type="checkbox" name="admin" id="admin">
+                    <input class="col col-2" type="checkbox" name="admin" id="checkbox">
             </div>
             <div class="row ">
                 <div class=" btnContainer col col-4">
