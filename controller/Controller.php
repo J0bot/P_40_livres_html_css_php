@@ -310,4 +310,12 @@ function checkAdmin()
 //TOUT CE QUI CONCERNE LES COOKIES, pris de https://cookieconsent.popupsmart.com/
 ?>
 
-<script type="text/javascript" src="resources/js/popper.js"></script><script> window.start.init({Palette:"palette5",Mode:"floating right",Theme:"block",Message:"En utilisant notre site, vous acceptez que nous utilisions des cookies pour offrir une meilleure expérience du site.",ButtonText:"J'ai compris !",})</script>
+<script type="text/javascript" src="resources/js/popper.js"></script>
+<script> 
+window.start.init({
+    Palette:"palette5",
+    Mode:"floating right",
+    Theme:"block",
+    Message:"En utilisant notre site, vous acceptez que nous utilisions des cookies pour offrir une meilleure expérience du site.",
+    ButtonText:"J'ai compris !"})
+</script>
