@@ -635,7 +635,8 @@ class Database {
      */
     public function getUserReviews($idUser)
     {
-        $query = "SELECT COUNT(idReview) as nbReviews FROM t_commentary WHERE idUser = :idUser ";
+        $query = "SELECT COUNT(idReview) as nbReviews FROM t_commentary
+        NATURAL JOIN t_user WHERE useName = :idUser ";
         $binds = array (
             0 => array (
                 'var' => $idUser,
