@@ -28,11 +28,11 @@
                         <div class="row">
                             <label class="col col-2" for="auteurNom">Nom Auteur</label>
                             <input class="col col-10" list="auteurNom" value="<?=isset($autLastName) ? $autLastName : ""?>" required> <br>
-                            <datalist name="auteurNom" id="auteurNom">
+                            <datalist  id="auteurNom">
                                 <?php 
                                 foreach($authors as $author)
                                 {?>
-                                    <option value=<?=$author["autLastName"];?>><?=$author["autLastName"]?></option> <?php   
+                                    <option value="<?=$author["autLastName"];?>"><?=$author["autLastName"]?></option> <?php   
                                 }?>
                             </datalist>
 
@@ -40,35 +40,35 @@
                         <div class="row">
                             <label class="col col-2" for="auteurPrenom">Prénom Auteur</label>
                             <input class="col col-10" list="auteurPrenom" value="<?=isset($autFirstName) ? $autFirstName : ""?>" required><br>
-                            <datalist  id="auteurPrenom" name="auteurPrenom">
+                            <datalist  id="auteurPrenom">
                                 <?php 
                                 foreach($authors as $author)
                                 {?>
-                                    <option value=<?=$author["autFirstName"];?>><?=$author["autFirstName"]?></option> <?php   
+                                    <option value="<?=$author["autFirstName"];?>"><?=$author["autFirstName"]?></option> <?php   
                                 }?>
                             </datalist>
                             
                         </div>
                         <div class="row">
                             <label class="col col-2" for="categorie">Categorie</label>
-                            <input  class="col col-10" list="categorie" required value="<?=isset($catName) ? $catName : ""?>"><br>
-                            <datalist  name="categorie" id="categorie">
+                            <input  class="col col-10" list="categorie"  required value="<?=isset($catName) ? $catName : ""?>"><br>
+                            <datalist id="categorie">
                                 <?php 
                                 foreach($categories as $categorie)
                                 {?>
-                                    <option value=<?=$categorie["catName"];?>><?=$categorie["catName"]?></option><?php   
+                                    <option value="<?=$categorie["catName"];?>"><?=$categorie["catName"]?></option><?php   
                                 }?>
                             </datalist>
                             
                         </div>
                         <div class="row">
                             <label class="col col-2" for="editeur">Editeur</label>
-                            <input class="col col-10" list="editeur" value="<?=isset($pubName) ? $pubName : ""?>" required><br>
-                            <datalist name="editeur" id="editeur" >
+                            <input class="col col-10" id="editeur" list="editor" value="<?=isset($pubName) ? $pubName : ""?>" required><br>
+                            <datalist id="editor" >
                                 <?php    
                                 foreach($publishers as $publisher)
                                 {?>
-                                    <option value=<?=$publisher["pubName"];?>><?=$publisher["pubName"]?></option><?php   
+                                    <option value="<?=$publisher["pubName"];?>"><?=$publisher["pubName"]?></option><?php   
                                 }?>
                             </datalist>
                             
