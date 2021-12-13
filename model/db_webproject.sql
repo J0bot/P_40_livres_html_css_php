@@ -153,7 +153,9 @@ INSERT INTO `t_publisher` (`idPublisher`, `pubName`, `pubCreationDate`, `pubCoun
 CREATE TABLE `t_review` (
   `idReview` tinyint(1) UNSIGNED NOT NULL,
   `revScore` tinyint(3) UNSIGNED NOT NULL,
-  `idBook` tinyint(1) UNSIGNED NOT NULL
+  `idBook` tinyint(1) UNSIGNED NOT NULL,
+  `idUser` tinyint(1) UNSIGNED NOT NULL
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -227,7 +229,9 @@ ALTER TABLE `t_publisher`
 --
 ALTER TABLE `t_review`
   ADD PRIMARY KEY (`idReview`),
-  ADD KEY `fkBook` (`idBook`);
+  ADD KEY `fkBook` (`idBook`),
+  ADD KEY `fkUser` (`idUser`);
+
 
 --
 -- Index pour la table `t_user`
@@ -305,7 +309,9 @@ ALTER TABLE `t_commentary`
 -- Contraintes pour la table `t_review`
 --
 ALTER TABLE `t_review`
-  ADD CONSTRAINT `fkBook` FOREIGN KEY (`idBook`) REFERENCES `t_book` (`idBook`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fkBook` FOREIGN KEY (`idBook`) REFERENCES `t_book` (`idBook`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fkUserReview` FOREIGN KEY (`idUser`) REFERENCES `t_user` (`idUser`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

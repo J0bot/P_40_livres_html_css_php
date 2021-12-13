@@ -585,6 +585,12 @@ class Database {
         return $arrayData[0]["idBook"];
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $idUser
+     * @return void
+     */
     public function getUserBooks($idUser)
     {
         $query = "SELECT COUNT(booTitle) as nbBooks FROM t_book WHERE idUser = :idUser ";
@@ -599,7 +605,13 @@ class Database {
         $arrayData = $this->queryPrepareExecute($query,$binds);
         return $arrayData[0]["nbBooks"];
     }
-
+    
+    /**
+     * Undocumented function
+     *
+     * @param [type] $idUser
+     * @return void
+     */
     public function getUserEntryDate($idUser)
     {
         $query = "SELECT useEntryDate FROM t_user WHERE idUser = :idUser ";
@@ -615,9 +627,15 @@ class Database {
         return $arrayData[0]["useEntryDate"];
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param [type] $idUser
+     * @return void
+     */
     public function getUserReviews($idUser)
     {
-        $query = "SELECT COUNT(idReview) as nbReviews FROM t_commentary WHERE idUser = :idUser ";
+        $query = "SELECT COUNT(idReview) as nbReviews FROM t_review WHERE idUser=:idUser ";
         $binds = array (
             0 => array (
                 'var' => $idUser,
@@ -626,20 +644,36 @@ class Database {
             )
         );
 
-        $arrayData = $this->queryPrepareExecute($query,$binds);
-        return $arrayData[0]["nbReviews"];
+        $dataArray = $this->queryPrepareExecute($query,$binds);
+        if (isset($dataArray[0]["nbReviews"])) {
+            return $dataArray[0]["nbReviews"];
+        }
+        return null;
     }
 
-    public function addRating($rating, $idBook)//,$username)
+    /**
+     * Undocumented function
+     *
+     * @param [type] $rating
+     * @param [type] $idBook
+     * @param [type] $username
+     * @return void
+     */
+    public function addRating($rating, $idBook,$idUser)
     {
-        $query = "INSERT INTO t_review SET revScore=:rating, idBook=:idBook";
+        $query = "INSERT INTO t_review SET revScore=:rating, idBook=:idBook, idUser=:idUser";
         $binds = array (
             0 => array (
                 'var' => $rating,
                 'marker' => ':rating',
                 'type'  => PDO::PARAM_STR
             ),
-            1 => array (
+            3 => array (
+                'var' => $idUser,
+                'marker' => ':idUser',
+                'type'  => PDO::PARAM_STR
+            ),
+            2 => array (
                 'var' => $idBook,
                 'marker' => ':idBook',
                 'type'  => PDO::PARAM_STR
@@ -649,6 +683,12 @@ class Database {
         $this->queryPrepareExecute($query,$binds);
     }
     
+    /**
+     * Undocumented function
+     *
+     * @param [type] $idBook
+     * @return void
+     */
     public function getAverageRating($idBook)
     {
         $query = "SELECT ROUND(AVG(revScore)) as average FROM t_review WHERE  idBook=:idBook";
@@ -666,10 +706,7 @@ class Database {
             return $dataArray[0]["average"];
         }
         return null;
-
         
     }
-
-    
 }
 ?>
