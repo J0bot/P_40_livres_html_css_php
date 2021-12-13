@@ -261,9 +261,10 @@ elseif (isset($_GET["action"])) {
                 $conn = new Database;
                 $userId = $conn->getUserId($_SESSION["username"]);
                 $conn->addRating($_POST["rating"],$_GET["bookId"],$userId);
-                echo("<script>location.href = 'page=detail&bookId=".$_GET["bookId"]."';</script>");
+                echo("<script>location.href = '?page=detail&bookId=".$_GET["bookId"]."';</script>");
             }
         }
+        echo("<script>location.href = '?page=detail&bookId=".$_GET["bookId"]."';</script>");
     }
 }
 else {
