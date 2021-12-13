@@ -259,7 +259,7 @@ elseif (isset($_GET["action"])) {
         if (checkAdmin()!=0) {
             if (isset($_POST["rating"]) and isset($_GET["bookId"])) {
                 $conn = new Database();
-                $conn->addRating($_POST["rating"],$_GET["bookId"]),$_SESSION["username"]);
+                $conn->addRating($_POST["rating"],$_GET["bookId"],$_SESSION["username"]);
                 echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
             }
         }

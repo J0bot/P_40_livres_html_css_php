@@ -14,11 +14,7 @@
             <p>Nombre ouvrages proposés : <?=$userBooksNumber?></p>
             <p>Nombre d'appréciations faites : <?=$userReviews?></p>
         </div>
-        
-
     </div>
-    
-
 </div>
         
 
