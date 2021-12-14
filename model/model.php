@@ -810,7 +810,19 @@ class Database {
             return $dataArray[0]["average"];
         }
         return null;
-        
+    }
+
+
+    /**
+     * Fonction de recherche d'un livre
+     *
+     * @param string $bookName
+     * @return array liste des livres trouvés
+     */
+    public function searchBook($bookName)
+    {
+        $arrayData = 0;
+        return $arrayData;    
     }
 }
 ?>
