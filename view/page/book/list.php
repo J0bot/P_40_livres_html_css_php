@@ -8,7 +8,7 @@
 
     <form action="?page=list" method="post">
         <label for="category">Afficher par catégorie :</label>
-        <select type=submit name="category" id="category">
+        <select onchange="this.form.submit()" name="category" id="category">
         <?php 
         foreach ($list_category as $category) 
         {
@@ -16,6 +16,7 @@
         }
         ?>
         </select>
+        <noscript><input type="submit" value="Submit"></noscript>   
     </form>
 
 
