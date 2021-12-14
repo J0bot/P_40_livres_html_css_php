@@ -49,12 +49,18 @@ if (isset($_GET["page"])) {
                 $publishers = $conn->getAllPublishers();
                 include("view/page/book/add.php");
             }
+            else{
+                include("view/page/not_allowed.php");
+            }
             break;
 
         //Tout ce qui concerne l'ajout d'un utilisateur
         case 'addUser':
             if (checkAdmin()==1) {
                 include("view/page/user/add.php");
+            }
+            else{
+                include("view/page/not_allowed.php");
             }
             break;
 
