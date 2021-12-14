@@ -1,11 +1,13 @@
-
+<!-- Fenêtre de connexion -->
 <?php
 if (!isset($_SESSION["logged"])) {$_SESSION["logged"]= 0;}
 if ($_SESSION["logged"] ==0) {
   ?>
   
+<!-- Bouton de connexion -->
 <button onclick="document.getElementById('id01').style.display='block'" class="btn btn-outline-light me-2 buttonStyle" style="width:auto;">Login</button>
 
+<!-- Pop-up pour la connexion -->
 <div id="id01" class="modal">
   
   <form class="modal-content animate" action="?action=login" method="post" style="min-width: 300px;">
@@ -31,10 +33,10 @@ if ($_SESSION["logged"] ==0) {
 </div>
 
 <script>
-// Get the modal
+//Obtenir le model
 var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
+//Ferme la fenêtre de connexion si on clique ailleurs sur la page
 window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
@@ -42,6 +44,7 @@ window.onclick = function(event) {
 }
 </script>
 
+<!-- Si connecté, affiche le bouton "Disconnect" -->
 <?php
 }
 elseif($_SESSION["logged"] ==1)
