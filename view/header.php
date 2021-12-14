@@ -16,7 +16,7 @@
         ?>
         <li>
           <form action="?page=search" method="GET" >
-            <input type="text" placeholder="Rechercher" name="search">
+            <input type="text" placeholder="Rechercher" value="<?=isset($_GET["search"]) ? $_GET["search"]: ""?>" name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
           </form>
         </li>
