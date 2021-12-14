@@ -6,6 +6,7 @@
 <div class="container">
     <h1>Liste des ouvrages</h1>
 
+    <!-- Option de tri par catégorie -->
     <form class="row" action="?page=list" method="POST">
         <label class="col col-9 text-end align-middle catFontSize" for="category">Afficher par catégorie :</label>
 
@@ -24,7 +25,6 @@
         {
             if ($category["catName"]!=$cat) {
                 echo '<option value="'.$category["catName"].'">'.$category["catName"].'</option>';
-                # code...
             }
         }
         ?>
@@ -42,6 +42,7 @@
             <th>Pseudo</th>
         </tr>
 
+        <!-- Affiche la liste des ouvrages présents dans la BD -->
         <?php 
             foreach ($list_books as $book) { ?>
                 <tr class="listTextStyle">

@@ -9,6 +9,7 @@
     <div class=" backgroundCircle rounded-circle mx-auto d-block">
         <h1 class="centerUserInfo"><?=$userName?></h1>
 
+        <!-- Details sur l'utilisateur -->
         <div class="centerUserInfo">
             <p>Date d'entrée dans le site : <?=$userEntryDate?></p>
             <p>Nombre ouvrages proposés : <?=$userBooksNumber?></p>

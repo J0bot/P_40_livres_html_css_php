@@ -3,9 +3,8 @@
 // Date : 23.11.2021 - 09.12.2021
 // Descritption : Page de details d'un ouvrage
 
-
 ?>
-    <!--afficher les informations de l'ouvrage-->
+    <!-- Afficher les informations de l'ouvrage-->
     <div class="container">
         <div class="row">
             <div class="col col-1">
@@ -17,13 +16,15 @@
         </div>
         <div class="row">
             <div class="col col-3">
-                <!--insérer l'image du livre actuel -->
+
+                <!-- Insérer l'image du livre actuel -->
                 <img class="resizeImage" src="resources/img/<?=$book[0]["booCover"]?>" alt="<?=$book[0]["booTitle"]?>">
 
             </div>  
             <div class="col col-9">
                 <h1><?=$book[0]["booTitle"]?></h1>
-                <!--Informations livre-->
+
+                <!-- Informations livre-->
                 <ul>
                     <li>Auteur: <?=$book[0]["autLastName"] . " " . $book[0]["autFirstName"]?></li>
                     <li>Categorie: <?=$book[0]["catName"]?></li>
@@ -43,8 +44,9 @@
     </div>
 
     <div class="container">
-        <!--Utiliser le logo et le lien pour l'icône de rating en étoile
-        exemple trouvé sur: https://www.w3schools.com/howto/howto_css_star_rating.asp-->
+
+        <!-- Utiliser le logo et le lien pour l'icône de rating en étoile -->
+        <!-- Exemple trouvé sur: https://www.w3schools.com/howto/howto_css_star_rating.asp -->
         <div class="row">
             <h2>Note moyenne des utilisateurs</h2>
             <div class="col col-3 ">
@@ -70,10 +72,9 @@
             <br><h2>Ma note</h2>
             <div class="col col-3">
                 <div>
-                    <?php
-                    //changer pour que ca soit interactif (click+ajout db)
-                    //source https://codepen.io/jamesbarnett/pen/vlpkh
-                    ?>
+                    
+                    <!-- Option de notation des livres par les utilisateurs -->
+                    <!-- Source https://codepen.io/jamesbarnett/pen/vlpkh -->
                     <form action="?action=rate&bookId=<?=$_GET["bookId"]?>" method="post">
                         <div class="alignBaseline alignItems">
                             <fieldset class="rating">
@@ -96,24 +97,16 @@
             </div>
             <?php
         }?>
-        
+
         <br>
         <div class="col col-">
-            
-
         </div>
         
+        <!-- Synopsis -->
         <div class="row">
         <h2>Description</h2>
         <p>
             <?=$book[0]["booSummary"]?>
         </p>
-    </div>
-                    
+    </div>       
 </div>
-    
-    
-<?php 
-
-?>
-
