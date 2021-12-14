@@ -1,3 +1,4 @@
+<!-- Style du template -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

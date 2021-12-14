@@ -37,7 +37,7 @@ if (isset($_GET["page"])) {
             }
             $list_category = $conn->getAllCategories();
             include("view/page/book/list.php");
-            break;
+        break;
         //Tout ce qui conerne l'ajout d'un livre
         case 'add':  
             if (checkAdmin()) {
@@ -296,6 +296,12 @@ elseif (isset($_GET["action"])) {
             break;
     }
 
+}
+elseif(isset($_GET["search"]))
+{
+    $conn = new Database();
+    $list_books = $conn->searchBook($_GET["search"]);
+    include("view/page/book/search.php");
 }
 else {
     echo"<script>location.href=\"?page=home\"</script>";

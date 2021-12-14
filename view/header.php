@@ -1,7 +1,9 @@
+<!-- Header du site -->
 <header class="p-3   ">
   <div class="container">
     <div class="d-flex flex-wrap align-items-center justify-content-center">
 
+      <!-- Menu de navigation -->
       <ul class="nav col-12 col-lg-auto me-lg-auto mb-2  mb-md-0 nav nav-pills nav-justified navContainer">
         <li><a href="?page=home" class="nav-link px-2  <?=isset($_GET["page"]) ? ($_GET["page"] == "home" ? "active" : "") : "" ?> ">Accueil</a></li>
         <li><a href="?page=list" class="nav-link px-2  <?=isset($_GET["page"]) ? ($_GET["page"] == "list" ? "active" : "") : "" ?>">Liste des ouvrages</a></li>
@@ -14,16 +16,18 @@
           <?php
         } }
         ?>
+        <li>
+
+          <!-- Barre de recherche d'un ouvrage -->
+          <form action="?page=search" method="GET" >
+            <input type="text" placeholder="Rechercher" value="<?=isset($_GET["search"]) ? $_GET["search"]: ""?>" name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </li>
+        
       </ul>
 
-      <?php 
-      //Tout ce code permet de faire une bar de search, mais du coup mes camarades n'en veulent psa et c'est très dommage pck ça pourrait faire des truc mega classes et tout du coup ouais minecrafz c'est un jeu mega cool, et ouais. 
-      /*
-      <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-        <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-      </form>
-      */
-      ?>
+      <!-- Bouton de connexion -->
       <div class="text-end">
         <?php include("view/login_button.php");?>
       </div>
