@@ -27,8 +27,8 @@
                         </div>
                         <div class="row">
                             <label class="col col-2" for="auteurNom">Nom Auteur</label>
-                            <input class="col col-10" list="auteurNom" value="<?=isset($autLastName) ? $autLastName : ""?>" required> <br>
-                            <datalist  id="auteurNom">
+                            <input class="col col-10" list="auteurNom" name="auteurNom"  value="<?=isset($autLastName) ? $autLastName : ""?>" required> <br>
+                            <datalist id="auteurNom" >
                                 <?php 
                                 foreach($authors as $author)
                                 {?>
@@ -39,8 +39,8 @@
                         </div>
                         <div class="row">
                             <label class="col col-2" for="auteurPrenom">Prénom Auteur</label>
-                            <input class="col col-10" list="auteurPrenom" value="<?=isset($autFirstName) ? $autFirstName : ""?>" required><br>
-                            <datalist  id="auteurPrenom">
+                            <input class="col col-10" list="auteurPrenom" name="auteurPrenom" value="<?=isset($autFirstName) ? $autFirstName : ""?>" required><br>
+                            <datalist  id="auteurPrenom" >
                                 <?php 
                                 foreach($authors as $author)
                                 {?>
@@ -51,8 +51,8 @@
                         </div>
                         <div class="row">
                             <label class="col col-2" for="categorie">Categorie</label>
-                            <input  class="col col-10" list="categorie"  required value="<?=isset($catName) ? $catName : ""?>"><br>
-                            <datalist id="categorie">
+                            <input  class="col col-10" list="categorie" name="categorie" required value="<?=isset($catName) ? $catName : ""?>"><br>
+                            <datalist id="categorie"  >
                                 <?php 
                                 foreach($categories as $categorie)
                                 {?>
@@ -63,8 +63,8 @@
                         </div>
                         <div class="row">
                             <label class="col col-2" for="editeur">Editeur</label>
-                            <input class="col col-10" id="editeur" list="editor" value="<?=isset($pubName) ? $pubName : ""?>" required><br>
-                            <datalist id="editor" >
+                            <input class="col col-10"  list="editeur" name="editeur" value="<?=isset($pubName) ? $pubName : ""?>" required><br>
+                            <datalist id="editeur"  >
                                 <?php    
                                 foreach($publishers as $publisher)
                                 {?>
