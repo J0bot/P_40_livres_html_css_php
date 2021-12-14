@@ -6,7 +6,7 @@
 <div class="container">
     <h1>Liste des ouvrages</h1>
 
-    <form action="?page=list" method="post">
+    <form action="?page=list" method="get">
         <label for="category">Afficher par catégorie :</label>
         <select onchange="this.form.submit()" name="category" id="category">
         <option value="0">Tout afficher</option>

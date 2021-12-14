@@ -17,17 +17,17 @@ if (isset($_GET["page"])) {
         //Tout ce qui concerne la page de liste
         case 'list':
             $conn = new Database();
-            if ($_SERVER['REQUEST_METHOD']!='POST') {
+            if ($_SERVER['REQUEST_METHOD']!='GET') {
                 $list_books = $conn->getAllBooksList();
             }
             else {
-                if ($_POST["category"]==0) {
+                if ($_GET["category"]==0) {
                     # code...
                     $list_books = $conn->getAllBooksList();
                 }
                 else {
                     # code...
-                    $list_books = $conn->getCategoryBookList($_POST["category"]);
+                    $list_books = $conn->getCategoryBookList($_GET["category"]);
                 }
             }
             $list_category = $conn->getAllCategories();
