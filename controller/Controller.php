@@ -21,7 +21,7 @@ if (isset($_GET["page"])) {
                 $list_books = $conn->getAllBooksList();
             }
             else {
-                if ($_GET["category"]==0) {
+                if ($_GET["category"]=="0") {
                     # code...
                     $list_books = $conn->getAllBooksList();
                 }
