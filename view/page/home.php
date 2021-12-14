@@ -2,9 +2,7 @@
 <div class="container mt-3">
 
   <p class="centerText">
-    Bienvenue sur notre site web ! Ici vous allez retrouver de nombreux livres, qui ont été soigneusement ajoutés par nos chers administrateurs. 
-
-  
+    Bienvenue sur notre site web ! Ici vous allez retrouver de nombreux livres, qui ont été soigneusement ajoutés par nos chers administrateurs.
   </p>
   
   <!-- Affiche les derniers ouvrages ajoutés à la BD -->

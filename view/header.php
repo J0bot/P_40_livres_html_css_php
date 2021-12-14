@@ -2,7 +2,9 @@
 <header class="p-3   ">
   <div class="container ">
     <div>
-      <img src="./resources/img/pietroLogo.png" alt="Pietro's Library">
+      <a href="?page=home">
+        <img src="./resources/img/pietroLogo.png" alt="Pietro's Library">
+      </a>
       
     </div>
     <div class="d-flex flex-wrap align-items-center justify-content-center">
