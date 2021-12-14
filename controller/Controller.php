@@ -8,12 +8,14 @@ include("view/view.php");
 
 if (isset($_GET["page"])) {
     switch ($_GET["page"]) {
+
         //Tout ce qui concerne la page home
         case 'home':
             $conn = new Database();
             $list_books = $conn->getFiveLastBooks();
             include("view/page/home.php");
             break;
+
         //Tout ce qui concerne la page de liste
         case 'list':
             $conn = new Database();
@@ -27,7 +29,6 @@ if (isset($_GET["page"])) {
                 $cat = $_POST["category"];
                 if ($cat=="Tout afficher") {
                     $list_books = $conn->getAllBooksList();
-                    # code...
                 }
                 else
                 {
@@ -38,6 +39,7 @@ if (isset($_GET["page"])) {
             $list_category = $conn->getAllCategories();
             include("view/page/book/list.php");
         break;
+
         //Tout ce qui conerne l'ajout d'un livre
         case 'add':  
             if (checkAdmin()) {
@@ -48,14 +50,17 @@ if (isset($_GET["page"])) {
                 include("view/page/book/add.php");
             }
             break;
-        // Tout ce qui concerne l'ajout d'un user
+
+        //Tout ce qui concerne l'ajout d'un utilisateur
         case 'addUser':
             if (checkAdmin()) {
                 include("view/page/user/add.php");
             }
             break;
-        // Tout ce qui concerne la page detail d'un livre et d'un user
+
+        //Tout ce qui concerne la page detail d'un livre et d'un utilisateur
         case 'detail':
+
             //Si on veut acceder à un livre on doit être connecté
             if (isset($_GET["bookId"]) and checkAdmin()!=0) {
                 $id = $_GET["bookId"];
@@ -73,7 +78,8 @@ if (isset($_GET["page"])) {
                     echo "this book is not in our databases (attentions on en a plusieurs)";
                 }
             }
-            //pour acceder à un user il faut être connecté
+
+            //Pour acceder à un utilisateur il faut être connecté
             elseif(isset($_GET["userId"]) and checkAdmin()!=0)
             {
                 $userName = $_GET["userId"];
@@ -99,7 +105,8 @@ if (isset($_GET["page"])) {
 }
 elseif (isset($_GET["action"])) {
     switch ($_GET["action"]) {
-        //Tout ce qui concerne l'ajout d'un user
+
+        //Tout ce qui concerne l'ajout d'un utilisateur
         case 'addUser':
             if (isset($_POST["uname"]) && isset($_POST["psw"])) {
                 $useName = htmlspecialchars($_POST["uname"]);
@@ -118,8 +125,10 @@ elseif (isset($_GET["action"])) {
                 }
             }
             break;
+
         //Si on arrive sur une action de type addBook
         case 'addBook':
+
             //Si on arrive sur cette page grace à une requete de type POST, on va bien tout vérifier
             if ($_SERVER['REQUEST_METHOD']=='POST' and checkAdmin()) {
 
@@ -141,19 +150,17 @@ elseif (isset($_GET["action"])) {
                     include("controller/resize-image.php");
                     
                     $resizeImg = new Resize($booCoverFolder.$booCover);
+
                     //hauteur accueil : 320
                     //hauteur detial : 350
                     //largeur liste : 100
-                    //On va resize à 350, car c'est la taille la plus grande qu'on a besoin
+                    //On va resize à 350, car c'est la taille la plus grande dont on a besoin
                     $resizeImg->resizeImage(0,350,'portrait');
                     $resizeImg->saveImage($booCoverFolder.$booCover,100);
-                    
-                    //echo '<img src="resources/img/'.$booCover.'"/>';
                     
                     /// END OF BOOK COVER STUFF
         
                     // S'il y a une erreur dans un des champs, on va mettre 0 comme valeur à la variable erreur (exemple : autNameErr)
-        
                     $booTitleErr = ($_POST["title"] != "" && strlen($_POST["title"])<50) ? 1 : 0;
                     $booTitle = htmlspecialchars($_POST["title"]);
         
@@ -192,14 +199,15 @@ elseif (isset($_GET["action"])) {
                         $publishers = $conn->getAllPublishers();
                         include("view/page/book/add.php");
                     }
+
                     // Si on a plus d'erreur on peut envoyer les infos à la DB
                     else 
                     {
                         $conn = new Database();
         
                         //On check si certains champs existent déjà dans la db
-        
                         $idAuthor = $conn->checkAuthor($autFirstName, $autLastName);
+
                         //Si l'auteur n'existe pas, on va en créer un nouveau
                         if ($idAuthor==null) {
                         $conn->insertAuthor($autFirstName, $autLastName);
@@ -208,15 +216,15 @@ elseif (isset($_GET["action"])) {
                         }
         
                         $idCategory = $conn->checkCategory($catName);
-                        //Si la categorie n'existe pas, on va en créer un nouveau
-        
+
+                        //Si la categorie n'existe pas, on va en créer une nouvelle
                         if ($idCategory==null) {
                             $conn->insertCategory($catName);
                             $idCategory = $conn->checkCategory($catName);
                         }
         
-                        
                         $idPublisher = $conn->checkPublisher($pubName);
+
                         //Si l'editeur n'existe pas on l'ajoute
                         if ($idPublisher==null) {
                             $conn->insertPublisher($pubName);
@@ -224,9 +232,7 @@ elseif (isset($_GET["action"])) {
                         }
         
                         $idUser = $conn->getUserId($_SESSION["username"]);
-        
                         $conn->insertBook($booTitle, $idCategory, $idAuthor, $idPublisher,$booPublishingYear, $booSummary, $booTeaser,$booNumberOfPages, $booCover,$idUser);
-        
                         $idBook = $conn->getBookId($booTitle);
 
                         echo "<script>setTimeout(function(){window.location.href = '?page=detail&bookId=$idBook';}, 200);</script>";
@@ -242,7 +248,8 @@ elseif (isset($_GET["action"])) {
                 include("view/page/book/add.php");
             }
             break;
-        // Tout ce qui concerne le login d'un user
+
+        //Tout ce qui concerne le login d'un user
         case 'login':
             if (isset($_POST["uname"]) and isset($_POST["psw"])) {
                 $useLogin = htmlspecialchars($_POST["uname"]);
@@ -259,7 +266,7 @@ elseif (isset($_GET["action"])) {
                         $_SESSION["adminRights"] = $adminRights == 1 ? 1 : 0;
         
                         $_SESSION["username"] = $useLogin;
-                        //Ouais jsp ça marche avec du javascript faut pas chercher
+                        
                         echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
                     }
                     else { echo "password or user wrong";}
@@ -268,13 +275,14 @@ elseif (isset($_GET["action"])) {
             }
             else { echo "password or user wrong";}
             break;
-        // Tout ce qui concerne la deco d'un user
+
+        //Tout ce qui concerne la deconnexion d'un utilisateur
         case 'disconnect':
             $_SESSION["logged"] = 0;
             header('Location: ' . $_SERVER['HTTP_REFERER']);
             break;
         
-        // Tout ce qui concerne le rate d'un livre
+        //Tout ce qui concerne les notations des livres
         case 'rate':
             if (checkAdmin()!=0) {
                 if (isset($_GET["bookId"])) {
