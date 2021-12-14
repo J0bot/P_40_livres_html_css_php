@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `db_webproject`
 --
-DROP DATABASE db_webproject;
+DROP DATABASE IF EXISTS db_webproject;
 CREATE DATABASE IF NOT EXISTS `db_webproject` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `db_webproject`;
 

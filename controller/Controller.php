@@ -19,10 +19,21 @@ if (isset($_GET["page"])) {
             $conn = new Database();
             if ($_SERVER['REQUEST_METHOD']!='POST') {
                 $list_books = $conn->getAllBooksList();
+                $cat = "Tout afficher";
             }
-            else {
-                $list_books = $conn->getCategoryBookList($_POST["category"]);
-               
+            else 
+            {
+                
+                $cat = $_POST["category"];
+                if ($cat=="Tout afficher") {
+                    $list_books = $conn->getAllBooksList();
+                    # code...
+                }
+                else
+                {
+                    $list_books = $conn->getCategoryBookList($_POST["category"]);
+
+                }
             }
             $list_category = $conn->getAllCategories();
             include("view/page/book/list.php");

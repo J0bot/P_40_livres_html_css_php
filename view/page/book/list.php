@@ -8,13 +8,25 @@
 
     <form action="?page=list" method="POST">
         <label for="category">Afficher par catégorie :</label>
+
         <select onchange="this.form.submit()" name="category" id="category">
 
+        <option value="<?=$cat?>"><?=$cat?></option>
+        <?php
+        if ($cat!="Tout afficher") {
+            ?>
+            <option value="Tout afficher">Tout afficher</option>
+            <?php
+        }
+        ?>
         
         <?php 
         foreach ($list_category as $category) 
         {
-            echo '<option value="'.$category["catName"].'">'.$category["catName"].'</option>';
+            if ($category["catName"]!=$cat) {
+                echo '<option value="'.$category["catName"].'">'.$category["catName"].'</option>';
+                # code...
+            }
         }
         ?>
         </select>
