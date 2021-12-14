@@ -14,6 +14,7 @@
             <th>Pseudo</th>
         </tr>
 
+        <!-- Affiche tout les livres recherchés -->
         <?php 
             foreach ($list_books as $book) { ?>
                 <tr class="listTextStyle ">

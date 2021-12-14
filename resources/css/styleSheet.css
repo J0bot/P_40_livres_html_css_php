@@ -1,4 +1,4 @@
-/*main colors*/
+/* Couleurs principales */
 :root{
   --main-color: #C82B08;
   --main-color-hover: #ff5732;
@@ -7,7 +7,7 @@
   --second-color: #F8F9FA;
   --second-color-hover: #edeff1;
 }
-/*general*/
+/* Généralités */
 a{
   color: var(--main-color);
 }
@@ -39,7 +39,7 @@ h1{
   align-items:center;
 }
 
-/*home page*/
+/* Page d'accueil */
 .card{
   margin: 0.7em ;
   width:250px; height:500px;
@@ -65,7 +65,7 @@ h1{
   height:25%
 }
 
-/*page liste des ouvrages*/
+/* Page liste des ouvrages */
 tr{
   font-size:  1.5em;
 }
@@ -87,7 +87,7 @@ tr{
 .catFontSize{
   font-size: 1.2rem;
 }
-/*page détails*/
+/* Page détails */
 .resizeImage{
   max-width: 100% ;
   padding: 2em 0em;
@@ -112,12 +112,12 @@ tr{
   color: var(--main-color);
 }
 
-/*sur note moyenne des utilisateurs*/
+/* Sur note moyenne des utilisateurs */
 .noHover{
   pointer-events: none;
 }
 
-/*source https://codepen.io/jamesbarnett/pen/vlpkh */
+/* Source https://codepen.io/jamesbarnett/pen/vlpkh */
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 fieldset, label { margin: 0; padding: 0; }
@@ -166,7 +166,7 @@ h1 { font-size: 1.5em; margin: 10px; } */
 
 
 
-/*page ajouter un user*/
+/* Page ajouter un utilisateur */
 .btnContainer{
   display: flex;
   justify-content: flex-end;
@@ -182,7 +182,7 @@ h1 { font-size: 1.5em; margin: 10px; } */
   transform: scale(1.5);
   
 }
-/*details user*/
+/* Détails utilisateur */
 .centerUserInfo{
   display: flex;
   align-items: center;
@@ -194,7 +194,8 @@ h1 { font-size: 1.5em; margin: 10px; } */
   padding: 78px 50px;
   border: 4px solid var(--main-color);
 }
-/*nav*/
+
+/* Navigation */
 .nav-pills .nav-link{
   background: var(--second-color);
   display: flex;
@@ -223,7 +224,7 @@ width: 80%;
 justify-content: left;
 }
 
-/*login button*/
+/* Bouton de connexion */
 .buttonStyle{
   color: black;
   border-color:var(--main-color);
@@ -248,14 +249,14 @@ button:hover {
   opacity: 0.8;
 }
 
-/* Extra styles for the cancel button */
+/* Styles supplémentaires pour le bouton fermer (x) */
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
 
-/* Center the image and position the close button */
+/* Position et image centrée */
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
@@ -277,22 +278,22 @@ span.psw {
   padding-top: 16px;
 }
 
-/* The Modal (background) */
+/* Model : fond */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  display: none; /* Caché par défaut */
+  position: fixed; /* Reste en place */
+  z-index: 1; 
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  width: 100%; /* Largeur max */
+  height: 100%; /* Hauteur max */
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); /* noir avec opacité */
   padding-top: 60px;
 }
 
-/* Modal Content/Box */
+/* Model : contenu et boîtes */
 .modal-content {
   background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
@@ -300,7 +301,7 @@ span.psw {
   width: 20%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button (x) */
+/* Bouton fermer (x) */
 .close {
   position: absolute;
   right: 25px;
@@ -316,7 +317,7 @@ span.psw {
   cursor: pointer;
 }
 
-/* Add Zoom Animation */
+/* Animation de zoom */
 .animate {
   -webkit-animation: animatezoom 0.6s;
   animation: animatezoom 0.6s
@@ -332,7 +333,7 @@ span.psw {
   to {transform: scale(1)}
 }
 
-/* Change styles for span and cancel button on extra small screens */
+/* Styles pour les espaces et le bouton fermer pour des écrans plus petits */
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
@@ -343,7 +344,7 @@ span.psw {
   }
 }
 
-/*forms style (add book/user)*/
+/* Style des formulaires */
 .formMainContainer{
   display: flex;
   flex-direction: column;
@@ -370,5 +371,3 @@ textarea{
   margin: 15px 0px;
   width: 15em;
 }
-
-/*POP UP COOKIES*/

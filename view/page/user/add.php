@@ -8,6 +8,8 @@
             <h1>Ajout d'un user</h1>
         </div>
         <div class="row">
+            
+            <!-- Formulaire d'ajout d'un utilisateur -->
             <form action="?action=addUser" method="post" enctype="multipart/form-data">
             <div class="row">
                 <label class="col col-1" for="uname">Username </label>
