@@ -10,6 +10,7 @@
         <label for="category">Afficher par catégorie :</label>
         <select onchange="this.form.submit()" name="category" id="category">
 
+        
         <?php 
         foreach ($list_category as $category) 
         {
