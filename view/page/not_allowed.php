@@ -1,2 +1,5 @@
 <!--Page d'erreur d'accès -->
-<p class="centerText">Accès refusé.</p>
+<div class="centerText">
+    <p>Accès refusé.</p>
+    <img src="resources/img/vibeCheck.jpg">
+</div>
