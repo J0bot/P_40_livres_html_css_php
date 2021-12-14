@@ -10,7 +10,7 @@
     <div class="d-flex flex-wrap align-items-center justify-content-center">
 
       <!-- Menu de navigation -->
-      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2  mb-md-0 nav nav-pills nav-justified navContainer header">
+      <ul class="nav col-12 col-lg-auto me-lg-auto mb-2  mb-md-0 nav nav-pills nav-justified navContainer ">
         <li><a href="?page=home" class="nav-link px-2  <?=isset($_GET["page"]) ? ($_GET["page"] == "home" ? "active" : "") : "" ?> ">Accueil</a></li>
         <li><a href="?page=list" class="nav-link px-2  <?=isset($_GET["page"]) ? ($_GET["page"] == "list" ? "active" : "") : "" ?>">Liste des ouvrages</a></li>
         <?php if (!isset($_SESSION["logged"])) {$_SESSION["logged"]= 0;}
@@ -34,7 +34,7 @@
       </ul>
 
       <!-- Bouton de connexion -->
-      <div class="text-end">
+      <div class="text-end alignSelfTop">
         <?php include("view/login_button.php");?>
       </div>
     </div>

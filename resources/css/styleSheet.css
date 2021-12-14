@@ -32,17 +32,20 @@ h1{
   border-color: var(--main-color-hover);
 }
 .alignBaseline{
-  display: flex;
-  
+ 
+  align-items: baseline; 
 }
 .alignItems{
   align-items:center;
+}
+.alignSelfTop{
+  align-self:flex-start;
 }
 .noButton{
   background: none;
   border: none;
 }
-.header{
+.alignCenter{
   display: flex;
   align-items: center;
 }

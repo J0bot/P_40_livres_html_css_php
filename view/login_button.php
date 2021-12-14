@@ -50,9 +50,12 @@ window.onclick = function(event) {
 elseif($_SESSION["logged"] ==1)
 {
   ?>
-  <p><?=$_SESSION["username"]?> (<?=$_SESSION["adminRights"] == 1 ? "admin": "user"?>)</p>
-  <button onclick="location.replace('?action=disconnect')" class="btn btn-outline-light me-2 buttonStyle" style="width:auto;">Disconnect</button>
-
+  <div class="row alignBaseline">
+    <p style="width:auto;"><?=$_SESSION["username"]?> (<?=$_SESSION["adminRights"] == 1 ? "admin": "user"?>)</p>
+    <button onclick="location.replace('?action=disconnect')" class="btn btn-outline-light me-2 buttonStyle" style="width:auto;">Disconnect</button>
+    
+  </div>
+  
   <?php
 }
 ?>
