@@ -1,5 +1,5 @@
 <!--Page d'erreur d'accès -->
 <div class="centerText">
-    <p>Accès refusé.</p>
+    <h3>Accès refusé.</h3>
     <img src="resources/img/vibeCheck.jpg">
 </div>
