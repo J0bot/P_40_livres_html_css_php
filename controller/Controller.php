@@ -42,7 +42,7 @@ if (isset($_GET["page"])) {
 
         //Tout ce qui conerne l'ajout d'un livre
         case 'add':  
-            if (checkAdmin()) {
+            if (checkAdmin()==1) {
                 $conn = new Database();
                 $authors = $conn->getAllAuthors();
                 $categories = $conn->getAllCategories();
@@ -53,7 +53,7 @@ if (isset($_GET["page"])) {
 
         //Tout ce qui concerne l'ajout d'un utilisateur
         case 'addUser':
-            if (checkAdmin()) {
+            if (checkAdmin()==1) {
                 include("view/page/user/add.php");
             }
             break;
