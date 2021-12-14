@@ -122,13 +122,11 @@ elseif (isset($_GET["action"])) {
         case 'addBook':
             //Si on arrive sur cette page grace à une requete de type POST, on va bien tout vérifier
             if ($_SERVER['REQUEST_METHOD']=='POST' and checkAdmin()) {
-                var_dump($_POST);
 
                 //Si tous les champs demandés sont isset, on peut continuerr
                 if (isset($_FILES['bookImage']) && isset($_POST["title"]) && isset($_POST["auteurNom"]) && isset($_POST["auteurPrenom"])
                 && isset($_POST["categorie"]) && isset($_POST["editeur"]) && isset($_POST["yearEdition"]) 
                 && isset($_POST["pageNumber"]) && isset($_POST["pdfLink"]) && isset($_POST["description"])) {
-                    echo "ehy";
 
                     
                     /// BOOK COVER STUFF
@@ -231,7 +229,7 @@ elseif (isset($_GET["action"])) {
         
                         $idBook = $conn->getBookId($booTitle);
 
-                        echo "<script>setTimeout(function(){window.location.href = '?page=detail&bookId=$idBook';}, 500);</script>";
+                        echo "<script>setTimeout(function(){window.location.href = '?page=detail&bookId=$idBook';}, 200);</script>";
                     }                
                 }
             }
