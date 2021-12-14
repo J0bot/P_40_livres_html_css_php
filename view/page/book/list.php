@@ -6,16 +6,18 @@
 <div class="container">
     <h1>Liste des ouvrages</h1>
 
-    <form action="?page=list" method="post"></form>
-    <label for="category">Afficher par catégorie :</label>
-    <select type=submit name="category" id="category">
+    <form action="?page=list" method="post">
+        <label for="category">Afficher par catégorie :</label>
+        <select type=submit name="category" id="category">
         <?php 
         foreach ($list_category as $category) 
         {
             echo '<option value="'.$category["catName"].'">'.$category["catName"].'</option>';
         }
         ?>
-    </select>
+        </select>
+    </form>
+
 
     <table class="table table-hover">
         <tr>

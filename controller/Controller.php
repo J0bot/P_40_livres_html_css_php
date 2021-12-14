@@ -17,7 +17,12 @@ if (isset($_GET["page"])) {
         //Tout ce qui concerne la page de liste
         case 'list':
             $conn = new Database();
-            $list_books = $conn->getAllBooksList();
+            if ($_SERVER['REQUEST_METHOD']!='POST') {
+                $list_books = $conn->getAllBooksList();
+            }
+            else {
+                $list_books = $conn->getCategoryBookList($_POST["category"]);
+            }
             $list_category = $conn->getAllCategories();
             include("view/page/book/list.php");
             break;
