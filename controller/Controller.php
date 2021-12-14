@@ -49,7 +49,6 @@ if (isset($_GET["page"])) {
                 $publishers = $conn->getAllPublishers();
                 include("view/page/book/add.php");
             }
-
             break;
 
         //Tout ce qui concerne l'ajout d'un utilisateur
@@ -270,11 +269,11 @@ elseif (isset($_GET["action"])) {
                         
                         echo("<script>location.href = '".$_SERVER['HTTP_REFERER']."';</script>");
                     }
-                    else { echo "password or user wrong";}
+                    else { echo "<div class=\"centerText\"><h3>password or user wrong</h3><br><img style=\"max-width:700px;\" src=\"resources/img/creditPoint.jpg\"></div>";}
                 }
-                else { echo "password or user wrong";}
+                else { echo "<div class=\"centerText\"><h3>password or user wrong</h3><br><img style=\"max-width:700px;\" src=\"resources/img/creditPoint.jpg\"></div>";}
             }
-            else { echo "password or user wrong";}
+            else { echo "<div class=\"centerText\"><h3>password or user wrong</h3><br><img style=\"max-width:700px;\" src=\"resources/img/creditPoint.jpg\"></div>";}
             break;
 
         //Tout ce qui concerne la deconnexion d'un utilisateur
