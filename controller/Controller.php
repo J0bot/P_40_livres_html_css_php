@@ -298,7 +298,7 @@ elseif (isset($_GET["action"])) {
 
 }
 else {
-    include("view/page/404.php");
+    echo"<script>location.href=\"?page=home\"</script>";
 }
 
 /**
