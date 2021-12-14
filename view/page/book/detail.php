@@ -72,7 +72,6 @@
             <br><h2>Ma note</h2>
             <div class="col col-3">
                 <div>
-                    
                     <!-- Option de notation des livres par les utilisateurs -->
                     <!-- Source https://codepen.io/jamesbarnett/pen/vlpkh -->
                     <form action="?action=rate&bookId=<?=$_GET["bookId"]?>" method="post">
