@@ -14,8 +14,22 @@
                 <!-- ajout image-->
                 <div class="col col-5">
                     <label for="bookImage">Importer le cover</label>
-                    <input type="file" id="bookImage" name="bookImage" accept=".jpg, .jpeg, .png" required>
+                    <input type="file" id="bookImage" name="bookImage" onchange="PreviewImage();" accept=".jpg, .jpeg, .png" required>
+                    <br>
+                    <img id="uploadPreview" style="width: auto; height: 300px;" />
                 </div>
+                <script type="text/javascript">
+
+                    function PreviewImage() {
+                        var oFReader = new FileReader();
+                        oFReader.readAsDataURL(document.getElementById("bookImage").files[0]);
+
+                        oFReader.onload = function (oFREvent) {
+                            document.getElementById("uploadPreview").src = oFREvent.target.result;
+                        };
+                    };
+
+                </script>
                 
                 <!--form-->
                 <div class="col col-7">
