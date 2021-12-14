@@ -198,8 +198,8 @@ class Database {
         );
 
         $arrayData = $this->queryPrepareExecute($query, $binds);
-        if (arrayData!=null) {
-            return arrayData;
+        if ($arrayData!=null) {
+            return $arrayData;
         }
         return null;
     }
