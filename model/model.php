@@ -821,7 +821,7 @@ class Database {
      */
     public function searchBook($bookName)
     {
-        $pattern = $bookName . "%";
+        $pattern ="%" .$bookName . "%";
         $query = "SELECT idBook, catName, booTitle, booCover, useName, autLastName, autFirstName FROM t_book
         INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
         INNER JOIN t_user on t_book.idUser = t_user.idUser
