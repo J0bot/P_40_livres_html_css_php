@@ -21,14 +21,8 @@ if (isset($_GET["page"])) {
                 $list_books = $conn->getAllBooksList();
             }
             else {
-                if ($_POST["category"]=="0") {
-                    # code...
-                    $list_books = $conn->getAllBooksList();
-                }
-                else {
-                    # code...
-                    $list_books = $conn->getCategoryBookList($_POST["category"]);
-                }
+                $list_books = $conn->getCategoryBookList($_POST["category"]);
+               
             }
             $list_category = $conn->getAllCategories();
             include("view/page/book/list.php");

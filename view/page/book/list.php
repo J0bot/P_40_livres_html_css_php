@@ -9,7 +9,7 @@
     <form action="?page=list" method="POST">
         <label for="category">Afficher par catégorie :</label>
         <select onchange="this.form.submit()" name="category" id="category">
-        <option value="0">Tout afficher</option>
+
         <?php 
         foreach ($list_category as $category) 
         {
