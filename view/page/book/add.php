@@ -21,6 +21,7 @@
                 </div>
 
                 <script type="text/javascript">
+                
                     //Cette fonction permet de preview l'image qu'on vient d'importer
                     function PreviewImage() {
                         var oFReader = new FileReader();

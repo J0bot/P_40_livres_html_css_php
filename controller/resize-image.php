@@ -9,7 +9,7 @@
 
 class Resize
 {
-    // *** Class variables
+    //Variables de classe
     private $image;
     private $width;
     private $height;
@@ -17,19 +17,23 @@ class Resize
 
     function __construct($fileName)
     {
-        // *** Open up the file
+        //Ouvre le fichier
         $this->image = $this->openImage($fileName);
 
-        // *** Get width and height
+        //Obtenir la hauteur et la largeur
         $this->width  = imagesx($this->image);
         $this->height = imagesy($this->image);
     }
 
-    ## --------------------------------------------------------
-
+    /**
+     * Ouvre le fichier image
+     *
+     * @param string $file
+     * @return image
+     */
     private function openImage($file)
     {
-        // *** Get extension
+        //Chercher l'extension du fichier
         $extension = strtolower(strrchr($file, '.'));
 
         switch($extension)
@@ -51,30 +55,41 @@ class Resize
         return $img;
     }
 
-    ## --------------------------------------------------------
-
+    /**
+     * Redimensionne l'image
+     *
+     * @param int $newWidth
+     * @param int $newHeight
+     * @param string $option
+     */
     public function resizeImage($newWidth, $newHeight, $option="auto")
     {
-        // *** Get optimal width and height - based on $option
+        //Obtenir la hauteur et la largeur optimale en fonction de $option
         $optionArray = $this->getDimensions($newWidth, $newHeight, $option);
 
         $optimalWidth  = $optionArray['optimalWidth'];
         $optimalHeight = $optionArray['optimalHeight'];
 
 
-        // *** Resample - create image canvas of x, y size
+        //Redimensionne l'image selon le format souhaité
         $this->imageResized = imagecreatetruecolor($optimalWidth, $optimalHeight);
         imagecopyresampled($this->imageResized, $this->image, 0, 0, 0, 0, $optimalWidth, $optimalHeight, $this->width, $this->height);
 
 
-        // *** if option is 'crop', then crop too
+        //Option de recadrage
         if ($option == 'crop') {
             $this->crop($optimalWidth, $optimalHeight, $newWidth, $newHeight);
         }
     }
 
-    ## --------------------------------------------------------
-
+    /**
+     * Retourne les dimensions de l'image
+     *
+     * @param int $newWidth
+     * @param int $newHeight
+     * @param string $option
+     * @return array
+     */
     private function getDimensions($newWidth, $newHeight, $option)
     {
 
@@ -106,8 +121,12 @@ class Resize
         return array('optimalWidth' => $optimalWidth, 'optimalHeight' => $optimalHeight);
     }
 
-    ## --------------------------------------------------------
-
+    /**
+     * Retourne la largeur pour une hauteur fixée
+     *
+     * @param int $newHeight
+     * @return int
+     */
     private function getSizeByFixedHeight($newHeight)
     {
         $ratio = $this->width / $this->height;
@@ -115,6 +134,12 @@ class Resize
         return $newWidth;
     }
 
+    /**
+     * Retourne la hauteur pour une largeur fixée
+     *
+     * @param int $newWidth
+     * @return int
+     */
     private function getSizeByFixedWidth($newWidth)
     {
         $ratio = $this->height / $this->width;
@@ -122,22 +147,26 @@ class Resize
         return $newHeight;
     }
 
+    /**
+     * Retourne les dimensions optimales en fonction des dimensions actuelles et de celles souhaitées
+     *
+     * @param int $newWidth
+     * @param int $newHeight
+     * @return array
+     */
     private function getSizeByAuto($newWidth, $newHeight)
     {
         if ($this->height < $this->width)
-        // *** Image to be resized is wider (landscape)
         {
             $optimalWidth = $newWidth;
             $optimalHeight= $this->getSizeByFixedWidth($newWidth);
         }
         elseif ($this->height > $this->width)
-        // *** Image to be resized is taller (portrait)
         {
             $optimalWidth = $this->getSizeByFixedHeight($newHeight);
             $optimalHeight= $newHeight;
         }
         else
-        // *** Image to be resizerd is a square
         {
             if ($newHeight < $newWidth) {
                 $optimalWidth = $newWidth;
@@ -146,7 +175,6 @@ class Resize
                 $optimalWidth = $this->getSizeByFixedHeight($newHeight);
                 $optimalHeight= $newHeight;
             } else {
-                // *** Sqaure being resized to a square
                 $optimalWidth = $newWidth;
                 $optimalHeight= $newHeight;
             }
@@ -155,8 +183,13 @@ class Resize
         return array('optimalWidth' => $optimalWidth, 'optimalHeight' => $optimalHeight);
     }
 
-    ## --------------------------------------------------------
-
+    /**
+     * Retourne les dimensions optimale pour le recadrage de l'image
+     *
+     * @param int $newWidth
+     * @param int $newHeight
+     * @return array
+     */
     private function getOptimalCrop($newWidth, $newHeight)
     {
 
@@ -175,27 +208,33 @@ class Resize
         return array('optimalWidth' => $optimalWidth, 'optimalHeight' => $optimalHeight);
     }
 
-    ## --------------------------------------------------------
-
+    /**
+     * Recadre l'image selon les dimensions souhaitées
+     *
+     * @param int $optimalWidth
+     * @param int $optimalHeight
+     * @param int $newWidth
+     * @param int $newHeight
+     */
     private function crop($optimalWidth, $optimalHeight, $newWidth, $newHeight)
     {
-        // *** Find center - this will be used for the crop
         $cropStartX = ( $optimalWidth / 2) - ( $newWidth /2 );
         $cropStartY = ( $optimalHeight/ 2) - ( $newHeight/2 );
 
         $crop = $this->imageResized;
-        //imagedestroy($this->imageResized);
 
-        // *** Now crop from center to exact requested size
         $this->imageResized = imagecreatetruecolor($newWidth , $newHeight);
         imagecopyresampled($this->imageResized, $crop , 0, 0, $cropStartX, $cropStartY, $newWidth, $newHeight , $newWidth, $newHeight);
     }
 
-    ## --------------------------------------------------------
-
+    /**
+     * Enregistre l'image
+     *
+     * @param int $savePath
+     * @param int $imageQuality
+     */
     public function saveImage($savePath, $imageQuality="100")
     {
-        // *** Get extension
         $extension = strrchr($savePath, '.');
             $extension = strtolower($extension);
 
@@ -215,29 +254,19 @@ class Resize
                 break;
 
             case '.png':
-                // *** Scale quality from 0-100 to 0-9
                 $scaleQuality = round(($imageQuality/100) * 9);
 
-                // *** Invert quality setting as 0 is best, not 9
                 $invertScaleQuality = 9 - $scaleQuality;
 
                 if (imagetypes() & IMG_PNG) {
                         imagepng($this->imageResized, $savePath, $invertScaleQuality);
                 }
                 break;
-
-            // ... etc
-
             default:
-                // *** No extension - No save.
+
                 break;
         }
-
         imagedestroy($this->imageResized);
     }
-
-
-    ## --------------------------------------------------------
-
 }
 ?>

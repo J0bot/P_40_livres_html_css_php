@@ -1,10 +1,10 @@
 <?php 
 //Auteur : José Carlos Gasser
 //Date : 02.11.2021
-//Description : ce fichier va concerner tout ce qui est de la connection à la db
+//Description : ce fichier va concerner tout ce qui est de la connexion à la db
 
 
-//Cette classe va permettre la connection avec la db
+//Cette classe va permettre la connexion avec la db
 //Tout ce code a énormément de similitude avec le travail de module php/mysql de José Gasser car tout a été repris et adapté par lui-même pour ce projet
 class Database {
     public $pdo;
@@ -14,7 +14,7 @@ class Database {
      */
     function __construct()
     {
-        //On va inclure le array qui contient les infos de connection
+        //On va inclure le tableau qui contient les informations de connexion
         include('config.php');
 
         //On va utiliser PDO pour parler avec la db, et pour ce faire il faut commencer par se connecter
@@ -23,11 +23,11 @@ class Database {
             $dsn = "mysql:host=" . $login["ip"] . ";dbname=" . $login["db"]; 
             $this->pdo=new PDO($dsn,$login['user'],$login['pass']);
         
-            // Activer le mode exeption du pdo
+            //Activer le mode exeption du pdo
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            // echo "On est dans la matrice";
         }
-        //Si on arrive pas à se connecter ça va nous trow un message d'erreur
+
+        //Si on arrive pas à se connecter ça va nous envoyer un message d'erreur
         catch(PDOException $e)
         {
             echo "Impossible de se connecter à la base de données, avec le code d'erreur : \n";
@@ -97,7 +97,7 @@ class Database {
     }
 
     /**
-     * Undocumented function
+     * Vérifie si un livre existe
      *
      * @param int $id
      * @return bool 
@@ -181,6 +181,11 @@ class Database {
         return $result;
     }
 
+    /**
+     * Retourne tous les livres pour une catégorie donnée
+     * 
+     * @return array 
+     */
     public function getCategoryBookList($catName)
     {
         $query = "SELECT idBook, catName , booTitle, booCover, useName, autLastName, autFirstName  FROM t_book
@@ -293,6 +298,11 @@ class Database {
         return null;
     }
 
+    /**
+     * Ajoute un nouvel utilisateur à la BD
+     * 
+     * @return array 
+     */
     public function addUser($useName,$usePassword,$useRights)
     {
         $query = "INSERT INTO t_user (useName,usePassword,useRights,useEntryDate) VALUES (:useName,:usePassword,:useRights, NOW())";
@@ -316,10 +326,10 @@ class Database {
 
         $this->queryPrepareExecute($query,$binds);
     }
-
-
-    //LOGIN STUFF
     
+
+    //Fonctions qui concernent le login 
+
     /**
      * Vérifie si un utilisateur est existant
      *
@@ -349,9 +359,9 @@ class Database {
         return 0;
     }
 
-    //pour que ça marche, il nous faut des mdp hashés dans la db
     /**
      * Vérifie si le mot de passe de l'utilisateur est correct
+     * Fonctionne uniquement avec des mots de passe hashés
      *
      * @param string $useName pseudo de l'utilisateur
      * @param string $usePassword mot de passe de l'utilisateur hashé
@@ -401,7 +411,7 @@ class Database {
     }
 
 
-    //TOUT PAR RAPPORT À L'AJOUT D'UN OUVRAGE
+    //Fonctions liées à l'ajout d'un livre
 
     /**
      * Cette fonction check si un autheur existe
@@ -527,7 +537,7 @@ class Database {
     }
 
     /**
-     * Check si le publisher existe
+     * Check si l'éditeur existe
      *
      * @param string $pubName
      * @return int NULL : existe pas, sinon return son id
@@ -551,7 +561,7 @@ class Database {
     }
 
     /**
-     * Insertion d'un publisher
+     * Insertion d'un éditeur
      *
      * @param string $pubName
      * @param string $pubCreationDate
@@ -584,7 +594,7 @@ class Database {
 
   
     /**
-     * Va ajouter un livre dans la db
+     * Ajouter un livre dans la db
      *
      * @param string $booTitle
      * @param string $idCategory
@@ -671,7 +681,7 @@ class Database {
     }
 
     /**
-     * Donne l'id d'un livre en donnant son titre
+     * Retourne l'id d'un livre à partir de son titre
      *
      * @param string $booTitle
      * @return int l'id du livre
