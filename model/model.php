@@ -821,8 +821,29 @@ class Database {
      */
     public function searchBook($bookName)
     {
-        $arrayData = 0;
-        return $arrayData;    
+        $pattern = $bookName . "%";
+        $query = "SELECT idBook, catName, booTitle, booCover, useName, autLastName, autFirstName FROM t_book
+        INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
+        INNER JOIN t_user on t_book.idUser = t_user.idUser
+        INNER JOIN t_category on t_book.idCategory = t_category.idCategory
+        WHERE booTitle LIKE :pattern
+        ORDER BY booTitle ASC";
+        
+        $binds = array (
+            0 => array (
+                'var' => $pattern,
+                'marker' => ':pattern',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+    
+        $dataArray = $this->queryPrepareExecute($query,$binds);
+        if (isset($dataArray[0]["average"])) {
+            return $dataArray[0]["average"];
+        }
+        
+
+        return $dataArray;    
     }
 }
 ?>
