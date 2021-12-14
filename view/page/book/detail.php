@@ -89,9 +89,8 @@
                                 <input type="radio" id="star1" name="rating" value="10" /><label class = "full" for="star1" ></label>
                                 <input type="radio" id="starhalf" name="rating" value="5" /><label class="half" for="starhalf" ></label>
                             </fieldset> 
-                            <button class="btn btn-primary"  type="submit" >Envoyer ma note</button>
                         </div>
-                    
+                        <button class="btn btn-primary"  type="submit" >Envoyer ma note</button>                   
                     </form>
                 </div><br>
             </div>
