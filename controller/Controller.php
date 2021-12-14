@@ -75,7 +75,8 @@ if (isset($_GET["page"])) {
                 }
                 else
                 {
-                    echo "this book is not in our databases (attentions on en a plusieurs)";
+                    echo "<p class='centerText'>Ce livre ne se trouve pas dans notre base de données (attention on en a plusieurs)</p>";
+                    echo '<img src="resources/img/xina.png" style="max-width:700px" alt="xina">';
                 }
             }
 
