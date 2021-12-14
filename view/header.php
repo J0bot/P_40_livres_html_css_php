@@ -1,6 +1,10 @@
 <!-- Header du site -->
 <header class="p-3   ">
   <div class="container ">
+    <div>
+      <img src="./resources/img/pietroLogo.png" alt="Pietro's Library">
+      
+    </div>
     <div class="d-flex flex-wrap align-items-center justify-content-center">
 
       <!-- Menu de navigation -->
