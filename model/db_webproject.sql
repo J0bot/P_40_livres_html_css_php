@@ -48,8 +48,12 @@ INSERT INTO `t_author` (`idAuthor`, `autLastName`, `autFirstName`, `autBirthDate
 (2, 'Vargas', 'Fred', '1957-06-07', NULL, 'French'),
 (3, 'Gaiman', 'Neil', '1960-11-10', NULL, 'English'),
 (4, 'Stine', 'Robert Lawrence', '1943-10-08', NULL, 'American'),
-(5, 'Smith', 'Patti', '1946-12-30', NULL, 'American');
-
+(5, 'Smith', 'Patti', '1946-12-30', NULL, 'American'),
+(6, 'Lowry', 'Lois', NULL, NULL, NULL),
+(7, 'Schick', 'Joel', NULL, NULL, NULL),
+(8, 'Dashner', 'James', NULL, NULL, NULL),
+(9, 'Damasio', 'Alain', NULL, NULL, NULL),
+(10, 'Jaworski', 'Jean-Philippe ', NULL, NULL, NULL);
 -- --------------------------------------------------------
 
 --
@@ -81,8 +85,14 @@ INSERT INTO `t_book` (`idBook`, `booTitle`, `idCategory`, `idAuthor`, `idPublish
 (2, 'Have mercy on us all (Pars vite et reviens tard)', 2, 2, 2, 2001, 'Joss, a middle-aged former Breton sailor, begins to succeed in reviving the old family trade of town crier in modern-day Paris. Business is good, since people gladly pay five francs to hear their rants and nonsensical messages in parks and squares; every so often, ominous cryptic messages announcing the return of the plague will also be part of the day\'s requested cries.\r\n\r\nAt the same time, chief inspector Adamsberg is surprised as a distressed woman describes that all her apartment building\'s doors, except one, have been marked with a large inverted \"4\" in black ink with the inscription \"CLT.\" This graffiti continues to turn up throughout the city, and residents of apartments with unmarked doors are turning up dead, showing signs of rat-flea bites and blackened flesh.\r\n\r\nInspector Adamsberg must lead an investigation that takes him through a juxtaposition of 15th-century Europe and modern-day France...or does he?', '', 346, 'HaveMercyOnUsAll.jpg', NULL, 'French', 1),
 (3, 'Norse Mythology', 3, 3, 3, 2017, 'In Norse Mythology, Gaiman stays true to the myths in envisioning the major Norse pantheon: Odin, the highest of the high, wise, daring, and cunning; Thor, Odin\'s son, incredibly strong yet not the wisest of gods; and Loki - son of a giant - blood brother to Odin and a trickster and unsurpassable manipulator.', '', 304, 'NorseMythology.jpg', 2, 'English', 1),
 (4, 'Goosebumps : Welcome to dead house', 4, 4, 4, 1992, 'The book follows Amanda and Josh Benson, who move with their parents into a creepy old house located in the strange town of Dark Falls where people are unlike any they have known before.', '', 128, 'WelcomeToDeadHouse.jpg', 3, 'English', 1),
-(5, 'Just Kids', 5, 5, 5, 2010, 'Just Kids tells of the bond between two people forged during an innocent time that changed both of their lives. When they met, they were young naïve children. Over time, they grew up into successful adults who together helped shape an entire artistic era.', '', 278, 'JustKids.jpg', 5, 'English', 1);
+(5, 'Just Kids', 5, 5, 5, 2010, 'Just Kids tells of the bond between two people forged during an innocent time that changed both of their lives. When they met, they were young naïve children. Over time, they grew up into successful adults who together helped shape an entire artistic era.', '', 278, 'JustKids.jpg', 5, 'English', 1),
+(6, 'The Giver', 1, 6, 6, 2016, 'The Giver is a 1993 American young adult dystopian novel written by Lois Lowry. It is set in a society which at first appears to be utopian but is revealed to be dystopian as the story progresses. The novel follows a 12-year-old boy named Jonas.', 'https://sawyerela.weebly.com/uploads/5/8/8/1/5881058/the_giver__giver_quartet_book_-_lois_lowry.pdf', 240, '20211214130903_The_Giver_first_edition_1993.jpg', NULL, 'english', 9),
+(7, 'The Bladerunner', 1, 7, 7, 1974, 'The novel The Bladerunner (also published as The Blade Runner) is a 1974 science fiction novel by Alan E. Nourse, about underground medical services and smuggling. It was the source for the name, but no major plot elements, of the 1982 film Blade Runner, adapted from the novel Do Androids Dream of Electric Sheep? by Philip K. Dick, though elements of the Nourse novel recur in a pair of 2002 films also largely adapted from Dick\'s work, Impostor and Minority Report.', 'https://en.wikipedia.org/wiki/The_Bladerunner', 245, '20211214131154_TheBladerunner.jpg', NULL, 'english', 9),
+(8, 'The Maze Runner', 1, 8, 8, 2009, 'The Maze Runner In The Night is a 2009 young adult dystopian science fiction novel written by American author James Dashner and the first book released in The Maze Runner series. The novel was published on October 6, 2009, by Delacorte Press, an imprint of Random House, and was made into a 2014 major motion picture by 20th Century Fox, directed by Wes Ball.', 'https://en.wikipedia.org/wiki/The_Maze_Runner', 375, '20211214131402_91IJ2rIOEDL.jpg', NULL, 'english', 9),
+(9, 'La Horde du Contrevent', 3, 9, 9, 2016, 'La Horde du Contrevent est un roman de science-fantasy Ã©crit par Alain Damasio et publiÃ© aux Ã©ditions La Volte en 2004. Dans sa premiÃ¨re Ã©dition, le livre Ã©tait accompagnÃ© d\'un CD qui en constituait la Â« bande originale Â».', 'https://fr.wikipedia.org/wiki/La_Horde_du_Contrevent#:~:text=La%20Horde%20du%20Contrevent%20est,constituait%20la%20%C2%AB%20bande%20originale%20%C2%BB.', 549, '20211214131619_814U8H+bKHL.jpg', NULL, 'english', 9),
+(10, 'Gagner la guerre', 3, 10, 10, 2009, 'Gagner la guerre est un roman de fantasy Ã©crit par Jean-Philippe Jaworski et publiÃ© en 2009. Ce livre se dÃ©roule dans le Vieux Royaume, un univers de fantasy oÃ¹ la magie est prÃ©sente et puissante, et qui puise largement son inspiration dans le roman de cape et d\'Ã©pÃ©e et le roman historique (Renaissance italienne).', 'https://fr.wikipedia.org/wiki/Gagner_la_guerre#:~:text=Gagner%20la%20guerre%20est%20un,roman%20historique%20(Renaissance%20italienne).', 684, '20211214131854_25526955._SY475_.jpg', NULL, 'english', 2);
 
+-- 
 -- --------------------------------------------------------
 
 --
@@ -142,7 +152,12 @@ INSERT INTO `t_publisher` (`idPublisher`, `pubName`, `pubCreationDate`, `pubCoun
 (2, 'Editions Viviane Hamy', 1989, 'France'),
 (3, 'Bloomsbury Publishing', 1986, 'England'),
 (4, 'Scholastic Corporation', 1920, 'United States of America'),
-(5, 'Ecco Press', 1971, 'United States of America');
+(5, 'Ecco Press', 1971, 'United States of America'),
+(6, 'essentialmodernclassics', NULL, NULL),
+(7, 'David McKay Publications', NULL, NULL),
+(8, 'Delacorte Press', NULL, NULL),
+(9, 'La Volte', NULL, NULL),
+(10, 'Les Moutons Ã©lectriques', NULL, NULL);
 
 -- --------------------------------------------------------
 

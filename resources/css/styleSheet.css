@@ -38,7 +38,14 @@ h1{
 .alignItems{
   align-items:center;
 }
-
+.noButton{
+  background: none;
+  border: none;
+}
+.header{
+  display: flex;
+  align-items: center;
+}
 /* Page d'accueil */
 .card{
   margin: 0.7em ;
