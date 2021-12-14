@@ -1,4 +1,4 @@
-
+<!-- Page d'accueil -->
 <div class="container mt-3">
 
   <p class="centerText">
@@ -7,7 +7,7 @@
   
   </p>
   
-
+  <!-- Affiche les derniers ouvrages ajoutés à la BD -->
   <div >
     <h2 class="text-center">Derniers livres ajoutés</h2>
     <div class="container cardContainer">
