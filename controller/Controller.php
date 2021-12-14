@@ -18,6 +18,7 @@ if (isset($_GET["page"])) {
         case 'list':
             $conn = new Database();
             $list_books = $conn->getAllBooksList();
+            $list_category = $conn->getAllCategories();
             include("view/page/book/list.php");
             break;
         //Tout ce qui conerne l'ajout d'un livre

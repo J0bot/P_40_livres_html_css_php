@@ -170,14 +170,40 @@ class Database {
      */
     public function getAllBooksList()
     {
-        $query = "SELECT idBook, booTitle, booCover, useName, autLastName, autFirstName  FROM t_book
+        $query = "SELECT idBook,catName , booTitle, booCover, useName, autLastName, autFirstName  FROM t_book
         INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
-        INNER JOIN t_user on t_book.idUser = t_user.idUser";
+        INNER JOIN t_user on t_book.idUser = t_user.idUser
+        INNER JOIN t_category on t_book.idCategory = t_category.idCategory
+        ORDER BY booTitle ASC";
 
         $result = $this->querySimpleExecute($query);
 
         return $result;
     }
+
+    public function getCategoryBookList($catName)
+    {
+        $query = "SELECT idBook, catName , booTitle, booCover, useName, autLastName, autFirstName  FROM t_book
+        INNER JOIN t_author on t_book.idAuthor = t_author.idAuthor
+        INNER JOIN t_user on t_book.idUser = t_user.idUser
+        INNER JOIN t_category on t_book.idCategory = t_category.idCategory
+        WHERE catName=:catName";
+
+        $binds = array(
+            0 => array (
+                'var' => $catName,
+                'marker' => ':catName',
+                'type'  => PDO::PARAM_STR
+            )
+        );
+
+        $arrayData = $this->queryPrepareExecute($query, $binds);
+        if (arrayData!=null) {
+            return arrayData;
+        }
+        return null;
+    }
+
 
 
     /**
