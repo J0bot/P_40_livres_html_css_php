@@ -23,9 +23,8 @@
         } }
         ?>
         <li>
-
           <!-- Barre de recherche d'un ouvrage -->
-          <form class="input-group rounded" action="?page=search" method="GET" >
+          <form class="input-group rounded " action="?page=search" method="GET" >
             <input class="form-control rounded" type="text" placeholder="Rechercher" value="<?=isset($_GET["search"]) ? $_GET["search"]: ""?>" name="search">
             <button class="noButton" type="submit"><i class="fa fa-search"></i></button>
           </form>
